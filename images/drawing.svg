@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="drawing.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Send"
+       style="overflow:visible;">
+      <path
+         id="path3774"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;">
+      <path
+         id="path3768"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3762"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Send-3"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3774-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="232.0924"
+     inkscape:cy="715.35447"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Send)"
+       d="m 216.17264,527.08286 261.62951,0"
+       id="path2985"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Send)"
+       d="m 238.39599,548.08318 0,-261.62951"
+       id="path2985-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect4601"
+       width="104.97488"
+       height="243.45238"
+       x="484.14017"
+       y="-26.354424"
+       transform="matrix(0.92224681,0.38660164,-0.38660164,0.92224681,0,0)"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:12, 4;stroke-dashoffset:0"
+       d="M 537.63855,108.08167 383.77106,475.13599"
+       id="path4603"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:12, 4;stroke-dashoffset:0"
+       d="M 549.01112,335.24237 375.24602,262.40084"
+       id="path4603-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4.00000381;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.59360729;stroke-dasharray:8.00000739, 4.00000371;stroke-dashoffset:0"
+       d="m 459.33513,100.25535 1e-5,394.96964"
+       id="path4641"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="fill:none;stroke:#000000;stroke-width:1.16725981;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2.33451955, 1.16725978;stroke-dashoffset:0;marker-end:url(#Arrow1Send-3)"
+       id="path4645"
+       sodipodi:cx="160.61426"
+       sodipodi:cy="223.02695"
+       sodipodi:rx="52.527931"
+       sodipodi:ry="52.527931"
+       d="m 160.69132,170.49907 a 52.527931,52.527931 0 0 1 19.37165,3.73309"
+       transform="matrix(3.4268293,0,0,3.4268293,-89.95083,-466.03003)"
+       sodipodi:start="4.713856"
+       sodipodi:end="5.0916721"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3.99999499;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.59360729;stroke-dasharray:7.99998989, 3.99999496;stroke-dashoffset:0"
+       d="M 458.77914,297.55833 240.2464,525.28247"
+       id="path4641-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Send-3)"
+       d="M 459.43666,296.22494 604.89863,127.52947"
+       id="path3014"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:93.518013px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Classical Serif;-inkscape-font-specification:CMU Classical Serif Bold Italic"
+       x="578.63464"
+       y="196.64127"
+       id="text4636"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan4638"
+         x="578.63464"
+         y="196.64127">v</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:93.518013px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Classical Serif;-inkscape-font-specification:CMU Classical Serif Bold Italic"
+       x="273.9899"
+       y="437.12936"
+       id="text4636-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan4638-2"
+         x="273.9899"
+         y="437.12936">p</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:93.518013px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Classical Serif;-inkscape-font-specification:CMU Classical Serif Bold Italic"
+       x="474.46686"
+       y="103.35012"
+       id="text4636-8-1"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/valentin/Documents/Projects/vhartman.github.io/_images/rocket_variables.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan4638-2-0"
+         x="474.46686"
+         y="103.35012">α</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:93.518013px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:CMU Classical Serif;-inkscape-font-specification:CMU Classical Serif Bold Italic"
+       x="496.69025"
+       y="688.22845"
+       id="text4636-8-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4638-2-8"
+         x="496.69025"
+         y="688.22845" /></text>
+  </g>
+</svg>
