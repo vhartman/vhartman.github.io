@@ -3,6 +3,7 @@ layout: post
 title:  "Steering a rocket towards orbit using random trees"
 date:   2018-03-26 12:31:34 +0200
 categories: rocket RRT pathplanning
+published: false
 ---
 
 Path finding is usually not used to find _a_ path, but rather an optimal path, or at least a reasonably optimal path. Obviously, this is not necessarily the best way to find the most cost efficient path, but it is a way, that might be interesting.

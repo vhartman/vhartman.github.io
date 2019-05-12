@@ -3,6 +3,7 @@ layout: post
 title:  "The linear Moving Horizon Estimator"
 date:   2018-09-12 09:31:34 +0200
 categories: MHE
+published: false
 ---
 
 One of the strengths of moving horizon estimation is it's explicit possibility to deal with nonlinear state equations. Nonetheless, the version for linear systems is computationally far simpler, making it an ideal first testbed for various approaches to get accurate estimates from data with outliers.
