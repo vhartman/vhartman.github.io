@@ -57,7 +57,7 @@ deployed it to all warehouses in Europe which lead to an up to 30% reduction of 
 <div style="position: relative;"><img src="{{ site.url }}/assets/eth-logo.jpg" class="side-image"></div>
 
 ### MSc Mechanical Engineering: [ETH Zurich](https://www.mavt.ethz.ch/)
-- Master’s Thesis: *A Constant-Complexity Approximation for the Recursive Bayesian Estimation of Closed Skew Normal Distributions* (Grade: -)
+- Master’s Thesis: *A Constant-Complexity Approximation for the Recursive Bayesian Estimation of Closed Skew Normal Distributions* (Grade: 5.75/6)
   - Extended the Kalmand Filter to include skewness in its estimate, and solve the problems in the existing approaches
 - Semester Thesis: *Implementation of a High Performance Integration Scheme for Numerical Optimal Control Applications* (Grade: 5.75/6)
   - Developed and benchmarked an algorithm for numerical integration in C++ based on polynomial extrapolation
