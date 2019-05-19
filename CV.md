@@ -1,6 +1,6 @@
 ---
 layout: cv
-title: Curriculum Vitae 
+title: CV
 permalink: /CV/
 custom_css: cv
 custom_title: Curriculum Vitae <a href="/assets/vhartman_cv_en_1p.pdf" style='font-size:18px; color:9a9a9a;'>[PDF]</a>
@@ -51,9 +51,8 @@ deployed it to all warehouses in Europe which lead to an up to 30% reduction of 
 - Carried out the experiment, analyzed the results, and embedded them in a broader context for further use
 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
+
 ## Education
-
-
 <div style="position: relative;"><img src="{{ site.url }}/assets/eth-logo.jpg" class="side-image"></div>
 
 ### MSc Mechanical Engineering: [ETH Zurich](https://www.mavt.ethz.ch/)

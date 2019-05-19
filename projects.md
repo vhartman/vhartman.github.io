@@ -1,0 +1,19 @@
+---
+layout: about
+title: Projects
+custom_css: cv
+permalink: /projects/
+custom_title: Projects
+---
+
+I like learning about a topic by implementing my own take on it, and documenting it for myself and others to read.
+
+## Major Projects
+
+<div style="position: relative;"><img src="{{ site.url }}/assets/num-meth-icon.png" class="side-image" style="width: 100px; left: -120px;"></div>
+### Semester Thesis: High Performance Numerical Methods for Optimal Control <!--- [here]({% post_url 2018-03-26-Adams-Bashforth-Boost-Odeint %}) --->
+My Semester Thesis resulted in a contribution to Boot Odeint, namely a variable stepsize, variable order controller based on the Adams Bashforth Moulton method. Up to 12 times less function calls are needed during the solution and on appropriate problems, a speed-up of factor four can be achieved over other state of the art integrators with the implemented algorithm.
+
+<div style="position: relative;"><img src="{{ site.url }}/assets/boarding-icon.png" class="side-image" ></div>
+### [Simulating a boarding process](https://github.com/vhartman/brd)
+I wrote a simulation of various boarding processes for airplanes for a class (Entrepreneurial Risks by Prof. Didier Sornette), and analyzed and visualized the results. This lead to an ongoing project on efficiency improvements in the boarding methods for planes.
