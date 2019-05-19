@@ -17,3 +17,7 @@ My Semester Thesis resulted in a contribution to Boot Odeint, namely a variable 
 <div style="position: relative;"><img src="{{ site.url }}/assets/boarding-icon.png" class="side-image" ></div>
 ### [Simulating a boarding process](https://github.com/vhartman/brd)
 I wrote a simulation of various boarding processes for airplanes for a class (Entrepreneurial Risks by Prof. Didier Sornette), and analyzed and visualized the results. This lead to an ongoing project on efficiency improvements in the boarding methods for planes.
+
+<div style="position: relative;"><img src="{{ site.url }}/assets/ind-icon.png" class="side-image" style="width: 100px; left: -120px;"></div>
+### Bachelors Thesis: Inductance based stiffness sensing
+During my Bachelors Thesis, I built a prototype on an inductance sensing catheter. It is based on the physical effect of eddy currents, and the following change in the eigenfrequency of a resonant LCR-circuit. The final sensing circuit is able to measure displacement to an accuracy of 5nm in a controlled environment.
