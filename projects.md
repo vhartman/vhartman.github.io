@@ -10,6 +10,12 @@ I like learning about a topic by implementing my own take on it, and documenting
 
 ## Major Projects
 
+<!---### The Moving Horizon Estimator
+...
+
+### Path planning with various algorithms
+... --->
+
 <div style="position: relative;"><img src="{{ site.url }}/assets/num-meth-icon.png" class="side-image" style="width: 100px; left: -120px;"></div>
 ### Semester Thesis: High Performance Numerical Methods for Optimal Control <!--- [here]({% post_url 2018-03-26-Adams-Bashforth-Boost-Odeint %}) --->
 My Semester Thesis resulted in a contribution to Boot Odeint, namely a variable stepsize, variable order controller based on the Adams Bashforth Moulton method. Up to 12 times less function calls are needed during the solution and on appropriate problems, a speed-up of factor four can be achieved over other state of the art integrators with the implemented algorithm.
