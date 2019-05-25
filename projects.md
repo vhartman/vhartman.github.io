@@ -17,7 +17,7 @@ I like learning about a topic by implementing my own take on it, and documenting
 ... --->
 
 <div style="position: relative;"><img src="{{ site.url }}/assets/num-meth-icon.png" class="side-image" style="width: 100px; left: -120px;"></div>
-### Semester Thesis: High Performance Numerical Methods for Optimal Control <!--- [here]({% post_url 2018-03-26-Adams-Bashforth-Boost-Odeint %}) --->
+### [Semester Thesis: High Performance Numerical Methods for Optimal Control]({% post_url 2018-03-26-Adams-Bashforth-Boost-Odeint %})
 My Semester Thesis resulted in a contribution to Boot Odeint, namely a variable stepsize, variable order controller based on the Adams Bashforth Moulton method. Up to 12 times less function calls are needed during the solution and on appropriate problems, a speed-up of factor four can be achieved over other state of the art integrators with the implemented algorithm.
 
 <div style="position: relative;"><img src="{{ site.url }}/assets/boarding-icon.png" class="side-image" ></div>
@@ -25,5 +25,5 @@ My Semester Thesis resulted in a contribution to Boot Odeint, namely a variable 
 I wrote a simulation of various boarding processes for airplanes for a class (Entrepreneurial Risks by Prof. Didier Sornette), and analyzed and visualized the results. This lead to an ongoing project on efficiency improvements in the boarding methods for planes.
 
 <div style="position: relative;"><img src="{{ site.url }}/assets/ind-icon.png" class="side-image" style="width: 100px; left: -120px;"></div>
-### Bachelors Thesis: Inductance based stiffness sensing
+### [Bachelors Thesis: Inductance based stiffness sensing]({% post_url 2018-03-27-Stiffness-sensing-catheter %})
 During my Bachelors Thesis, I built a prototype on an inductance sensing catheter. It is based on the physical effect of eddy currents, and the following change in the eigenfrequency of a resonant LCR-circuit. The final sensing circuit is able to measure displacement to an accuracy of 5nm in a controlled environment.
