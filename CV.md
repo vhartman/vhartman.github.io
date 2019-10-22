@@ -7,11 +7,18 @@ custom_title: Curriculum Vitae <a href="/assets/vhartman_cv_en_1p.pdf" style='fo
 ---
 
 ## Work
+<!--<div style="position: relative;"><img src="{{ site.url }}/assets/bcg-gamma-logo.png" class="side-image"></div>-->
+### [IntCDC](https://icd.uni-stuttgart.de/) / [University of Stuttgart](https://www.ipvs.uni-stuttgart.de/abteilungen/mlr/)
+<div class='subtitle'>Research Associate and PhD student, Supervisor: Marc Toussaint<span class="position-duration">10/19 - 10/23</span></div>
+- Working on task and motion planning (TAMP) for 'Building and Navigation Strategies for On-Site Robotic Construction' 
 
 <div style="position: relative;"><img src="{{ site.url }}/assets/bcg-gamma-logo.png" class="side-image"></div>
 ### [BCG Gamma](https://www.bcg.com/beyond-consulting/bcg-gamma/default.aspx)
 <div class='subtitle'>Visiting Data Scientist <span class="position-duration">04/19 - 08/19</span></div>
-- Working as a data scientist
+- Worked on churn prediction and NLP projects for two large international companies
+- Designed and implemented data pipelines for large throughput (> 1 TB)
+- Applied various exploratory methods during initial phase of the projects
+- Communicated and presented analysis and solutions to stakeholders
 
 <div style="position: relative;"><img src="{{ site.url }}/assets/verity-logo.jpg" class="side-image"></div>
 ### [Verity Studios](https://veritystudios.com/)

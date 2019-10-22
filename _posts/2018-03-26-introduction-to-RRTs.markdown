@@ -3,7 +3,6 @@ layout: post
 title:  "A quick overview over rapidly exploring random trees"
 date:   2018-03-26 01:31:34 +0200
 categories: RRT pathplanning survey
-published: false
 ---
 
 I recently saw [a lecture][frazzoli-lecture] by Prof. Frazzoli, which renewed my interest in random trees. This led to me experimenting around with some variants of RRTs, and writig this post. This post is mostly for personal reasons ('if you can't explain something in simple terms, you don't understand it', etc.), and to start practicing my writing, and peresentation skills.

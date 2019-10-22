@@ -70,9 +70,7 @@ which clearly has an analytical solution. To get to the ABM method, we make the 
 
 $$\mathbf{x}[k + 1] = \mathbf{x}[k] + h f(\mathbf{x}[k+1]) $$
 
-This implicit equation can be solved using various methods. A common one is the predictor-corrector approach, meaning that we first predict the value, and then correct it, using a different formula, i.e.
-
-$$...$$
+This implicit equation can be solved using various methods. A common one is the predictor-corrector approach, meaning that we first predict the value, and then correct it, using a different formula, for example an explicit one, like the euler formula introduced above. This results in the iteration: ...
 
 
 
