@@ -60,6 +60,10 @@ deployed it to all warehouses in Europe which lead to an up to 30% reduction of 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
 
 ## Education
+### [IntCDC](https://icd.uni-stuttgart.de/) / [University of Stuttgart](https://www.ipvs.uni-stuttgart.de/abteilungen/mlr/)
+<div class='subtitle'>Research Associate and PhD student, Supervisor: Marc Toussaint<span class="position-duration">10/19 - 10/23</span></div>
+- Working on task and motion planning (TAMP) for 'Building and Navigation Strategies for On-Site Robotic Construction' 
+
 <div style="position: relative;"><img src="{{ site.url }}/assets/eth-logo.jpg" class="side-image"></div>
 
 ### MSc Mechanical Engineering: [ETH Zurich](https://www.mavt.ethz.ch/)
