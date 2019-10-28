@@ -49,7 +49,7 @@ $$ \mathbf{x} = \int_{0}^{T} L(\mathbf{x}) dx $$
 
 with $$L$$ being the polynomial approximation of $$f$$. With this, we can transform the equation above to 
 
-$$ \mathbf{x}(T) = \int_{0}^{t_1} L(\mathbf{x}(t_0)) dx +  \int_{t_1}^{t_2} L(\mathbf{x}(t_1)) dx + ...$$
+$$ \mathbf{x}(T) = \int_{0}^{t_1} L(\mathbf{x}) dx +  \int_{t_1}^{t_2} L(\mathbf{x}) dx + ...$$
 
 Since it is possible to integrate a polynomial analytically, we can now solve the integrals easily to get from one step to the next one.
 
@@ -61,25 +61,112 @@ with the Lagrange basis polynomials $$\ell$$:
 
 $$\ell_j(x) := \prod_{\begin{smallmatrix}0\le m\le k\\ m\neq j\end{smallmatrix}} \frac{x-x_m}{x_j-x_m} = \frac{(x-x_0)}{(x_j-x_0)} \cdots \frac{(x-x_{j-1})}{(x_j-x_{j-1})} \frac{(x-x_{j+1})}{(x_j-x_{j+1})} \cdots \frac{(x-x_k)}{(x_j-x_k)}$$
 
-Thus, we can solve the integral 
+which is a polynomial of degree $$k$$. Thus, we can solve the integral 
 
 $$\begin{align}
 \int_{t_n}^{t_{n+1}} L(\mathbf{x}(t_n)) dx &= \int_{t_n}^{t_{n+1}} \sum_{j=0}^{k} f(x_j) \ell_j(x) dx \\ &= \sum_{j=0}^{k}f(x_j)\int_{t_n}^{t_{n+1}} \ell_j(x) dx \end{align}$$
 
-which clearly has an analytical solution. To get to the ABM method, we make the method above into an implicit method. For the Euler method analogy from above, this means that the constant value is now equal to the function evaluated at the end-point, i.e.
+which has an analytical solution (due to being a polynomial).
+
+To arrive at the implicit Adams Bashforth Moulton method, we make the method above into an implicit method, i.e. the next value depends on the value of the function evaluation at the next point:
 
 $$\mathbf{x}[k + 1] = \mathbf{x}[k] + h f(\mathbf{x}[k+1]) $$
 
-This implicit equation can be solved using various methods. A common one is the predictor-corrector approach, meaning that we first predict the value, and then correct it, using a different formula, for example an explicit one, like the euler formula introduced above. This results in the iteration: ...
+which becomes the following in the context of the Adams Moulton method:
 
+This implicit equation can be solved using various methods. A common one is the predictor-corrector approach, meaning that we first predict the value, and then correct it with the implicit formula. 
+
+Naturally, this leads us to the combination of the Adams Bashforth (explicit) and the Adams Moulton (implicit) methods for our predictor and corrector.
 
 
 # Implementation
-There are several ways of computing the coefficients of a lagrange polynomial, with various pros and cons.
+The main part of our implementation is the computation of the coefficients for the lagrange polynomial. There are some additional difficulties if we implement the integrator to allow for a variable stepsize (how do we choose the stepsize?), but we will leave that out for now.
 
+As such, the general algorithm is
 
-# Results: Performance comparisons
-- Pleiades etc.
+{% highlight python %}
+def ABM(x_0, T, order, dt):
+    t = 0
+    
+    x_prev = [x_0]
+    f_prev = [f(x_0)]
+
+    while t < T:
+        # predict
+        x_pred = x_prev[-1] + AB(x_prev, f_prev)
+        f_pred = f(x_pred)
+
+        # correct
+        x_corr = x_prev[-1] + AM(x_prev + [x_pred], f_prev + [f_pred])
+        f_corr = f(x_corr)
+
+        # update bookkeeping
+        ind = min([len(x_prev), order]) - 1
+
+        x_prev = x_prev[:ind] + x_corr
+        f_prev = f_prev[:ind] + f_corr
+        t += dt
+
+    return x_prev[-1]
+{% endhighlight %}
+
+{% highlight python %}
+def AB(x, f):
+    
+    coefficients = compute_lagrange_coefficients(x)
+    
+{% endhighlight %}
+
+{% highlight python %}
+def AM(x):
+    pass
+{% endhighlight %}
+
+{% highlight python %}
+def integrate_polynomial(x):
+    pass
+{% endhighlight %}
+
+{% highlight python %}
+def compute_lagrange_coefficients(x):
+    pass
+{% endhighlight %}
+<!-- # Results: Performance comparisons
+There are some standard ODEs for the evaluation of the performance and accuracy of numerical integrators. Commonly used are:
+
+- A simple system (for debugging purposes):
+
+$$\dot{x} = -x$$
+
+- A simple harmonic oscillator:
+
+$$\left[ \begin{array}{c}\dot{x}_1\\ \dot{x}_2\end{array}\right] = \left[ \begin{array}{cc}0 & -1\\ 1 & 0\end{array} \right]\left[ \begin{array}{c}x_1\\ x_2\end{array}\right]$$
+
+- The Arenstorf orbit, a three body system, where one body is fixed:
+
+$$\begin{align}
+        \dot{x}_1 &= x_2\\
+        \dot{x}_2 &= x_1 + 2x_4 - (1-\mu)\frac{x_1+\mu}{d_1}\\
+        \dot{x}_3 &= x_4\\
+        \dot{x}_4 &= x_3 - 2x_2 - (1-\mu)\frac{x_3}{d_1} - \mu \frac{x_3}{d_2}
+    \end{align}$$
+
+with
+
+$$\begin{align}
+        d_1 &= ((x_1+\mu)^2+x_3^2)^{3/2}\\
+        d_2 &= ((x_1-(1-\mu))^2+x_3^2)^{3/2}
+    \end{align}$$
+
+- Pleiades, a seven body orbital mechanics problem:
+
+$$\ddot{x}_i = \sum_{j\neq i} m_j \frac{x_j - x_i}{r_{ij}}\qquad \ddot{y}_i = \sum_{j\neq i} m_j \frac{y_j - y_i}{r_{ij}}$$
+
+with 
+
+$$
+        r_{ij} = \left((x_i-x_j)^2 + (y_i-y_j)^2\right)^{3/2}
+$$ -->
 
 [LMM]: https://en.wikipedia.org/wiki/Linear_multistep_method
 [CSLQ]: https://arxiv.org/abs/1701.08051
