@@ -66,7 +66,11 @@ While this illustrates that the change in inductance is larger when using an iro
 The plot above also shows that the change in inductance is almost linear, for the insertion of the core for both materials, which is a very desirable property, giving a more or less equal resolution over the whole measurement space.
 
 # Manufacturing
-Again, due to the size requirements, it was impossible to source the micro-coils from a commercial producer. We found one company that was willing to make coild for us, but the lead time would have been too long (several weeks), and the cost too high (several thousand swiss francs) for a prototype on which we would have to iterate.
+Again, due to the size requirements (the most important ones are listed on the right), it was impossible to source the micro-coils from a commercial producer. We found one company that was willing to make coild for us, but the lead time would have been too long (several weeks), and the cost too high (several thousand swiss francs) for a prototype on which we would have to iterate.
+
+<div style="position: relative" class="post-side-image">
+    <img src="{{ site.url }}/assets/bsc/design_criterions.png" style="position: absolute;left: 720px; top: -120px;width: 250px;padding: 10px;">
+</div>
 
 Thus, the coils were hand wound using a lathe and a teflon rod as the core, on which the copper wire was wound. We manually counted the number of revolutions, and glued the first and the last layer to avoid deformations later on. The removal from the teflon rod is easily possible due to its low friction coefficient.
 
@@ -78,6 +82,8 @@ Below, some (only sucessful versions) are shown:
 
 The different colors are partly due to using different wires (to control for e.g. wire-diameter), and different settings when taking the pictures. The icons show the number of windings, and layers of the coils.
 
+After deciding which initial coil to use, the rest of the design was relatively staightforward - the enclosure of the catheter was designed and fabricated with a high quality 3D printer, the circuit was designed, and subsequently fabricated by seeed studio, and the spring was an off the shelf spring already used for a previous project.
+
 # Optimization
 It turns out that the change in frequency of a single-layer coil is far from linear, as shown in the plot of the gradient of the frequency:
 
@@ -85,7 +91,16 @@ It turns out that the change in frequency of a single-layer coil is far from lin
     <img src="{{ site.url }}/assets/bsc/meas_gradF_z.png" style="width:80%; padding: 10px">
 </div>
 
-with some optimization of the distribution of the windings over the length of the coil, an asymmetric coil was fabricated, with 'linearly' decreasing density of windings. The motivation for the linearly decreasing winding density was the desire to achieve a stronger electrical field at the top of the coil, since the gradients observed in the 'standard' coils were low at the point of insertion.
+with some optimization<sup>1</sup> of the distribution of the windings over the length of the coil, an asymmetric coil was fabricated, with 'linearly' decreasing density of windings. The motivation for the linearly decreasing winding density was the desire to achieve a stronger electrical field at the top of the coil, since the gradients observed in the 'standard' coils were low at the point of insertion.
+
+<div style="position: relative;" class="post-side-image">
+    <p style="position: absolute;left: 720px; top: -150px;height: 300px;padding: 10px;font-size:10pt; width:200px"><sup>1</sup> What I decided to optimize for was the minimum sensitivity over the range where the catheter would be used, i.e. 
+
+$$c = \max \min \left(\frac{dF}{dz}\right)$$ 
+
+This is essentially trying to maximize the range over which the sensor gives a certain accuracy.
+</p>
+</div>
 
 <div style="width: 100%; text-align: center">
     <img src="{{ site.url }}/assets/bsc/c_23.png" style="width:60%; padding: 10px">
@@ -96,3 +111,7 @@ Here, the problems with the production process of the coils can once more be obs
 <div style="width: 100%; text-align: center">
     <img src="{{ site.url }}/assets/bsc/meas_deltaF_z_23.png" style="width:80%; padding: 10px">
 </div>
+
+# Possible future work
+- As mentioned above, the fabrication process of the coils can definitely improved upon. Moving from manual work to i.e. a simple robotic process has the potential to improve the repeatability drastically.
+- First steps were already made in the direction of optimizing the coil. This can be pushed further with a comprehensive mathematical optimization process. To achieve this, a model would have to be built that mirrors the physical effects, and from there, the optimization process should be straightforward.
