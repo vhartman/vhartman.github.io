@@ -17,7 +17,10 @@ I like learning about a topic by implementing my own take on it, and documenting
 ... --->
 
 <div style="position: relative;"><img src="{{ site.url }}/assets/num-meth-icon.png" class="side-image" style="width: 100px; left: -120px;"></div>
-### [Semester Thesis: High Performance Numerical Methods for Optimal Control]({% post_url 2019-11-01-Adams-Bashforth-Boost-Odeint %})
+{%comment%}
+<!--### [Semester Thesis: High Performance Numerical Methods for Optimal Control]({% post_url 2019-11-01-Adams-Bashforth-Boost-Odeint %})-->
+{%endcomment%}
+### Semester Thesis: High Performance Numerical Methods for Optimal Control
 My Semester Thesis resulted in a contribution to Boot Odeint, namely a variable stepsize, variable order controller based on the Adams Bashforth Moulton method. Up to 12 times less function calls are needed during the solution and on appropriate problems, a speed-up of factor four can be achieved over other state of the art integrators with the implemented algorithm.
 
 <div style="position: relative;"><img src="{{ site.url }}/assets/boarding-icon.png" class="side-image" ></div>

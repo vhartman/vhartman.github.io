@@ -72,7 +72,9 @@ deployed it to all warehouses in Europe which lead to an up to 30% reduction of 
 - Semester Thesis: *Implementation of a High Performance Integration Scheme for Numerical Optimal Control Applications* (Grade: 5.75/6)
   - Developed and benchmarked an algorithm for numerical integration in C++ based on polynomial extrapolation
   - Contributed to the [Boost Odeint Library](https://www.boost.org/doc/libs/1_66_0/libs/numeric/odeint/doc/html/index.html)
-<!---  - More details [here]({% post_url 2019-11-01-Adams-Bashforth-Boost-Odeint %})--->
+{%comment%}
+<!---  - More details [here]({% post_url 2019-11-01-Adams-Bashforth-Boost-Odeint %})-->
+{% endcomment %}
 - Focus on Robotics, Systems and Control
   - Coursework included (amongst others): Mathematical Optimization, System Identification, Probabilistic Artificial Intelligence, Autonomous Mobile Robots, Game Theory and Control, Stochastic Systems, Advanced Topics in Control
 

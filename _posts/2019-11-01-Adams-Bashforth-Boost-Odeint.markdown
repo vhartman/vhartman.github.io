@@ -3,6 +3,7 @@ layout: post
 title:  "Semester thesis: Implementation of a numerical integrator for optimal control"
 date:   2019-11-01 01:31:34 +0200
 categories: control numerical integrator thesis
+published: false
 ---
 
 During my Semesterthesis (as a requirement for my degree), I worked on an implementation of a numerical integrator for [Boost Odeint][boost] at the agile and dextrous robotics lab ([ADRL][ADRL]) at ETH.
