@@ -72,7 +72,7 @@ deployed it to all warehouses in Europe which lead to an up to 30% reduction of 
 - Semester Thesis: *Implementation of a High Performance Integration Scheme for Numerical Optimal Control Applications* (Grade: 5.75/6)
   - Developed and benchmarked an algorithm for numerical integration in C++ based on polynomial extrapolation
   - Contributed to the [Boost Odeint Library](https://www.boost.org/doc/libs/1_66_0/libs/numeric/odeint/doc/html/index.html)
-<!---  - More details [here]({% post_url 2018-03-26-Adams-Bashforth-Boost-Odeint %})--->
+<!---  - More details [here]({% post_url 2019-11-01-Adams-Bashforth-Boost-Odeint %})--->
 - Focus on Robotics, Systems and Control
   - Coursework included (amongst others): Mathematical Optimization, System Identification, Probabilistic Artificial Intelligence, Autonomous Mobile Robots, Game Theory and Control, Stochastic Systems, Advanced Topics in Control
 
@@ -83,7 +83,7 @@ deployed it to all warehouses in Europe which lead to an up to 30% reduction of 
 - Bachelor’s Thesis: *Inductance Based Stiffness Sensing Catheter* (Grade: 6/6)
   - Simulation, design, iteration, fabrication, and prototyping of a stiffness sensing catheter with nanometer accuracy.
   - Additionally developed libraries in C/C++ for communication with sensors that were used in my and other theses.
-<!---  - More details [here]({% post_url 2018-03-27-Stiffness-sensing-catheter %})--->
+    - More details [here]({% post_url 2019-10-30-Stiffness-sensing-catheter %})
 - Studies on Mechatronics: *Comparison of inductance-based displacement sensors and extension to three dimensional measurement*
   - Prototyping of a 3d position sensor based on a inductance measurement.
   - Software for computing and real time visualization of the displacement from 3 inductance measurements
