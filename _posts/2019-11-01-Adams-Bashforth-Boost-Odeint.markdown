@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Semester thesis: Implementation of a numerical integrator for optimal control"
-date:   2018-03-26 01:31:34 +0200
+date:   2019-11-01 01:31:34 +0200
 categories: control numerical integrator thesis
 ---
 
@@ -15,34 +15,7 @@ Hence, we want to design an ODE solver that is able to use the benefits of varia
 The class of [Linear Multistep Methods][LMM] tries to minimize the information gained in every function evaluation by combining previous evaluations in its computation. This is compared to one step methods, which discard the previously obtained information.
 
 # Formulation of the Adams Bashforth Moulton (ABM) Integrator
-When attempting to solve the equation 
-
-$$ \mathbf{\dot{x}} = f(\mathbf{x}) $$
-
-with $$ f  = (f_1, ... f_n)^T$$, and $$\mathbf{x} = (x_1, ..., x_n)^T$$, with a boundary value given, a numerical approach is generally needed.
-
-The easiest approach is the discretization of the problem,
-
-$$\mathbf{x}[k + 1] = \mathbf{x}[k] + h f(\mathbf{x}[k]) $$
-
-is called Euler method, and is a special case of the ABM integrator. The Euler method can be thought of as follows: We take the initial equation again, and integrate both sides:
-
-$$ \mathbf{x}(T) = \int_{0}^{T} f(\mathbf{x}) dx $$
-
-and approximate the integral on the right side as constant until we evaluate the function again. This means that we get 
-
-$$ \mathbf{x}(T) = \int_{0}^{t_1} f(\mathbf{x}(t_0)) dx +  \int_{t_1}^{t_2} f(\mathbf{x}(t_1)) dx + ...$$
-
-One problem is left, namely that we do not know the value of $$\mathbf{x}(t_1)$$ without first computing the first integral.
-
-Thus, we solve one integral after another, and obtain
-
-$$x[1] = hf(x[0]) + x[0]$$
-
-$$x[2] = hf(x[1]) + x[1]$$
-
-and so on.
-
+Refer to [xyz] for an introduction to numerical integration.
 Exchanging the constant approximation with a polynomial of order $$k$$, we obtain the ABM-solution:
 
 $$ \mathbf{x} = \int_{0}^{T} L(\mathbf{x}) dx $$

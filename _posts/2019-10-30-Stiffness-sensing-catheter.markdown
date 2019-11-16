@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Bachelor thesis: Inductance based stiffness sensing catheter"
-date:   2018-03-25 12:31:34 +0200
+date:   2019-10-30 12:31:34 +0200
 categories: thesis inductance catheter displacement
 ---
 
