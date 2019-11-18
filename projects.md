@@ -20,7 +20,7 @@ I like learning about a topic by implementing my own take on it, and documenting
 During my Bachelors Thesis, I built a prototype on an inductance sensing catheter. It is based on the physical effect of eddy currents, and the following change in the eigenfrequency of a resonant LCR-circuit. The final sensing circuit is able to measure displacement to an accuracy of 5nm in a controlled environment.
 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
-#### Writeup in progress
+<h4 style="margin-left:-12px">Project/Writeup in progress</h4>
 
 <div style="position: relative;"><img src="{{ site.url }}/assets/num-meth-icon.png" class="side-image" style="width: 100px; left: -120px;"></div>
 {%comment%}

@@ -9,7 +9,7 @@ custom_title: Paper Replications
 Sometimes, I am interested in academic papers, and replicate them to test out their weaknesses, strengths, and compare them to other research myself. This also helps me understand the approach, results, and everything in between much better than only reading it. Sometimes I also find mistakes.
 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
-#### Project/Writeup in progress
+<h4 style="margin-left:-12px">Project/Writeup in progress</h4>
 
 ### Position-Based Tensegrity Design
 Together with [Kevin Lynagh](https://kevinlynagh.com/), I am working on a replication of a paper that computes a valid tensegrity design from a given 3D model. A tensegrity is a construction made of struts and cables, being held up only by the continous tension between the elements.
