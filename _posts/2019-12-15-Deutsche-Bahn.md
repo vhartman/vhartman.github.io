@@ -53,3 +53,5 @@ All of these attempts to explain the price changes over time are partially refut
 It might be possible that the number of ticket sales is naively extrapolated from the prvious sales, causing some jumps in prices, and going back to the previous level after a 'calmer' period.
 
 If anybody knows more about the topic, please reach out to me!
+
+**Edit:** Apparently some railway operators use a strategy called [yield management](https://en.wikipedia.org/wiki/Yield_management) to maximize revenue for a given route (according to [trainline](https://faq.trainline.eu/article/192-sudden-ticket-price-increase-decrease)). While common practice with airlines, I was not aware that this is done for rail as well.
