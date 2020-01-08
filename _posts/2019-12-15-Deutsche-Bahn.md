@@ -29,14 +29,16 @@ I wrote a script<sup>2</sup> to scrape the prices for a few of the connections t
 The resulting pricing data for a month for one of the connections is below:
 
 <div style="width: 100%; text-align: center">
-    <img src="{{ site.url }}/assets/db-tracking/040120_initial.png" style="width:100%;padding: 10px;">
+    <img src="{{ site.url }}/assets/db-tracking/040120.png" style="width:100%;padding: 10px;">
 </div>
+
+There are approximately 160 datapoints for each of the connections in the plot above. Unfortunately, since I ran the script on my personal computer, I do only have datapoints during the evenings (when my laptop at home was turned on).
 
 Some initial observations:
 - The price is not strictly increasing the closer we get to the date of travel
 - Different iternaries behave differently over time
 
-Comparing this to some more collected data (I only scraped the connections/days that are actually relevant for my upcoming travel to Switzerland over the christmas holidays):
+Comparing this to some more collected data (I only scraped the connections/days that are actually relevant for my upcoming travel to Switzerland over the christmas holidays - Check out the image in a separate tab for a larger version):
 
 <div style="width: 100%; text-align: center">
     <img src="{{ site.url }}/assets/db-tracking/full.png" style="width:100%;padding: 10px;">
