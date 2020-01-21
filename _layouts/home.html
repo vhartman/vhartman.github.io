@@ -15,8 +15,9 @@ layout: default
       {%- for post in site.posts -%}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
+        <h3 style="position: relative">
+          <span class="post-meta" style=" position: absolute; width: 120px; top: .6em; left: -90px; ">
+              {{ post.date | date: date_format }}</span>
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
           </a>
