@@ -106,8 +106,8 @@ if __name__ == "__main__":
     plt.hist(x*beta_lws[1] + beta_lws[0] - y, 100)
     plt.show()
 
-    #plot_model(x, y, (beta_ls, beta_ls_wo, beta_lhs, beta_las, beta_lws))
-    #plt.legend(['LS', 'LS_WO', 'LHS', 'LAS', 'LWS'])
+    plot_model(x, y, (beta_ls, beta_ls_wo, beta_lhs, beta_las, beta_lws))
+    plt.legend(['LS', 'LS_WO', 'LHS', 'LAS', 'LWS'])
 
     plt.show()    
 
