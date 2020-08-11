@@ -10,6 +10,8 @@ I have a strong interest in control systems, optimization, numerical methods, an
 
 I like rowing, all kinds of other sports, and to my friends delight I am an avid cook.
 
+I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest!
+
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
 
 ## Publication(s)
