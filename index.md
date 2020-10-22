@@ -17,8 +17,8 @@ I have an open list of ideas for which I am looking for collaborators (external 
 ## Publication(s)
 
 ### Conferences
-- *Robust task and motion planning for long-horizon architectural construction planning*, **Valentin N. Hartmann**, Ozgur S. Oguz, Danny Driess, Marc Toussaint and Achim Menges, To appear: IROS 2020, \[[arXiv](https://arxiv.org/abs/2003.07754)\], \[[video](https://www.youtube.com/watch?v=j5S0s29IHwA)\]
+- *Robust task and motion planning for long-horizon architectural construction planning*, **Valentin N. Hartmann**, Ozgur S. Oguz, Danny Driess, Marc Toussaint and Achim Menges, To appear: IROS 2020, \[[arXiv](https://arxiv.org/abs/2003.07754)\], \[[short video](https://www.youtube.com/watch?v=j5S0s29IHwA)\], \[[talk](https://youtu.be/lAP6hkVlqwo)\]
 
 ### Workshops
-- *Planning Planning: The Path Planner as a Finite State Machine*, **V. N. Hartmann**, O. S. Oguz, and M. Toussaint To appear: Workshop for Planning and Robotics (PlanRob), International Conference on Automated Planning and Scheduling (ICAPS), 2020. 
+- *Planning Planning: The Path Planner as a Finite State Machine*, **V. N. Hartmann**, O. S. Oguz, and M. Toussaint To appear: Workshop for Planning and Robotics (PlanRob), International Conference on Automated Planning and Scheduling (ICAPS), 2020. \[[talk](https://youtu.be/3Qu4P9DaQWc)\]
 - *Co-Design in Architecture: A Modular Material-Robot Kinematic Construction System*, Samuel Leder, HyunGyu Kim, Ozgur S. Oguz, **Valentin N. Hartmann**, Marc Toussaint, Achim Menges, Metin Sitti, Paper presented at the meeting of the 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) [Proceedings of Workshop on Construction and Architecture Robotics], 2020.
