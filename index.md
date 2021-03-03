@@ -19,7 +19,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 
 ### Conferences
 - *Learning Efficient Constraint Graph Sampling for Robotic Sequential Manipulation*, Joaquim Ortiz de Haro, **Valentin N. Hartmann**, Ozgur S. Oguz, Marc Toussaint, To be presented at ICRA 2021 \[[arxiv](https://arxiv.org/pdf/2011.04828.pdf)\], \[[youtube](https://www.youtube.com/watch?v=xWAjBGACZhs&feature=youtu.be)\]
-- *Self-supervised Learning of Scene-Graph Representations for Solving Sequential Manipulation Problems*, Son-Tung Nguyen, Ozgur S. Oguz, **Valentin N. Hartmann**, Marc Toussaint, Conference on Robot Learning (CoRL) 2020
+- *Self-supervised Learning of Scene-Graph Representations for Solving Sequential Manipulation Problems*, Son-Tung Nguyen, Ozgur S. Oguz, **Valentin N. Hartmann**, Marc Toussaint, Conference on Robot Learning (CoRL) 2020 \[[paper](https://ipvs.informatik.uni-stuttgart.de/mlr/papers/20-oz-corl.pdf)\], \[[youtube](https://www.youtube.com/watch?v=JZ4FepUo6TY)\]
 - *Robust task and motion planning for long-horizon architectural construction planning*, **Valentin N. Hartmann**, Ozgur S. Oguz, Danny Driess, Marc Toussaint and Achim Menges, International Conference on Intelligent Robots and Systems (IROS) 2020, \[[arXiv](https://arxiv.org/abs/2003.07754)\], \[[short video](https://www.youtube.com/watch?v=j5S0s29IHwA)\], \[[talk](https://youtu.be/lAP6hkVlqwo)\]
 
 ### Workshops
