@@ -13,6 +13,8 @@ I like rowing, all kinds of other sports, and to my friends delight I am an avid
 
 I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest!
 
+<code>v [at] vhartmann [dot] com</code> for side-projects, <code>valentin [dot] hartmann [at] ipvs [dot] uni-stuttgart [dot] de</code> for more academic chatter.
+
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
 
 ## Publication(s)
