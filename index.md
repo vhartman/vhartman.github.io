@@ -20,7 +20,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 ## Publication(s)
 
 ### Preprints
-- *Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*, **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint \[[arxiv](https://arxiv.org/abs/2106.02489)\]
+- *Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*, **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\]
 
 ### Conferences
 - *Learning Efficient Constraint Graph Sampling for Robotic Sequential Manipulation*, Joaquim Ortiz de Haro, **Valentin N. Hartmann**, Ozgur S. Oguz, Marc Toussaint, To be presented at ICRA 2021 \[[arxiv](https://arxiv.org/pdf/2011.04828.pdf)\], \[[youtube](https://www.youtube.com/watch?v=xWAjBGACZhs&feature=youtu.be)\]
