@@ -20,6 +20,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 ## Publication(s)
 
 ### Preprints
+- *ST-RRT\*: Asymptotically-Optimal Bidirectional Motion Planning through Space-Time*, Francesco Grothe, **Valentin N. Hartmann**, Andreas Orthey, Marc Toussaint
 - *Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*, **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\]
 
 ### Conferences
