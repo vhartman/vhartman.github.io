@@ -24,10 +24,10 @@ I have an open list of ideas for which I am looking for collaborators (external 
 ### Preprints/Under Review
 - *Effort Informed Roadmaps (EIRM\*): Efficient Asymptotically Optimal Multiquery Planning by Actively Reusing Validation Effort*, **Valentin N. Hartmann**, Marlin P. Strub, Marc Toussaint, Jonathan D. Gammell 
 - *Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*, **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\]
+- *Leveraging Building Material as Part of the In-Plane Robotic Kinematic System for Collective Construction*, Samuel Leder, H. Kim, Ozgur S. Oguz, Nicolas Kubail Kalousdian, Valentin N. Hartmann, Achim Menges, Marc Toussaint, Metin Sitti, Accepted for publication in Advanced Science
 
 ### Journals
 - *Learning Robotic Manipulation of Natural Materials with Variable Properties for Construction Tasks*, Nicolas Kubail Kalousdian, Grzegorz Łochnicki, **Valentin N. Hartmann**, Samuel Leder, Ozgur S. Oguz, Achim Menges, Marc Toussaint, IEEE Robotics and Automation Letters (RA-L) \[[paper](https://ieeexplore.ieee.org/document/9735376)\]
-- *Leveraging Building Material as Part of the In-Plane Robotic Kinematic System for Collective Construction*, Samuel Leder, H. Kim, Ozgur S. Oguz, Nicolas Kubail Kalousdian, Valentin N. Hartmann, Achim Menges, Marc Toussaint, Metin Sitti, Accepted for publication in Advanced Science
 
 ### Conferences
 - *ST-RRT\*: Asymptotically-Optimal Bidirectional Motion Planning through Space-Time*, Francesco Grothe, **Valentin N. Hartmann**, Andreas Orthey, Marc Toussaint, ICRA 2022, \[[arXiv](https://arxiv.org/abs/2203.02176)\]
