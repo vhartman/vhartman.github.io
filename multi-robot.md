@@ -11,7 +11,7 @@ custom_title: Long-Horizon Multi-Robot Rearrangement Planning for Construction A
 Learning and Intelligent Systems Group, TU Berlin, Germany</p>
 
 **Brief:**
-By factoring a bigger problem in several subproblems that can be solved with few robots, we can compose a solution to the original problem. We greedily choose subproblems and agents to solve them, and account for previously solved problems. This scales really well!
+By factoring a bigger problem in several subproblems that can be solved with few robots, we can compose a solution to the original problem. We greedily choose subproblems and agents to solve them, and account for previously solved problems. We demonstrate this on multiple construction scenarios, and on a more classical task and motion planning problem: stacking boxes with real robots.
 
 
 **Abstract:**
@@ -34,11 +34,18 @@ Latest version: [arXiv](https://arxiv.org/abs/2106.02489)
 
 ### Videos
 
+This video contains an overview of the experiments we did, the scenarios we consider, and a short overview on how the algorithm works.
+
 <iframe style="display:block; margin: 0 auto;" width="600px" height="340" src="https://www.youtube.com/embed/GqhouvL5dig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br>
 
 
+We also executed a plan that our planner generates on a real robotic system.
+The goal-configuration is a tower made of 6 boxes in the middle of the table.
+This is achieved by the two arms.
+
+The plan is executed open-loop in this demonstration, which explains the small inaccuracies when the arms are placing the boxes.
 <iframe style="display:block; margin: 0 auto;" width="600px" height="340" src="https://www.youtube.com/embed/KILyXQDcEZw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <hr style="margin: 2em 0 2em;">
@@ -47,11 +54,13 @@ Latest version: [arXiv](https://arxiv.org/abs/2106.02489)
 
 ```
 @inproceedings{21-hartmann-long,
-  title = {Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly},
-  author = {Hartmann, Valentin N. and Orthey, Andreas and Driess, Danny and Oguz, Ozgur S. and Toussaint, Marc},
-  year = {2021},
+  title     = {Long-Horizon Multi-Robot Rearrangement Planning for 
+               Construction Assembly},
+  author    = {Hartmann, Valentin N. and Orthey, Andreas and Driess, Danny and 
+               Oguz, Ozgur S. and Toussaint, Marc},
+  year      = {2021},
   arxiv_pdf = {2106.02489},
-  youtube = {GqhouvL5dig}
+  youtube   = {GqhouvL5dig}
 }
 ```
 
