@@ -23,7 +23,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 
 ### Preprints/Under Review
 - *Effort Informed Roadmaps (EIRM\*): Efficient Asymptotically Optimal Multiquery Planning by Actively Reusing Validation Effort*, **Valentin N. Hartmann**, Marlin P. Strub, Marc Toussaint, Jonathan D. Gammell 
-- *Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*, **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\]
+- [*Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*](/multi-robot/), **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\]
 - *Leveraging Building Material as Part of the In-Plane Robotic Kinematic System for Collective Construction*, Samuel Leder, H. Kim, Ozgur S. Oguz, Nicolas Kubail Kalousdian, Valentin N. Hartmann, Achim Menges, Marc Toussaint, Metin Sitti
 
 ### Journals
