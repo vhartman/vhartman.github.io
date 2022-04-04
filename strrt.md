@@ -57,8 +57,10 @@ We sequentially plan the movement of a mobile robot from a random start to a ran
 
 ```
 @inproceedings{22-grothe-ICRA,
-  title     = {ST-RRT*: Asymptotically-Optimal Bidirectional Motion Planning through Space-Time},
-  author    = {Grothe, Francesco and Hartmann, Valentin N. and Orthey, Andreas and Toussaint, Marc},
+  title     = {ST-RRT*: Asymptotically-Optimal Bidirectional Motion Planning 
+               through Space-Time},
+  author    = {Grothe, Francesco and Hartmann, Valentin N. and Orthey, Andreas and
+               Toussaint, Marc},
   booktitle = {Proc{.} of the IEEE Int{.} Conf{.} on Robotics and
   		       Automation (ICRA)},
   year      = {2022},
