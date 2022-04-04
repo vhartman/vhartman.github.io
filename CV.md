@@ -60,7 +60,11 @@ deployed it to all warehouses in Europe which lead to an up to 30% reduction of 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
 
 ## Education
-### [IntCDC](https://icd.uni-stuttgart.de/) / [University of Stuttgart](https://www.ipvs.uni-stuttgart.de/abteilungen/mlr/)
+### [ESP Group](https://robotic-esp.com/) / University of Oxford
+<div class='subtitle'>Visiting (virtual) Research Associate, Supervisor: Jonathan D. Gammell<span class="position-duration">06/21 - 03/22</span></div>
+- Research topic: Efficient multiquery motion planning for task and motion planning
+
+### [IntCDC](https://icd.uni-stuttgart.de/) / [University of Stuttgart](https://www.ipvs.uni-stuttgart.de/abteilungen/mlr/) / [TU Berlin: LIS Lab](https://argmin.lis.tu-berlin.de/)
 <div class='subtitle'>Research Associate and PhD student, Supervisor: Marc Toussaint<span class="position-duration">10/19 - 10/23</span></div>
 - Working on task and motion planning (TAMP) for 'Building and Navigation Strategies for On-Site Robotic Construction' 
 
