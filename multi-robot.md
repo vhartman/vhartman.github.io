@@ -68,3 +68,14 @@ The plan is executed open-loop in this demonstration, which explains the small i
 
 ### Funding
 This research has been supported by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) under Germany’s Excellence Strategy – EXC 2120/1 – 390831618.
+
+<hr style="margin: 2em 0 2em;">
+
+### History
+- 1st version (02.21): Rejected at RRS 2021
+- [2nd version (06.21)](https://arxiv.org/abs/2106.02489v1): Revise and resubmit at TRO
+  - Minor changes
+- [3rd version (03.22)](https://arxiv.org/abs/2106.02489): Currently under review at TRO
+  - Added more illustrations
+  - Added algorithms
+  - Added robot experiments
