@@ -49,3 +49,6 @@ $on-laptop:        800px !default;
   "minima/layout",
   "minima/syntax-highlighting"
 ;
+
+.site-nav {display: block; text-align: center; float: none}
+body {padding-left: calc(100vw - 100%);}
