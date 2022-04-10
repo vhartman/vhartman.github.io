@@ -4,7 +4,7 @@ title: Home
 custom_css: cv
 ---
 
-I am a PhD student in [Marc Toussaint's](https://marc-toussaint.net) [LIS group](https://argmin.lis.tu-berlin.de/) at TU Berlin, working on task and motion planning (TAMP) using optimization techniques, in addition to sampling based planners, with inspiration from control theory.
+I'm Valentin! I am a PhD student in [Marc Toussaint's](https://marc-toussaint.net) [LIS group](https://argmin.lis.tu-berlin.de/) at TU Berlin, working on task and motion planning (TAMP) using optimization techniques, in addition to sampling based planners, with inspiration from control theory.
 I am associated with [IntCDC](https://www.intcdc.uni-stuttgart.de/), and am involved in several projects at the intersection of robotics and architecture.
 
 I have a strong interest in control systems, optimization, numerical methods, and technology in general. Before taking on my current position, I have been a mechanical engineering student at ETH Zurich, and have focussed on robotics, systems and control. I did several internships in various companies (notably Amazon and BCG Gamma).
@@ -19,7 +19,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
 
-## Publication(s)
+## Publications
 
 ### Preprints/Under Review
 - *Effort Informed Roadmaps (EIRM\*): Efficient Asymptotically Optimal Multiquery Planning by Actively Reusing Validation Effort*, **Valentin N. Hartmann**, Marlin P. Strub, Marc Toussaint, Jonathan D. Gammell 

@@ -16,7 +16,8 @@
 title: Valentin N. Hartmann
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://vhartman.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  vhartman
+# github_username:  vhartman
+twitter_username: vnhartmann
 
 # Build settings
 markdown: kramdown
