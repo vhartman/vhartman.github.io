@@ -25,6 +25,15 @@ theme: minima
 plugins:
   - jekyll-feed
 
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+collections:
+  notes:
+    output: true
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
