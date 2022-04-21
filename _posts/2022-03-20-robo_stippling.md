@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Robotic stippling"
+title:  "Robotic stippling: A naive approach"
 subtitle: "or: Abusing lab equipment"
 date:   2022-04-15 12:00:00 +0200
 permalink: /robo-stippling/
