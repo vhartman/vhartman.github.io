@@ -5,6 +5,10 @@
 
 @import "base";
 
+body{
+counter-reset: sidenote-counter;
+}
+
 .post-content {
 	text-align: justify;
 	margin: 2em;
@@ -24,3 +28,46 @@ blockquote {
 //	    display: none;
 //	}
 //}
+
+.sidenote, .marginnote { float: right;
+                         clear: right;
+                         margin-right: -40%;
+                         width: 200px;
+                         margin-top: 0;
+                         margin-bottom: 1em;
+                         font-size: 10pt;
+                         vertical-align: baseline;
+                         position: relative; }
+
+
+li .sidenote, li .marginnote{ margin-right: -40%; } //added to allow for the fact that lists are indented and marginnotes and sidenotes push to right
+
+blockquote .sidenote, blockquote .marginnote { margin-right: -79% }
+
+.sidenote-number { counter-increment: sidenote-counter; }
+
+.sidenote-number:after, .sidenote:before { 
+    content: counter(sidenote-counter) " ";
+   //color: $contrast-color; //added color
+   //font-size: 10pt;
+   position: relative;
+   vertical-align: baseline; 
+}
+
+.sidenote-number:after { content: counter(sidenote-counter);
+                         font-size: 8pt;
+                         top: -0.5rem;
+                         left: 0.1rem; }
+
+.sidenote:before { content: counter(sidenote-counter) ".\000a0"; // this is unicode for a non-breaking space
+                   //color: $contrast-color;
+                   top: 0rem; } //removed superscripting for numerical reference in sidenote
+.marginnote code, .sidenote code { font-size: 1rem; } //more .code class removal
+
+span.newthought { font-variant: small-caps;
+                  font-size: 1.2em;
+                  letter-spacing: 0.05rem; }
+
+input.margin-toggle { display: none; }
+
+

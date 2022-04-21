@@ -25,8 +25,64 @@
     width: 75%;
 }
 
+a:hover{
+    color: #ff00a5;
+}
+
 p
 {
     margin-left: 1em;
     margin-right: 1em;
+}
+
+pre.highlight {
+  max-height: 20em;
+  overflow-y: scroll;
+}
+
+.highlighter-rouge .highlight {
+  background: #eee;
+}
+
+code {
+    font-size: 9pt;
+}
+
+pre.lineno{
+    margin: 0;
+}
+
+pre {
+    margin: 0;
+}
+
+pre, code{
+    border: none;
+    background: #eee;
+}
+
+pre.code{
+    border: none;
+    margin: 0;
+}
+
+table {
+    border: none;
+    margin: 0;
+}
+
+table td{
+    padding: 0;
+    border: none;
+}
+
+table th{
+    padding: 0;
+}
+
+.preface {
+    font-style: italic;
+    background: #efefef;
+    padding: 15px;
+    border-radius: 5px;
 }
