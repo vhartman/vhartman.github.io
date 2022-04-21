@@ -7,7 +7,7 @@ permalink: /bike_fitting/
 categories: bike simulation
 ---
 
-<p style="font-style: italic">
+<p class="preface">
 With my move to Berlin, and the subsequent lockdown, rowing became impossible fro now, and I started to ride my bike a lot more.
 The position on the bike is the most important part to output the maximum power, and is influenced by several parameters.
 Changing the seat hight and how far forward it is, and the hight of the handlebar is fairly straightforward.

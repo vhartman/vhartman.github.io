@@ -7,7 +7,7 @@ permalink: /ball_sampling/
 categories: optimization performance sampling
 ---
 
-<p style="font-style: italic">
+<p class="preface">
 Path planning using Informed-RRT needs uniform random samples from an n-dimensional ball. Generating uniform random samples on such a n-ball is straightforward (and fairly efficient) for low dimensions (n<4).
 Getting to higher dimensions, the basic method becomes slow and inefficient.
 However, there are some better approaches. We first compare the speed of the approaches and then try to speed them up a bit.
