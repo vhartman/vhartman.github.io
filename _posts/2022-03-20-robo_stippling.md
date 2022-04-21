@@ -14,7 +14,7 @@ categories: art
 
 [Stippling](https://enhancedrawing.com/what-is-stippling-in-art/) is a drawing technique that only uses dots, that create darker and lighter areas by varying the density of the dots.
 In doing so, images can be approximated.
-Stippling could essentially be seen as a analog version of dithering{% sidenote 'sidenode-id' '[Here](https://mattwidmann.net/notes/plotting-raster-images/) is a decent overview on plotting raster images in general - stippling being one of them.' %}.
+Stippling could essentially be seen as a analog version of dithering{% include sidenote.html text='[Here](https://mattwidmann.net/notes/plotting-raster-images/) is a decent overview on plotting raster images in general - stippling being one of them.' %}.
 
 I want to do stippling with a robot.
 For now, I am just going to assume that my input is a list of dots which I want to make on the paper.
@@ -25,7 +25,7 @@ The robot(s) can be seen in an unrelated video below.
 
 <iframe style="display:block; margin: 0 auto;" width="600px" height="340" src="https://www.youtube.com/embed/KILyXQDcEZw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
-My goal here is not really actually getting to the end product as efficiently as possible, but rather learning a few things along the way, doing most of it myself, and later on obtaining an "optimal-ish" path{% sidenote 'sn-id-whatever' 'Also see my research - I am generally interested in various forms of path planning.'%}.
+My goal here is not really actually getting to the end product as efficiently as possible, but rather learning a few things along the way, doing most of it myself, and later on obtaining an "optimal-ish" path{% include sidenote.html text='Also see my research - I am generally interested in various forms of path planning.'%}.
 
 # Related work
 I am obviously not the first one that has the idea of drawing dots on a paper.
@@ -108,7 +108,7 @@ Does that sound like a [traveling salesman problem](https://en.wikipedia.org/wik
 
 However, we do not really want to compute all the paths between all the poses.
 We hence approximate the cost to get from one pose to another one simply as the euclidean distance between the poses.
-This distance can be _very_ different  from the point-to-point distance, but it does represent the path length respectively the time that it takes to get from one pose to another relativly well{% sidenote 'sn-id-whatever' 'Generally, it underestimates the actual pathlength, but it does so for all the paths.'%}.
+This distance can be _very_ different  from the point-to-point distance, but it does represent the path length respectively the time that it takes to get from one pose to another relativly well{% include sidenote.html text='Generally, it underestimates the actual pathlength, but it does so for all the paths.'%}.
 
 Another reasonable estimate is the L1 distance of the two poses.
 This can be justified by assuming that all joints move completely independently, and our path-cost is dominated by the joint that is the slowest.
@@ -116,9 +116,9 @@ This can be justified by assuming that all joints move completely independently,
 With this estimate, we could then use any of the algorithms that can be used for the general TSP problem.
 To get something up and running, I opted for a very greedy one: simply taking a starting point, and then always going to the next best pose.
 This is known to be _very_ suboptimal.
-We do however attempt some local improvements, namely randomly reversing parts of the best greedy tour, which seemingly improved the path that the robot took{% sidenote 'sn-id-whatever' 'I also briefly tried simulated annealing, but could not get a good solution.'%}.
+We do however attempt some local improvements, namely randomly reversing parts of the best greedy tour, which seemingly improved the path that the robot took{% include sidenote.html text='I also briefly tried simulated annealing, but could not get a good solution.'%}.
 
-Two examples for the orders we get there (from dark to red){% sidenote 'sn-id-whatever' 'These do not look very optimal, but keep in mind that (1) they are not optimized to be the optimal path in euclidean 2d-space, but in the configuration space of the robot and (2) they might simply not be optimal, since the ordering algorithm we use is not optimal _at all_.'%}:
+Two examples for the orders we get there (from dark to red){% include sidenote.html text='These do not look very optimal, but keep in mind that (1) they are not optimized to be the optimal path in euclidean 2d-space, but in the configuration space of the robot and (2) they might simply not be optimal, since the ordering algorithm we use is not optimal _at all_.'%}:
 
 <div style="width: 80%;margin:auto">
     <img src="{{ site.url }}/assets/stippling/grid.png" style="width:45%; padding: 10px">
@@ -187,7 +187,7 @@ Which we can now use to get a path from pose to pose.
 
 # Simulated results
 
-Using the logo of our lab as an example, we get such an animation{% sidenote 'sn-id-whatever' 'The second robot needs to be there as well, otherwise it would not be taken into account for collision avoidance.'%}:
+Using the logo of our lab as an example, we get such an animation{% include sidenote.html text='The second robot needs to be there as well, otherwise it would not be taken into account for collision avoidance.'%}:
 
 <div style="width: 90%;margin:auto">
     <img src="{{ site.url }}/assets/stippling/stippling_lis.gif" style="width:100%; padding: 10px">
@@ -257,6 +257,6 @@ So here's some things that I might look at next:
   - Generally, the existing literature I was able to find on multi goal motion planning assumes a single pose for each goal, and [does not deal with goal regions](https://kluedo.ub.uni-kl.de/frontdoor/deliver/index/docId/1009/file/no_series_260.pdf). The only article that does was [this one](https://journals.sagepub.com/doi/pdf/10.1177/0278364906061705?casa_token=NrLoDE8nX6EAAAAA:YAHBWX83oxCSW9vsS24qMqBi2_vJzq6-15d5XazWZR6L73noL5mRLj-tCxF491jL-BtaOYxzstMs).
 - Utilizing two robots.
   - Enables color differences, or different dot sizes.
-  - Using both arms simultaneously is a much harder problem than just planning for one at a time. Since now the moving robot arm needs to be avoided{% sidenote 'sn-id-whatever' 'This would also be a pretty cool research problem.'%}.
+  - Using both arms simultaneously is a much harder problem than just planning for one at a time. Since now the moving robot arm needs to be avoided{% include sidenote.html text='This would also be a pretty cool research problem.'%}.
 - Speeding everything up
-  - Generating the samples is at the moment by far the slowest part of the process. This could have various reasons, but the main one is{% sidenote 'sn-id-whatever' 'From previous experience in my phd, see [[1](https://arxiv.org/abs/2011.04828)], [[2](/multi-robot/)]'%} the fact that using an optimizer to jointly sample positions is just not a great approach. There is research out there on that topic (speeding up repeated constrained optimization), and I am interested in that myself, so that might be a suitable next step.
+  - Generating the samples is at the moment by far the slowest part of the process. This could have various reasons, but the main one is{% include sidenote.html text='From previous experience in my phd, see [[1](https://arxiv.org/abs/2011.04828)], [[2](/multi-robot/)]'%} the fact that using an optimizer to jointly sample positions is just not a great approach. There is research out there on that topic (speeding up repeated constrained optimization), and I am interested in that myself, so that might be a suitable next step.
