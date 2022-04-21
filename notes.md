@@ -1,0 +1,24 @@
+---
+# You don't need to edit this file, it's empty on purpose.
+# Edit theme's home layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+layout: default
+permalink: /notes/
+---
+
+<h2>Notes</h2>
+
+<ul class="post-list">
+  {% for note in site.notes %}
+    <li>
+      <h3 style="position: relative">
+        <span class="post-meta" style=" position: absolute; width: 120px; top: .6em; left: -90px; ">
+              {{ note.date | date: "%b %-d %Y"}}</span>
+          <a class="post-link" href="{{ note.url }}">
+            {{ note.title }}
+          </a>
+        </h3>
+    </li>
+  {% endfor %}
+</ul>
+
