@@ -20,6 +20,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
 
 ## Publications
+Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Preprints/Under Review
 - *Effort Informed Roadmaps (EIRM\*): Efficient Asymptotically Optimal Multiquery Planning by Actively Reusing Validation Effort*, **Valentin N. Hartmann**, Marlin P. Strub, Marc Toussaint, Jonathan D. Gammell 
