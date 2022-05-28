@@ -2,7 +2,7 @@
 layout: post
 title:  "Robotic stippling: Expanding to two robots"
 subtitle: "or: Abusing lab equipment v2"
-date:   2022-04-17 12:00:00 +0200
+date:   2022-05-28 12:00:00 +0200
 permalink: /robo-stippling-p2/
 categories: art 
 ---
