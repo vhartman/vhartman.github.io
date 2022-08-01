@@ -10,11 +10,11 @@ I am associated with [IntCDC](https://www.intcdc.uni-stuttgart.de/), and am invo
 I have a strong interest in control systems, optimization, numerical methods, and technology in general. Before taking on my current position, I have been a mechanical engineering student at ETH Zurich, and have focussed on robotics, systems and control. I did several internships in various companies (notably Amazon and BCG Gamma).
 
 In 2021, I (virtually) visited [Jon Gammell's](https://robotic-esp.com/people/gammell/) [ESP lab](https://robotic-esp.com/) at the University of Oxford.
+Currently, I am a PhD resident at [intrinsic.ai](https://www.intrinsic.ai/).
 
-I like rowing, all kinds of other sports, and to my friends delight I am an avid cook.
+I like cycling, used to row competitively, like all kinds of other sports, and to my friends delight I am an avid cook.
 
-I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest!
-
+I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest:
 <code>v [at] vhartmann [dot] com</code> for side-projects, <code>valentin [dot] hartmann [at] ipvs [dot] uni-stuttgart [dot] de</code> for more academic chatter.
 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
