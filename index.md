@@ -26,7 +26,7 @@ Also see my [Google Scholar Profile here](https://scholar.google.com/citations?u
 -
 
 ### Journals
-- [*Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*](/multi-robot/), **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint. Accepted at T-RO. \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\]
+- [*Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*](/multi-robot/), **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint. IEEE T-RO '22. \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\], \[[paper](https://ieeexplore.ieee.org/document/9868234)\]
 - *Leveraging Building Material as Part of the In-Plane Robotic Kinematic System for Collective Construction*, Samuel Leder, H. Kim, Ozgur S. Oguz, Nicolas Kubail Kalousdian, **Valentin N. Hartmann**, Achim Menges, Marc Toussaint, Metin Sitti. Advanced Science \[[paper](http://doi.org/10.1002/advs.202201524)\]
 - *Learning Robotic Manipulation of Natural Materials with Variable Properties for Construction Tasks*, Nicolas Kubail Kalousdian, Grzegorz Łochnicki, **Valentin N. Hartmann**, Samuel Leder, Ozgur S. Oguz, Achim Menges, Marc Toussaint, IEEE Robotics and Automation Letters (RA-L) \[[paper](https://ieeexplore.ieee.org/document/9735376)\]
 
