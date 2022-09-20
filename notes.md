@@ -8,7 +8,7 @@ permalink: /notes/
 
 <h2>Notes</h2>
 
-This page is a loose collection of some thought, collection of links for specific topics, and sometimes drafts for posts that might graduate to the other page at some point.
+This page is a loose collection of some thoughts, collection of links for specific topics, and sometimes drafts for posts that might graduate to the other page at some point.
 
 <ul class="post-list">
   {% assign sorted = site.notes | sort: 'date' | reverse  %}
