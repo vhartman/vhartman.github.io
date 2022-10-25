@@ -79,3 +79,6 @@ This research has been supported by the Deutsche Forschungsgemeinschaft (DFG, Ge
   - Added more illustrations
   - Added algorithms
   - Added robot experiments
+- [final, published version (08.22)](https://ieeexplore.ieee.org/document/9868234): Accepted at TRO 
+  - content as above
+  - formatting changed for camera ready

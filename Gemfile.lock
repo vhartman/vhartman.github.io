@@ -11,7 +11,7 @@ GEM
       colorator (~> 1.0)
       jekyll-sass-converter (~> 1.0)
       jekyll-watch (~> 1.1)
-      kramdown (~> 1.14)
+      kramdown (>= 2.3.1)
       liquid (~> 4.0)
       mercenary (~> 0.3.3)
       pathutil (~> 0.9)
@@ -25,7 +25,10 @@ GEM
       jekyll (~> 3.3)
     jekyll-watch (1.5.1)
       listen (~> 3.0)
-    kramdown (1.17.0)
+    kramdown (2.4.0)
+      rexml
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     liquid (4.0.3)
     listen (3.2.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -41,6 +44,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rexml (3.2.5)
     rouge (2.2.1)
     safe_yaml (1.0.5)
     sass (3.7.4)
@@ -55,6 +59,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 3.6.3)
   jekyll-feed (~> 0.6)
+  kramdown-parser-gfm
   minima (~> 2.0)
   tzinfo-data
 
