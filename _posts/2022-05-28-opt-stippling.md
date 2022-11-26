@@ -2,7 +2,7 @@
 layout: post
 title:  "Robotic stippling: Finding optimal sequences"
 subtitle: "or: Abusing lab equipment v3"
-date:   2022-05-28 12:00:00 +0200
+date:   2022-11-26 12:00:00 +0200
 permalink: /optimal-stippling/
 categories: art 
 ---
