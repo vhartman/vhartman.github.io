@@ -8,9 +8,8 @@ custom_title: Curriculum Vitae <a href="/assets/vhartman_cv_en_1p.pdf" style='fo
 
 ## Work
 <!--<div style="position: relative;"><img src="{{ site.url }}/assets/bcg-gamma-logo.png" class="side-image"></div>-->
-### [IntCDC](https://icd.uni-stuttgart.de/) / [University of Stuttgart](https://www.ipvs.uni-stuttgart.de/abteilungen/mlr/)
-<div class='subtitle'>Research Associate and PhD student, Supervisor: Marc Toussaint<span class="position-duration">10/19 - 10/23</span></div>
-- Working on task and motion planning (TAMP) for 'Building and Navigation Strategies for On-Site Robotic Construction' 
+### [Intrinsic](https://intrinsic.ai/)
+<div class='subtitle'>PhD Resident in the Motion & Control Team<span class="position-duration">08/22 - 12/22</span></div>
 
 <div style="position: relative;"><img src="{{ site.url }}/assets/bcg-gamma-logo.png" class="side-image"></div>
 ### [BCG Gamma](https://www.bcg.com/beyond-consulting/bcg-gamma/default.aspx)
