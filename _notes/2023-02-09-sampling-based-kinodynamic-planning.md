@@ -47,6 +47,9 @@ Some work that followed this initial paper:
 
 Most other methods are modifications and extensions of this simple approach.
 
+As it turns out, the typically used euclidean distance metric is not a great match for RRT in kinodynamic settings (there are exceptions, of course).
+In [the work here](https://groups.csail.mit.edu/robotics-center/public_papers/Glassman10.pdf), a different way to measure the distance, and thus find the nearest neighbour(s) was proposed.
+
 The works in [here](http://arl.cs.utah.edu/pubs/ICRA2013-1.pdf) and [here](https://lis.csail.mit.edu/pubs/perez-icra12.pdf) linearize the systems around the operating point to provide a better 'extend'-functionality, and provide better optimality properties.
 Particularly, the distance function was improved, i.e., some principled way of computing the distance between two points in a space with differential constraints was proposed.
 
