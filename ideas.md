@@ -17,6 +17,7 @@ This would probably entail generating 'realistic' rooms automatically, deciding 
 - **Landing a rocket**: I am foremost interested in simply building a model (possibly in 2D for a start), and applying various approaches to the problem.
 - **Examining the effect of modern stepsize controllers in numerical control**: This is a version of what I did in a Thesis during my masters, and I would like to dig a bit deeper here. This would go in the direction discussed [here](https://github.com/scipy/scipy/issues/9822) in the scipy numerical integration community.
 - **Exploring SAT solvers**: Not entirely sure what I am specifically looking for here. Kevin Lynagh has a few ideas to the topic on his page, I am mostly interested if this can be used for robotics applications.
+- **Comparing the exploration of 'traditional' motion planners to reinforcement learning and MPC**: This would probably involve setting up some simulations, and just diligently doing some experiments with lots of visualizations. Could be on the example of classical control tasks (torque limited pendulum, mountain car, inverted double pendulum).
 
 #### Software
 - **Traveling Salesman Problem-Art**: This involves approximating an image via a bunch of dots, and connecting them with the shortest path.
@@ -31,6 +32,9 @@ How do passing networks change if the coach is replaced? Are there general trend
 #### Papers
 - **Moving horizon estimation**: Enabling (amongst various other things) constrained state estimation, this is the counterpart to MPC for state estimation.
 This is a catch-it-all item on the list for various topics - please reach out if you are into state estimation/control.
+- **LQR-Trees** [[1]](https://groups.csail.mit.edu/robotics-center/public_papers/Tedrake09a.pdf) and **LQR-RRT\*** [[2]](https://lis.csail.mit.edu/pubs/perez-icra12.pdf): Both papers are for control of nonlinear systems.
+- **Bicycle control** [[1]](http://paradise.caltech.edu/~cook/papers/TwoNeurons.pdf): Figure 2 looks really cool, and I want to replicate it. Then I would maybe have a look into some simple controllers for this (both learning based, and the more traditional version).
+- **Swing up control of a triple pendulum** [[1]](https://www.acin.tuwien.ac.at/fileadmin/cds/pre_post_print/glueck2013.pdf)
 
 #### Games
 - **Dog**: Dog is a version of the boardgame [*Mensch ärger dich nicht*](https://en.wikipedia.org/wiki/Mensch_%C3%A4rgere_Dich_nicht) that is played wih cards. [Here](https://www.dogspiel.info/index.php/spiel) is an explanation in german, and [here](https://www.dogspiel.info/images/pdfs/rules.pdf) are the rules in english. I am interested if there is some sort of optimal stragtey, and building an artificial intelligence that can play (well?).
