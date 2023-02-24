@@ -8,7 +8,7 @@ categories: replication science
 ---
 
 I wanted to recreate this paper from 2004 at NeurIPS: ["It Takes Two Neurons To Ride a Bicycle" from Matthew Cook](http://paradise.caltech.edu/~cook/papers/TwoNeurons.pdf).
-My complete implementation is available [here]().
+My complete implementation is available [here](https://github.com/vhartman/two_neurons_bike/tree/e4dde97a81f8b54e52e58d281d5580151ec6d482).
 
 # Setting up the bike simulation
 
@@ -32,11 +32,10 @@ Thus, the coordinates of the visual and the inertial part of the 'frontWheelLink
 </collision>
 ```
 
-After that, some physics parameters need to be set to allow for unsteered versions of the bike.
-I am not going to elaborate on that here, see the code for this.
+After that was fixed, the bike behaves as expected, and does not constantly fall over to the right.
 
 #### Path of an unsteered bicycle
-My initial core motivation for reimplementing this paper was Figure 2. from the paper that shows the path of the frontwheel for 800 runs when the bike is not steered.
+My initial core motivation for reimplementing this paper was Figure 2 from the paper that shows the path of the frontwheel for 800 runs when the bike is not steered and pushed to the right.
 Here's the original:
 
 <div style="width: 50%;margin:auto">
@@ -60,7 +59,7 @@ Generally, the result seems to be very sensitive to the initial conditions, so t
 #### The two neuron controller and tracing a path
 With the simulation up and running, I implemented the two-neuron-controller described by the paper.
 
-The two neuron controller gets the heading of the bike $$\theta$$, the leaning $$\gamma$$, and the leaning-velocity $$\dot\gamma$$ as input.
+The two neuron controller gets the heading of the bike $$\theta$$, the leaning $$\gamma$$, and the leaning-velocity $$\dot\gamma$$ as input{% include sidenote.html text='There appears to be a small error in the paper: It also talks of the output $$\phi$$ of the second neuron being looped back into it, but the equations in the paper do not reflect that.'%}.
 The action the controller takes is the torque that is applied to the handlebar.
 
 The controller is then formed by the two equations:
@@ -76,7 +75,7 @@ Where $$\sigma()$$ is a thresholding function that ensures that the controller d
 I used the sigmoid-function for $$\sigma$$, and centered it around the x-axis.
 This is _extremely_ close to a hierarchical PD controller of the form $$u = k_p * e + k_d * \dot{e}$$.
 
-There is one caveat here: The difference between two angles is not nicely described bu subtracting the two angles from each other.
+There is one caveat here: The difference between two angles is not nicely described by subtracting the two angles from each other.
 This leads to issues if e.g. $$\theta_\text{desired}=-\pi+\varepsilon$$ and $$\theta=\pi-\varepsilon$$.
 The difference we want is $$2\varepsilon$$, but the result we get when subtracting the two values is $$-2\pi+2\varepsilon$$. 
 
@@ -84,7 +83,7 @@ I did spend some time runing the parameters of this controller, resulting in the
 The controller is able to stabilize the bike and follow a path defined by a sequence of points.
 The points are used to compute the required angle, and once the bike gets close to a point, we are steering to the next point.
 
-I spent some more effort, and ran a random search to improve the controller parameters.
+I spent some more effort{% include sidenote.html text='The effort was mostly spent on tuning the rewards.'%}, and ran a random search to improve the controller parameters.
 I defined the reward $$R = -0.1 * (\theta - \theta_\text{desired}) + 1$$ given at each timestep.
 This should punish deviation from a desired angle, but reward not falling over.
 Falling over lead to a 'reward' of $$-10000$$.
@@ -93,6 +92,9 @@ A reward of $$1000$$ was given for reaching the next point in the path, and an a
 My hand-tuned, initial parameters reached $$27911.346$$ on the reward above for a square path, and a circular path.
 
 The best parameters of the random search were $$c_{1,2,3} = [-0.95, 22.959, 27.761 ]$$, which reached a reward of $$44966.643$$.
+This compareably higher reward is mainly due to the hand-tuned controller falling over in the square-path-following-task.
+
+Looking back, I should have done the random search on some set of paths, and done the evaluation on some other paths (as essentially done in the hand-tuned controller, which was only tuned on the circle-path).
 
 Following two paths looks like this for the hand tuned, and the found controller:
 
@@ -101,33 +103,14 @@ Following two paths looks like this for the hand tuned, and the found controller
     <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
 </div>
 
-#### Sketchy RL solutions
-The paper also discusses a fairly simple controller (one that has an oracle and can choose the best action by looking into the future one step andn choosing the best action) - we'll skip that part.
-
-In the paper, a few RL approaches are discussed, but all of them mainly exploited the value function.
-I wanted to see that for myself.
-I implemented a reinforcement learining based approach which has the objective to keep the bike upright.
-
-The observations I fed to the RL algorithm{% include sidenote.html text='I used a simple tabular-q-learning implementation, as I assumed that there should not be much difficulty.'%} were the heading of the bike $$\theta$$, the leaning $$\gamma$$, and the leaning-velocity $$\dot\gamma$$.
-The action the controller can take is the torque that is applied to the handlebar.
-The reward it gets is 1 for each timestep the simulation runs.
-
-The training graphs look roughly like this:
-
-[]
-
-And the resulting behaviour is:
-
-[]
-
-I would expect much better results if we changed the metric to some form of path-following.
+The paper also briefly discusses some RL controllers, but I'll leave that to the future.
 
 # Final Words
 The paper is fun, well written, and results in nice plots.
 
 My main difficulty in replicating the paper were 
 - figuring out that the bike-model in pybullet has a center of mass that is offset, and
-- computing the leaning and heading angles.
+- computing the leaning and heading angles correctly.
 
 I think the claim that two neurons are needed to ride a bike (given that it is actuated) is reasonable with the caveat that computation of the steering angle needs to be done carefully.
 
