@@ -25,6 +25,7 @@ I plan to graduate roughly in August 2023, and am open to any opportunities doin
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Preprints/Under Review
+- *Towards computing low-makespan solutions for multi-arm multi-task planning problems*, **Valentin N. Hartmann**, Marc Toussaint. Submitted to Workshop for Planning and Robotics (PlanRob), International Conference on Automated Planning and Scheduling (ICAPS), 2023
 - [*Efficient Path Planning In Manipulation Planning Problems by Actively Reusing Validation Effort*](/manipulation-path-planning/), **Valentin N. Hartmann**, Joaquim Ortiz-Haro, Marc Toussaint. Submitted to International Conference on Intelligent Robots and Systems (IROS) 2023 \[[arxiv](https://arxiv.org/abs/2303.00637)\]
 
 ### Journals
