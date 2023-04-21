@@ -53,14 +53,17 @@ The plan is executed open-loop in this demonstration, which explains the small i
 ### Bibtex
 
 ```
-@inproceedings{21-hartmann-long,
-  title     = {Long-Horizon Multi-Robot Rearrangement Planning for 
-               Construction Assembly},
-  author    = {Hartmann, Valentin N. and Orthey, Andreas and Driess, Danny and 
-               Oguz, Ozgur S. and Toussaint, Marc},
-  year      = {2021},
+@article{22-hartmann-TRO,
+  title = {Long-Horizon Multi-Robot Rearrangement Planning for
+  		  Construction Assembly},
+  author = {Hartmann, Valentin N. and Orthey, Andreas and Driess, Danny and Oguz, Ozgur S. and Toussaint, Marc},
+  journal = {Transactions on Robotics},
+  issn = {1552-3098},
+  year = {2022},
   arxiv_pdf = {2106.02489},
-  youtube   = {GqhouvL5dig}
+  youtube = {GqhouvL5dig},
+  web = {https://vhartmann.com/multi-robot/},
+  doi = {10.1109/TRO.2022.3198020}
 }
 ```
 
