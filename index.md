@@ -25,7 +25,6 @@ I plan to graduate roughly in August 2023, and am open to any opportunities doin
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Preprints/Under Review
-- *Towards computing low-makespan solutions for multi-arm multi-task planning problems*, **Valentin N. Hartmann**, Marc Toussaint. Submitted to Workshop for Planning and Robotics (PlanRob), International Conference on Automated Planning and Scheduling (ICAPS), 2023
 - [*Efficient Path Planning In Manipulation Planning Problems by Actively Reusing Validation Effort*](/manipulation-path-planning/), **Valentin N. Hartmann**, Joaquim Ortiz-Haro, Marc Toussaint. Submitted to International Conference on Intelligent Robots and Systems (IROS) 2023 \[[arxiv](https://arxiv.org/abs/2303.00637)\]
 
 ### Journals
@@ -41,6 +40,7 @@ Also see my [Google Scholar Profile here](https://scholar.google.com/citations?u
 - *Robust task and motion planning for long-horizon architectural construction planning*, **Valentin N. Hartmann**, Ozgur S. Oguz, Danny Driess, Marc Toussaint and Achim Menges, International Conference on Intelligent Robots and Systems (IROS) 2020, \[[arXiv](https://arxiv.org/abs/2003.07754)\], \[[short video](https://www.youtube.com/watch?v=j5S0s29IHwA)\], \[[talk](https://youtu.be/lAP6hkVlqwo)\]
 
 ### Workshops
+- *Towards computing low-makespan solutions for multi-arm multi-task planning problems*, **Valentin N. Hartmann**, Marc Toussaint. Workshop for Planning and Robotics (PlanRob), International Conference on Automated Planning and Scheduling (ICAPS), 2023
 - [*Planner Development Tools (PDT): Reproducible experiments and statistical analysis for developing and testing motion planners*](https://robotic-esp.com/code/pdt/), Jonathan D. Gammell, Marlin P. Strub, **Valentin N. Hartmann**. Proceedings of the Workshop on Evaluating Motion Planning Performance (EMPP), International Conference on Intelligent Robots and Systems (IROS) 2022. \[[paper](https://robotic-esp.com/papers/gammell_empp22)\]
 - *Planning Planning: The Path Planner as a Finite State Machine*, **Valentin N. Hartmann**, Ozgur S. Oguz, and Marc Toussaint. Workshop for Planning and Robotics (PlanRob), International Conference on Automated Planning and Scheduling (ICAPS), 2020. \[[talk](https://youtu.be/3Qu4P9DaQWc)\], \[[paper](https://argmin.lis.tu-berlin.de/papers/20-hartmann-ICAPSws-robplan.pdf)\]
 - *Co-Design in Architecture: A Modular Material-Robot Kinematic Construction System*, Samuel Leder, HyunGyu Kim, Ozgur S. Oguz, **Valentin N. Hartmann**, Marc Toussaint, Achim Menges, Metin Sitti, IROS2020, Proceedings of Workshop on Construction and Architecture Robotics. \[[paper](https://argmin.lis.tu-berlin.de/papers/20-leder-IROSws-wcar.pdf)\]
