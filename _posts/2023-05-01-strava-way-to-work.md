@@ -62,7 +62,7 @@ Only plotting the rides in question gives roughly this:
 
 [Plot of all bike rides]
 
-Here, I colored the rides to the university in [] and the ones back home [].
+Here, I colored the rides to the university in green and the ones back home red.
 
 With the bikes distinguished, and the rides filtered, so we are only considering the ones that actually go from university to home, and the other way, we can make pretty histograms of the elapsed time between start and end:
 
@@ -70,10 +70,24 @@ With the bikes distinguished, and the rides filtered, so we are only considering
     <img src="{{ site.url }}/assets/strava-v2/moving_time_histogram.png" style="width:100%; padding: 10px">
 </div>
 
-These plots answer the question posed above: yes, I am actually quicker qith the road bike, and I am roughly [] minutes quicker.
+we can also plot histograms of the average speed for both ways:
+
+<div style="width: 90%;margin:auto">
+    <img src="{{ site.url }}/assets/strava-v2/speeds.png" style="width:100%; padding: 10px">
+</div>
+
+To ensure that I am not simply starting the logging later (and thus shortening the path), we can have a look at the histogram of the distances:
+
+[]
+
+Also, going back to the paths above, and coloring the rides the same as in the histograms, we can zoom in a little bit to see where the paths start and end respectively:
+
+[...]
+
+With all these plots, I think I can fairly confidently answer the question posed above: yes, I am quicker with the road bike: roughly 3 minutes.
 
 Of course, correlation does not imply causation.
-The 'being faster' could for example be caused by only taking the road bike on days with good weather.
+The 'being faster' could for example be caused by only taking the road bike on days with good weather (which is the case as mentioned in the beginning - I am not taking the nice road bike in rain etc.).
 
 # Going deeper
 Rather than only answering the question I posed initially, I am also interested in the question why I am actually faster with the road bike.
