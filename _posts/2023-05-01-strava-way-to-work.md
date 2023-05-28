@@ -37,11 +37,9 @@ All that being said, riding the road bike definitely feels faster.
 
 # Looking at the data
 Strava lets me export all my data {% include sidenote.html text='Partially due to GDPR. This download was possible before as well, but you get more data now.'%} and gives it to me in a zip file.
-
 There is lots of stuff that I do not need in there - for the analysis here, I will rely on the files of the activities, and the 'activities.csv' file.
 
 The most obvious initial step is to check if the trend that holds for the moving time also holds for the elapsed time.
-
 For that, we need to filter the activities by bike, and by 'is this a commute?'.
 
 For some reason, my rides on strava that are created by the bike computer are named in english, while the ones from my phone are in german.
