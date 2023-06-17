@@ -18,12 +18,23 @@ But we'll see.
 We will be looking at model predicitve contouring control for a racecar (as done here []).
 But instead of doing the whole 'every timestep is exactly the same' we'll introduce a prediction horizon that will increase over time.
 
+Of course, this variable timestepping approach could be implemented in any optimal control setting, such as vanilla MPC, MPPI (model predictive path integral control), or even normal trajectory optimization.
+
 #### Related work
 I always assumed that something similar to what I had in mind here must already have been done _somewhere_, but maybe its just not the thing that the academic community is interested in?
 
-There were two papers that I could find that went in a similar direction, albeit going a step further: they are automatically adjusting the timestep-size to get a dense representation of the system at points where it matters, and a finer one where it does not.
+In most of the open source MPC libraries I looked at (do mpc, matlab, adrl control toolbox), variable timestepping was also not an option. 
+Acados was the only library that I found that has the option to use variable timesteps.
 
-This seems smart - but it might come with much computational overhead?
+Recently, when reading something completely different, I found two papers that follow a similar approach: 
+- [STORM: An Integrated Framework for Fast Joint-Space Model-Predictive Control for Reactive Manipulation](https://proceedings.mlr.press/v164/bhardwaj22a/bhardwaj22a.pdf) which uses the approach for MPPI.
+- [An integrated system for real-time Model Predictive Control of
+humanoid robots](https://homes.cs.washington.edu/~todorov/papers/ErezHumanoids13.pdf) which mentions this approach at thevery end of section III.
+
+I am interested in how you should choose your timesteps, and what improvement you can expect _at a constant compute time_.
+There is little discussion of that in any of those papers above, only the mention that "there is a design tradeoff", and "that small steps in the beginning, and large steps later" are better.
+
+There were two more papers that I could find that go in a similar direction, albeit going a step further: they are automatically adjusting the timestep-size to get a dense representation of the system at points where it matters, and a finer one where it does not.
 
 # Model predicitve contouring control (MPCC)
 Model predictive controuring control{% include sidenote.html text='More on it here.'%} is ...
