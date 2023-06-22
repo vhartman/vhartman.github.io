@@ -60,7 +60,8 @@ To check if my ride starts at home/ends at the university and vice-verca, I am c
 Only plotting the rides in question gives roughly this (left is city bike, right is road bike):
 
 <div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/strava-v2/paths.png" style="width:100%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/city_bike_paths.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/road_bike_paths.png" style="width:45%; padding: 10px">
 </div>
 
 Here, I colored the rides to the university in orange and the ones back home blue.
@@ -69,28 +70,23 @@ There are a bunch of outliers, but its not that many, so we'll keep it as is for
 With the bikes distinguished, and the rides filtered, so we are only considering the ones that actually go from university to home, and the other way, we can make pretty histograms of the elapsed time between start and end:
 
 <div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/strava-v2/moving_time_histogram.png" style="width:100%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/htw_elapsed.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/wth_elapsed.png" style="width:45%; padding: 10px">
 </div>
 
 we can also plot histograms of the average speed for both ways:
 
 <div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/strava-v2/speeds.png" style="width:100%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/htw_speed_avg.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/wth_speed_avg.png" style="width:45%; padding: 10px">
 </div>
 
 We could now do a bunch of statistical tests to figure out if that is actually a significant difference, and if the hypothesis 'I am faster with my road bike' holds, but I am not doing that.
 I am simply going to claim that the histograms above seem different enough for me to believe that there is a significant difference.
 
-To ensure that I am not simply starting the logging later (and thus shortening the path, and the time), we can have a look at the histogram of the distances:
-
-<div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/strava-v2/dist_hist.png" style="width:100%; padding: 10px">
-</div>
-
-which shows relatively clearly that there is no big variation in the ride-distances.
+To ensure that I am not simply starting the logging later (and thus shortening the path, and the time), I also had a look at the distance-histogram which shows relatively clearly that there is no big variation in the ride-distances.
 
 With all these plots, I think I can fairly confidently confirm that I am roughly 3 minutes quicker with the road bike.
-
 
 # Going deeper
 Of course, correlation does not imply causation.
@@ -104,7 +100,8 @@ One thing that might help answer this, is looking at moving time vs. elapsed tim
 That might give some information on time spent at traffic lights etc., and tell me if I am just spending more time accelerating/decelerating with the older bike.
 
 <div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/strava-v2/timediff_histogram.png" style="width:100%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/htw_diff.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/wth_diff.png" style="width:45%; padding: 10px">
 </div>
 
 There is no significant difference in moving and elapsed time between the road bike and the city bike: I am spending roughly the same time 'not moving' for both types of bikes.
@@ -116,7 +113,8 @@ When taking my road bike, I am not going shopping, since I don't like leaving my
 Next, we have a look at the histogram of the speeds that is not averaged over the complete ride.
 
 <div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/strava-v2/all_speeds.png" style="width:100%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/htw_speed.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/wth_speed.png" style="width:45%; padding: 10px">
 </div>
 
 This clearly shows that not only the average speed is higher for the road bike, there is also less time spent at slow speeds (meaning that I slow down/speed up faster).
@@ -127,7 +125,8 @@ Next, we are looking at the question 'Where am I faster?'.
 For that, I am plotting distance (i.e., 'where am I on the route') vs. speed.
 
 <div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/strava-v2/dist_speed.png" style="width:100%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/htw_speed_progress.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/wth_speed_progress.png" style="width:45%; padding: 10px">
 </div>
 
 However, directly plotting the estimated elapsed distance vs speed gives obvious artifacts:
@@ -145,7 +144,8 @@ To fix this, I am projecting the points in the gpx file onto a manually traced p
 That makes the graph above look like this:
 
 <div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/strava-v2/proj_dist_overlaid.png" style="width:100%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/htw_projected.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/wth_projected.png" style="width:45%; padding: 10px">
 </div>
 
 This still has a bit of noise, but the 0-velocity-points are much clearer now.
@@ -154,7 +154,10 @@ from that plot, we see that there is no clear single part of the commute where I
 To see a bit more, we can plot them separately instead of overlaying them.
 
 <div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/strava-v2/proj_dist_separate.png" style="width:100%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/htw_projected_road.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/wth_projected_road.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/htw_projected_city.png" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/strava-v2/wth_projected_city.png" style="width:45%; padding: 10px">
 </div>
 
 Again, in general it is visible that I tend to be faster everywhere with the road bike.
