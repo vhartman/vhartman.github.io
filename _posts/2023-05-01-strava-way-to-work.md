@@ -2,7 +2,7 @@
 layout: post
 title:  "How much quicker am I on my road bike compared to my city bike?"
 subtitle: "or: Is that all a measuring artifact?"
-date:   2023-02-20 12:00:00 +0200
+date:   2023-06-20 12:00:00 +0200
 permalink: /speed/
 categories: data
 ---
