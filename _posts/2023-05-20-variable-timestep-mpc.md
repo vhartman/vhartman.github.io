@@ -14,7 +14,7 @@ In general, the rest is only there to get some intuition on what happens after, 
 
 # What are we going to do?
 We will be looking at model predicitve contouring control for a racecar (as done here []).
-But instead of doing the whole 'every timestep is exactly the same' we'll introduce a prediction horizon that will increase over time.
+But instead of doing the whole 'every timestep is exactly the same' we'll increase the timesteps over the prediction horizon.
 
 That is, instead of the typical MPC formulation
 
@@ -40,9 +40,10 @@ u^* = & \min_u \sum_i^N j(x_i, u_i)\\
 \end{align}
 $$
 
-which is virtually the same, except that there is the index $$i$$ on the timestep $$dt$$.
+which is virtually the same, except that there is the index $$i$$ on the timestep $$\Delta t$$.
+Here, $$j$$ is a possibly non-convex cost term, $$f$$ are the dynamics of the system we are interested in, $$\mathcal{X}, \mathcal{U}$$ are the domains of the state and the input respectively, and $$g$$ is a constraint function.
 
-Of course, this variable timestepping approach could be implemented in any optimal control setting, such as vanilla MPC, MPPI (model predictive path integral control), or even normal trajectory optimization.
+Of course, this variable timestepping approach could be implemented in any optimal control setting with a receding horizon such as vanilla MPC or MPPI (model predictive path integral control).
 
 #### Related work
 I always assumed that something similar to what I had in mind here must already have been done _somewhere_, but maybe its just not the thing that the academic community is interested in?
@@ -50,15 +51,19 @@ I always assumed that something similar to what I had in mind here must already 
 In most of the open source MPC libraries I looked at (do mpc, matlab, adrl control toolbox), variable timestepping was also not an option. 
 Acados was the only library that I found that has the option to use variable timesteps.
 
-Recently, when reading something completely different, I found two papers that follow a similar approach: 
+Recently, when reading something completely different, I found papers that follow a similar approach: 
 - [STORM: An Integrated Framework for Fast Joint-Space Model-Predictive Control for Reactive Manipulation](https://proceedings.mlr.press/v164/bhardwaj22a/bhardwaj22a.pdf) which uses the approach for MPPI.
 - [An integrated system for real-time Model Predictive Control of
 humanoid robots](https://homes.cs.washington.edu/~todorov/papers/ErezHumanoids13.pdf) which mentions this approach at thevery end of section III.
+- [Distributing Collaborative Multi-Robot Planning with Gaussian Belief Propagation](https://arxiv.org/pdf/2203.11618.pdf) - there is a brief mention of 'increasing time-gaps between consecutive states', but this is never elaborated after, and not really visible in the video demonstration.
 
 I am interested in how you should choose your timesteps, and what improvement you can expect _at a constant compute time_.
-There is little discussion of that in any of those papers above, only the mention that "there is a design tradeoff", and "that small steps in the beginning, and large steps later" are better.
+There is little discussion of that in any of those papers above, only the mention that "there is a design tradeoff", and that "small steps in the beginning, and large steps later" are better.
 
-There were two more papers that I could find that go in a similar direction, albeit going a step further: they are automatically adjusting the timestep-size to get a dense representation of the system at points where it matters, and a finer one where it does not.
+There were two more papers that I could find that go in a similar direction, albeit going a step further: they are automatically adjusting the timestep-size to get a dense representation of the system at points where it matters, and a finer one where it does not:
+
+- [A Variable-Sampling Time Model Predictive Control Algorithm for Improving Path-Tracking Performance of a Vehicle](https://www.mdpi.com/1424-8220/21/20/6845)
+- [Variable Sampling MPC via Differentiable Time-Warping Function](https://arxiv.org/abs/2301.08397)
 
 # Model predicitve contouring control (MPCC)
 Model predictive controuring control{% include sidenote.html text='More on it here.'%} is an approach that is based on MPC to track a given path, while maximizing the progress along that same path.
