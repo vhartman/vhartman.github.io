@@ -33,8 +33,8 @@ How do passing networks change if the coach is replaced? Are there general trend
 - **Moving horizon estimation**: Enabling (amongst various other things) constrained state estimation, this is the counterpart to MPC for state estimation.
 This is a catch-it-all item on the list for various topics - please reach out if you are into state estimation/control.
 - **LQR-Trees** [[1]](https://groups.csail.mit.edu/robotics-center/public_papers/Tedrake09a.pdf) and **LQR-RRT\*** [[2]](https://lis.csail.mit.edu/pubs/perez-icra12.pdf): Both papers are for control of nonlinear systems.
-- **Bicycle control** [[1]](http://paradise.caltech.edu/~cook/papers/TwoNeurons.pdf): Figure 2 looks really cool, and I want to replicate it. Then I would maybe have a look into some simple controllers for this (both learning based, and the more traditional version).
 - **Swing up control of a triple pendulum** [[1]](https://www.acin.tuwien.ac.at/fileadmin/cds/pre_post_print/glueck2013.pdf)
+- **Distributed multi robot planning:** [[1]](https://arxiv.org/pdf/2203.11618.pdf) Implementing the linked paper first for the same case as done in the paper itself (2d masspoints), and then see if that can be extended to robot arms.
 
 #### Games
 - **Dog**: Dog is a version of the boardgame [*Mensch ärger dich nicht*](https://en.wikipedia.org/wiki/Mensch_%C3%A4rgere_Dich_nicht) that is played wih cards. [Here](https://www.dogspiel.info/index.php/spiel) is an explanation in german, and [here](https://www.dogspiel.info/images/pdfs/rules.pdf) are the rules in english. I am interested if there is some sort of optimal stragtey, and building an artificial intelligence that can play (well?).

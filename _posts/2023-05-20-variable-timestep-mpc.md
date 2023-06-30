@@ -44,6 +44,7 @@ which is virtually the same, except that there is the index $$i$$ on the timeste
 Here, $$j$$ is a possibly non-convex cost term, $$f$$ are the dynamics of the system we are interested in, $$\mathcal{X}, \mathcal{U}$$ are the domains of the state and the input respectively, and $$g$$ is a constraint function.
 
 Of course, this variable timestepping approach could be implemented in any optimal control setting with a receding horizon such as vanilla MPC or MPPI (model predictive path integral control).
+It might even be advantageous in a trajectorz optimization setting to not use completely uniform discretizations.
 
 #### Related work
 I always assumed that something similar to what I had in mind here must already have been done _somewhere_, but maybe its just not the thing that the academic community is interested in?
@@ -64,6 +65,8 @@ There were two more papers that I could find that go in a similar direction, alb
 
 - [A Variable-Sampling Time Model Predictive Control Algorithm for Improving Path-Tracking Performance of a Vehicle](https://www.mdpi.com/1424-8220/21/20/6845)
 - [Variable Sampling MPC via Differentiable Time-Warping Function](https://arxiv.org/abs/2301.08397)
+
+The objective in those papers seems to be an increased accuracy, not a decreased computational cost though.
 
 # Model predicitve contouring control (MPCC)
 Model predictive controuring control{% include sidenote.html text='More on it here.'%} is an approach that is based on MPC to track a given path, while maximizing the progress along that same path.
