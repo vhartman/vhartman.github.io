@@ -25,7 +25,7 @@ I recently submitted my dissertation, and am open to any opportunities doing int
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Preprints/Under Review
-- 
+- [Effort Level Search in Infinite Completion Trees with Application to Task-and-Motion Planning](https://www.user.tu-berlin.de/mtoussai/24-CompletionTrees/), Marc Toussaint, Joaquim Ortiz-Haro, **Valentin N. Hartmann**, Erez Karpas, Wolfgang Hönig, Under review at ICRA24
 
 ### Journals
 - [*Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*](/multi-robot/), **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint. IEEE T-RO 2022. \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\], \[[paper](https://ieeexplore.ieee.org/document/9868234)\]
