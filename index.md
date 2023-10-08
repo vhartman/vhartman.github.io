@@ -7,7 +7,8 @@ custom_css: cv
 I'm Valentin! I am a PhD student in [Marc Toussaint's](https://marc-toussaint.net) [LIS group](https://argmin.lis.tu-berlin.de/) at TU Berlin, working on task and motion planning (TAMP) using optimization techniques, in addition to sampling based planners, with inspiration from control theory.
 I am associated with [IntCDC](https://www.intcdc.uni-stuttgart.de/), and am involved in several projects at the intersection of robotics and architecture.
 
-I have a strong interest in control systems, optimization, numerical methods, and technology in general. Before taking on my current position, I have been a mechanical engineering student at ETH Zurich, and have focussed on robotics, systems and control.
+Generally, I like making robotics code go fast. Most of the time, the code I am looking at has strong relations to control systems, optimization, trajectory planning, or numerical methods.
+Before taking on my current position, I have been a mechanical engineering student at ETH Zurich, and have focussed on robotics, systems and control.
 I did a few internships at various companies (notably Amazon and BCG Gamma), and I was a PhD resident at [intrinsic.ai](https://www.intrinsic.ai/) working in the motion and controls team.
 
 In 2021, I (virtually) visited [Jon Gammell's](https://robotic-esp.com/people/gammell/) [ESP lab](https://robotic-esp.com/) at the University of Oxford.
@@ -16,8 +17,6 @@ I like cycling, used to row competitively, like all kinds of other sports, and t
 
 I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest:
 <code>v [at] vhartmann [dot] com</code> for side-projects, <code>valentin [dot] hartmann [at] ipvs [dot] uni-stuttgart [dot] de</code> for more academic chatter.
-
-I recently submitted my dissertation, and am open to any opportunities doing interesting work related to motion planning/autonomous systems/controls (preferably in Switzerland).
 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
 
