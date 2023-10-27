@@ -38,8 +38,8 @@ Latest version: [arXiv](https://arxiv.org/abs/2303.00637)
   author = {Hartmann, Valentin N. and Ortiz-Haro, Joaquim and 
             Toussaint, Marc},
   year = {2023},
+  booktitle = {"Proc{.} of the IEE/RSJ Int{.} Conf{.} on Intelligent Robots and Systems (IROS)"},
   url = {https://arxiv.org/abs/2303.00637},
-  arxiv_pdf = {2303.00637}
 }
 ```
 
