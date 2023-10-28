@@ -41,9 +41,7 @@ to a greedy approach.
 
 Latest version: [arXiv](https://arxiv.org/pdf/2305.17527.pdf)
 
-REPLACE
-
-<a href="https://arxiv.org/abs/2305.17527" target="_blank"><img src="/assets/manip-path-planning/thumb.png" style="display:block; margin:0 auto; border: 1px solid #555;"></a>
+<a href="https://arxiv.org/abs/2305.17527" target="_blank"><img src="/assets/low-makespan/thumb.png" style="display:block; margin:0 auto; border: 1px solid #555;"></a>
 
 <hr style="margin: 2em 0 2em;">
 
