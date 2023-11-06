@@ -24,6 +24,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Preprints/Under Review
+- iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning, Joaquim Ortiz-Haro, Wolfgang Hoenig, Valentin Noah Hartmann, Marc Toussaint
 - [Effort Level Search in Infinite Completion Trees with Application to Task-and-Motion Planning](https://www.user.tu-berlin.de/mtoussai/24-CompletionTrees/), Marc Toussaint, Joaquim Ortiz-Haro, **Valentin N. Hartmann**, Erez Karpas, Wolfgang Hönig, Under review at ICRA24
 
 ### Journals
@@ -35,7 +36,7 @@ Also see my [Google Scholar Profile here](https://scholar.google.com/citations?u
 - [*Efficient Path Planning In Manipulation Planning Problems by Actively Reusing Validation Effort*](/manipulation-path-planning/), **Valentin N. Hartmann**, Joaquim Ortiz-Haro, Marc Toussaint. International Conference on Intelligent Robots and Systems (IROS) 2023 \[[arxiv](https://arxiv.org/abs/2303.00637)\]
 - [*Effort Informed Roadmaps (EIRM\*): Efficient Asymptotically Optimal Multiquery Planning by Actively Reusing Validation Effort*](https://robotic-esp.com/code/eirmstar/), **Valentin N. Hartmann**, Marlin P. Strub, Marc Toussaint, Jonathan D. Gammell. ISRR 2022.  \[[arxiv](https://arxiv.org/abs/2205.08480)\], \[[youtube](https://www.youtube.com/watch?v=OjcnjuJLVUY)\], \[[springer](https://link.springer.com/chapter/10.1007/978-3-031-25555-7_37)\]
 - [*ST-RRT\*: Asymptotically-Optimal Bidirectional Motion Planning through Space-Time*](strrt), Francesco Grothe, **Valentin N. Hartmann**, Andreas Orthey, Marc Toussaint, ICRA 2022, \[[arXiv](https://arxiv.org/abs/2203.02176)\] 
-- *Learning Efficient Constraint Graph Sampling for Robotic Sequential Manipulation*, Joaquim Ortiz de Haro, **Valentin N. Hartmann**, Ozgur S. Oguz, Marc Toussaint, ICRA 2021 \[[arxiv](https://arxiv.org/pdf/2011.04828.pdf)\], \[[youtube](https://www.youtube.com/watch?v=xWAjBGACZhs&feature=youtu.be)\]
+- *Learning Efficient Constraint Graph Sampling for Robotic Sequential Manipulation*, Joaquim Ortiz-Haro, **Valentin N. Hartmann**, Ozgur S. Oguz, Marc Toussaint, ICRA 2021 \[[arxiv](https://arxiv.org/pdf/2011.04828.pdf)\], \[[youtube](https://www.youtube.com/watch?v=xWAjBGACZhs&feature=youtu.be)\]
 - *Self-supervised Learning of Scene-Graph Representations for Solving Sequential Manipulation Problems*, Son-Tung Nguyen, Ozgur S. Oguz, **Valentin N. Hartmann**, Marc Toussaint, Conference on Robot Learning (CoRL) 2020 \[[paper](https://ipvs.informatik.uni-stuttgart.de/mlr/papers/20-oz-corl.pdf)\], \[[youtube](https://www.youtube.com/watch?v=JZ4FepUo6TY)\]
 - *Robust task and motion planning for long-horizon architectural construction planning*, **Valentin N. Hartmann**, Ozgur S. Oguz, Danny Driess, Marc Toussaint and Achim Menges, International Conference on Intelligent Robots and Systems (IROS) 2020, \[[arXiv](https://arxiv.org/abs/2003.07754)\], \[[short video](https://www.youtube.com/watch?v=j5S0s29IHwA)\], \[[talk](https://youtu.be/lAP6hkVlqwo)\]
 
