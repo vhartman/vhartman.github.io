@@ -29,6 +29,8 @@ A simple (but extremely effective) approach to post-process such a path is to sh
 
 Here, the green shortcut is a valid one (since the new part of the path does not intersect with the obstacles), and the red shortcut is invalid (since it intersects one of the obstacles).
 This procedure can be done either for a fixed number of iterations, or until some metric is satisfied.
+In the example above, I chose both shortcuts to start and end in a corner.
+Typically, this is not the case when implementing this: One usually discretized the path more finely, and chooses two random indices to connect.
 In pseudocode, shortcutting looks like this:
 
 ```python
@@ -38,27 +40,26 @@ def interpolate(q0, q1, pts):
         edge[i] = q0 + (q1-q0) * i / pts
     return edge
 
-def shortcut(path, max_iterations):
+def shortcut(path, collision_resolution, discretization_resolution, max_iterations):
+    discretized_path = discretize_path(path, discretization_resolution)
     for _ in range(max_iterations):
         # choose two random points
-        i = rnd() % path.N
-        j = rnd() % path.N
+        i = rnd() % discretized_path.N
+        j = rnd() % discretized_path.N
 
-        edge = interpolate(path[i], path[j])
-        if length(edge) < length(path[i:j]) and valid(edge):
-            path[i:j] = edge
+        edge = interpolate(discretized_path[i], discretized_path[j], abs(j-i))
+        if length(edge) < length(discretized_path[i:j]) and valid(edge, collision_resolution):
+            discretized_path[i:j] = edge
         
-    return path
+    return discretized_path
 ```
 
 In many cases, this removes the redundant back and forth that is typical for a plan from a sampling based motion planner very effectively.
 Having now covered the preliminaries, there are various variants of the proposed algorithm above, such as
 - Path pruning, which only considers the discrete points (i.e. the dots in the example above), and not the intermediate configurations to choose places to cut (more formally described [here](https://ieeexplore.ieee.org/abstract/document/678449)).
 - Instead of simply doing a strightline connection, one could run a local planner between two points as described  [here](https://ieeexplore.ieee.org/document/770365).
-- shortcutting with an oracle [here](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=782972)
-- Instead of randomly choosing points on the path, one can choose them deterministically (see [here](https://mediatum.ub.tum.de/doc/1290791/745347.pdf))
-- [here](https://ai.stanford.edu/~mitul/thesis_saha.pdf)
-- random once again [here](https://www.di.ens.fr/jean-paul.laumond/promotion/chap5.pdf)
+- Instead of uniformly discretizing the path, the work [here](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=782972) suggests a way of adaptively discretizing the path.
+- Instead of randomly choosing points on the path (as e.g. described [here](https://www.di.ens.fr/jean-paul.laumond/promotion/chap5.pdf)), one can choose them deterministically (see [here](https://mediatum.ub.tum.de/doc/1290791/745347.pdf))
 
 An issue with normal shortcutting is that all dimensions are shortcut simultaneously.
 This can lead to some redundant motion that can not be shortcutted.
@@ -74,44 +75,57 @@ The rotational-component of the path can not be changed in this example, since t
 A solution to this problem is shortcutting each dimension separately as seen above on the rightmost illustration, where only the rotational-dimension is shortcut, but the other two dimensions follow the same path from the original solution.
 
 ```python
-def interpolate_subset(q0, q1, index):
-    return []
+def interpolate_single_dimension(path, index):
+    edge = []
+    for i in range(len(path)):
+        edge[i] = path[i]
+        edge[i][index] = path[0][index] + (path[-1][index]-path[0][index]) * i / len(path)
+    return edge
 
-def shortcut(path, max_iterations):
+def shortcut(path, collision_resolution, discretization_resolution, max_iterations):
+    discretized_path = discretize_path(path, discretization_resolution)
     for _ in range(max_iterations):
         # choose two random points
-        i = rnd() % path.N
-        j = rnd() % path.N
+        i = rnd() % discretized_path.N
+        j = rnd() % discretized_path.N
         dim = rnd() % path[0].N
 
-        edge = interpolate_subset(path[i], path[j], dim)
-        if length(edge) < length(path[i:j]) and valid(edge):
-            path[i:j] = edge
+        edge = interpolate_single_dimension(discretized_path, dim)
+        if length(edge) < length(discretized_path[i:j]) and valid(edge, collision_resolution):
+            discretized_path[i:j] = edge
         
-    return path
+    return discretized_path
 ```
 
 However, while this usually leads to a shorter final path, this approach might take many more iterations for the same shortcut in case a shortcut is actually feasible for all dimensions at the same time.
 For this reason{% include sidenote.html text='And possibly some misunderstanding/misremembering of the actually proposed method'%}, at the beginning of my PhD, I implemented a method that randomly samples a set of indices from the dimensions to shortcut, and then shortcuts those indices:
 
 ```python
-def interpolate_subset(q0, q1, index):
-    return []
+def interpolate_subset(path, indices):
+    edge = []
+    for i in range(len(path)):
+        edge[i] = path[i]
+        for j in indices:
+            edge[i][j] = path[0][j] + (path[-1][j]-path[0][j]) * i / len(path)
+    return edge
 
-def shortcut(path, max_iterations):
+def shortcut(path, collision_resolution, discretization_resolution, max_iterations):
+    discretized_path = discretize_path(path, discretization_resolution)
+    all_indices = [i for i in range(path[0].N)]
     for _ in range(max_iterations):
         # choose two random points
-        i = rnd() % path.N
-        j = rnd() % path.N
+        i = rnd() % discretized_path.N
+        j = rnd() % discretized_path.N
 
         num_indices = rnd() % path[0].N
-        indices = []
+        random.shuffle(all_indices)
+        indices = all_indices[:num_indices]
 
-        edge = interpolate_subset(path[i], path[j], indices)
-        if length(edge) < length(path[i:j]) and valid(edge):
-            path[i:j] = edge
+        edge = interpolate_subset(discretized_path, indices)
+        if length(edge) < length(discretized_path[i:j]) and valid(edge, collision_resolution):
+            discretized_path[i:j] = edge
         
-    return path
+    return discretized_path
 ```
 
 I recently stumbled upon the original paper again, and wanted to double check how my implementation performs against the one that is originally proposed in the paper.
@@ -130,11 +144,14 @@ For each of the scenarios, I used RRT-Connect to produce an initial path, and th
 Since I am mostly interested in manipulation planning, the scenarios I am using are from previous papers of mine, and will contain things to be manipulated.
 Particularly, I am going to be looking at multiple paths in the same environment, where the agent is moving things around (e.g. a path that leads to a robot picking something up and a path that leads to some placement position).
 
-Conretely, the scenarios are i) a simple 2d scenario with obstacles where a 'sofa' has to be moved through a narrow corridor, ii) a robotic manipulator on a table with a bunch of objects lying around, one of which has to be moved and iii) a mobile manipulator that has to move an actual table to a different room{% include sidenote.html text='Obviously, this is not a perfect test of the methods, but my intuition tells me that this should paint a sufficient picture.'%}:
+Conretely, the scenarios are i) a simple 2d scenario with obstacles where a 'sofa' has to be moved through a narrow corridor, ii) a robotic manipulator on a table with an object that has to be rotated, iii) two robot arms that perform a handover, and iv) a mobile manipulator that has to move an actual table to a different room{% include sidenote.html text='Obviously, this is not a perfect test of the methods, but my intuition tells me that this should paint a sufficient picture. There are more experiments in the github repo where the code lives.'%}:
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 25%; padding: 5px;">
     <img src="{{ site.url }}/assets/shortcutting/scenes/sofa_0.png" style="width:100%;">
+  </div>
+  <div style="width: 25%; padding: 5px;">
+    <img src="{{ site.url }}/assets/shortcutting/scenes/rotate_cube_0.png" style="width:100%;">
   </div>
   <div style="width: 25%; padding: 5px;">
     <img src="{{ site.url }}/assets/shortcutting/scenes/handover_0.png" style="width:100%;">
@@ -144,13 +161,10 @@ Conretely, the scenarios are i) a simple 2d scenario with obstacles where a 'sof
   </div>
 </div>
 
-As example, for the 2d-setting, the initial path, and the shortcutted paths look like this:
-
-[images]
-
 Below, I plot the path length against the compute time.
 I ran all the shortcutters 50 times.
 The thick line is the median of all runs for that specific method and the shaded area in the same color is the 95% non-parametric confidence interval.
+The x axis is computation time, and the y axis is path length in all of the plots.
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 50%; padding: 5px;">
@@ -158,6 +172,15 @@ The thick line is the median of all runs for that specific method and the shaded
   </div>
   <div style="width: 50%; padding: 5px;">
     <img src="{{ site.url }}/assets/shortcutting/exp/sofa_1_20231111_131031.png" style="width:100%;">
+  </div>
+</div>
+
+<div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
+  <div style="width: 50%; padding: 5px;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/rotate_cube_0_20231113_234146.png" style="width:100%;">
+  </div>
+  <div style="width: 50%; padding: 5px;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/rotate_cube_1_20231113_234146.png" style="width:100%;">
   </div>
 </div>
 
@@ -172,20 +195,22 @@ The thick line is the median of all runs for that specific method and the shaded
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 52%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/MoveTable_0_20231111_174024.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/move_table_walls_0_20231113_180818.png" style="width:100%;">
   </div>
   <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/MoveTable_1_20231111_174024.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/move_table_walls_1_20231113_180818.png" style="width:100%;">
   </div>
 </div>
 
 The first thing to notice is that the plots above are very different from the ones shown in the original paper.
-Partial shortcutting with only a single dimension seems to be slower then normal shortcutting in quite a few of the cases.
+Partial shortcutting with only a single dimension seems to be slower than normal shortcutting in quite a few of the cases.
 This might have to do with the type of problem we are looking at though.
-When focussing on the experiments (a) and (f) of the original paper (a planar corridor, and a manipulator), a similar effect can be seen as the one we have here.
+When focussing on the experiments (a) and (f) of the original paper (a planar corridor, and a manipulator), a similar effect can be seen as the one we have here (i.e. the shortcutter is faster than the single-dimension shortcutter in the original experiments as well).
+It does however, typically get similar or the lowest cost of the tested methods.
 
-In the plots above, the subset-shortcutter is consistently the fastest and finds the shortest paths.
+In the plots above, the subset-shortcutter is consistently the fastest and finds paths with similar lengths to the single-diemension shortcutter.
 Further, the expected effect appears for the shortcutting and the pruning, namely thtat they do not get the path length as low as the other two approaches.
+
 
 #### Ablations
 In additon to the experiments above, I wanted to add a few ablations that show which things matter, respectively things that I learned during these experiments.
@@ -196,7 +221,7 @@ However, there is a conflict with collision checking when discretizing the path.
 Collision checking of a path typically works by discretizing the path into some defined resolution, and then collision checking these states.
 Now, if the path is _too finely_ discretized (finer than the collision checking resolution), this leads to many more collision checks that are done on the path compared to only checking at a certain resolution.
 
-The following two plots are with different ways of discretizing a path:
+The following two plots are with different discretizations of the path.
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 52%; padding: 5px;">
@@ -207,11 +232,16 @@ The following two plots are with different ways of discretizing a path:
   </div>
 </div>
 
+So, 
+
 #### Takeways
 Clearly, there are a few things that one should keep in mind when implementing shortcutting.
 The thing that surprised me the most (but should be obvious) is that a too fine discretization can lead to unintended problems (your shortcutter being very slow).
 
-The second thing is that the subset-shortcutting seems to be quite a bit better than the single-dimension shortcutting on the scenarios that I care about most, and the performance seems to be similar to the one from the shortuctter that always gors for the full set of indices.
+Subset-shortcutting seems to be quite a bit better than the single-dimension shortcutting on the scenarios that I care about most, and the performance seems to be similar to the one from the shortuctter that always interpolates all indices.
+
+From the experiments here, I argue that the subset shortcutter is the correct choice if the main concern is speed.
+That being said, the normal shortcutter seems like very solid choice as well, and is slightly simpler to implement.
 
 #### Outlook
 Clearly, there are a number of design choices in all the implementations above - the choices range from what to sample, what distributions to sample from, which order to sample things in and so on.
