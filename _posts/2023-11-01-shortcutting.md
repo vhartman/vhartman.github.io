@@ -211,8 +211,7 @@ When focussing on the experiments (a) and (f) of the original paper (a planar co
 It does however, typically get similar or the lowest cost of the tested methods.
 
 In the plots above, the subset-shortcutter is consistently the fastest and finds paths with similar lengths to the single-diemension shortcutter.
-Further, the expected effect appears for the shortcutting and the pruning, namely thtat they do not get the path length as low as the other two approaches.
-
+Further, the expected effect appears for the shortcutting and the pruning, namely that they do not get the path length as low as the other two approaches.
 
 #### Ablations
 In additon to the experiments above, I wanted to add a few ablations that show which things matter, respectively things that I learned during these experiments.
@@ -227,10 +226,10 @@ The following two plots are with different discretizations of the path.
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 52%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/MoveTable_0_20231111_174024.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/move_table_walls_0_20231115_153457.png" style="width:100%;">
   </div>
   <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/MoveTable_1_20231111_174024.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/move_table_walls_1_20231115_153457.png" style="width:100%;">
   </div>
 </div>
 
@@ -250,10 +249,10 @@ Comparing the uniform sampling and the approach described above gives the plots 
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 52%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/MoveTable_0_20231111_174024.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/sofa_0_20231115_161631.png" style="width:100%;">
   </div>
   <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/MoveTable_1_20231111_174024.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/sofa_1_20231115_161631.png" style="width:100%;">
   </div>
 </div>
 
