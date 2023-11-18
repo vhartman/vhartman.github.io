@@ -24,7 +24,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Preprints/Under Review
-- iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning, Joaquim Ortiz-Haro, Wolfgang Hoenig, Valentin Noah Hartmann, Marc Toussaint
+- [iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning](https://quimortiz.github.io/idbastar/), Joaquim Ortiz-Haro, Wolfgang Hoenig, Valentin Noah Hartmann, Marc Toussaint, [[arxiv](https://arxiv.org/abs/2311.03553)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=tGuPuihXSbg)]
 - [Effort Level Search in Infinite Completion Trees with Application to Task-and-Motion Planning](https://www.user.tu-berlin.de/mtoussai/24-CompletionTrees/), Marc Toussaint, Joaquim Ortiz-Haro, **Valentin N. Hartmann**, Erez Karpas, Wolfgang Hönig, Under review at ICRA24
 
 ### Journals
