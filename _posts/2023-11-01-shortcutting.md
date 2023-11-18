@@ -18,7 +18,7 @@ Particularly, RRT-Connect (or most other sampling based solutions) produce very 
 
 There are a variety of methods{% include sidenote.html text='A [solid collection](https://ompl.kavrakilab.org/classompl_1_1geometric_1_1PathSimplifier.html) is implemented in OMPL.'%} to improve such a path after the initial planning - in this post, we are looking at shortcutting, respectively [partial shortcutting](https://journals.sagepub.com/doi/pdf/10.1177/0278364907079280?casa_token=myXrF9aYFUoAAAAA:_tqBBzr2VCL0X2n5vv8A7Bmxu6oNGsrMcjowsoeXPIid3xNjqlOlgJExtO1kkJi7i1YQZZj--RnE).
 
-Code for the experiments and implementations is available [here](...).
+Code for the following experiments and implementations of methods is available [here](https://github.com/vhartman/23-shortcutting).
 
 #### Shortcutting
 From here on, we assume that the path is given by a sequence of nodes which are connected by straightline paths{% include sidenote.html text='This is a great assumption if we are looking at robots that operate without kinodynamic constraints and we are doing geometric path planning. It is less great if we are looking at the dynamics of a robot as well.'%}.
@@ -166,41 +166,41 @@ Conretely, the scenarios are i) a simple 2d scenario with obstacles where a 'sof
 Below, I plot the path length against the compute time.
 I ran all the shortcutters 50 times.
 The thick line is the median of all runs for that specific method and the shaded area in the same color is the 95% non-parametric confidence interval.
-The x axis is computation time, and the y axis is path length in all of the plots.
+The x axis is computation time, and the y axis is path length in all of the plots{% include sidenote.html text='Open the plots directly in a new window/tab to see them in mauch larger.'%}.
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/sofa_0_20231111_131031.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/exp_sofa_0_20231118_170641.png" style="width:100%;">
   </div>
   <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/sofa_1_20231111_131031.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/exp_sofa_1_20231118_170641.png" style="width:100%;">
   </div>
 </div>
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/rotate_cube_0_20231113_234146.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/exp_rotate_cube_0_20231118_170919.png" style="width:100%;">
   </div>
   <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/rotate_cube_1_20231113_234146.png" style="width:100%;">
-  </div>
-</div>
-
-<div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
-  <div style="width: 52%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/Handover_0_20231111_131218.png" style="width:100%;">
-  </div>
-  <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/Handover_1_20231111_131218.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/exp_rotate_cube_1_20231118_170919.png" style="width:100%;">
   </div>
 </div>
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 52%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/move_table_walls_0_20231113_180818.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/exp_Handover_0_20231118_180605.png" style="width:100%;">
   </div>
   <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/move_table_walls_1_20231113_180818.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/exp_Handover_1_20231118_180605.png" style="width:100%;">
+  </div>
+</div>
+
+<div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
+  <div style="width: 52%; padding: 5px;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/exp_move_table_walls_0_20231118_171430.png" style="width:100%;">
+  </div>
+  <div style="width: 50%; padding: 5px;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/exp_move_table_walls_1_20231118_171430.png" style="width:100%;">
   </div>
 </div>
 
@@ -210,7 +210,7 @@ This might have to do with the type of problem we are looking at though.
 When focussing on the experiments (a) and (f) of the original paper (a planar corridor, and a manipulator), a similar effect can be seen as the one we have here (i.e. the shortcutter is faster than the single-dimension shortcutter in the original experiments as well).
 It does however, typically get similar or the lowest cost of the tested methods.
 
-In the plots above, the subset-shortcutter is consistently the fastest and finds paths with similar lengths to the single-diemension shortcutter.
+In the plots above, the subset-shortcutter is only slower than the normal shortcutter, but finds paths with similar or shorter lengths as the single-diemension shortcutter.
 Further, the expected effect appears for the shortcutting and the pruning, namely that they do not get the path length as low as the other two approaches.
 
 #### Ablations
@@ -249,15 +249,36 @@ Comparing the uniform sampling and the approach described above gives the plots 
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 52%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/sofa_0_20231115_161631.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/sofa_0_20231118_192724.png" style="width:100%;">
   </div>
   <div style="width: 50%; padding: 5px;">
-    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/sofa_1_20231115_161631.png" style="width:100%;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/sofa_1_20231118_192724.png" style="width:100%;">
   </div>
 </div>
 
-Here, it can be seen that there seems to be _some_ influence of how we sample, it seems like the difference is not huge between them.
-The result does however lead me to believe that there might be some better strategy, that is possibly taking into account the history of the process (e.g. trying to shortcut larger sets initially, and later during the process favorably sampling smaller sets).
+<div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
+  <div style="width: 52%; padding: 5px;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/rotate_cube_0_20231118_194259.png" style="width:100%;">
+  </div>
+  <div style="width: 50%; padding: 5px;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/rotate_cube_1_20231118_194259.png" style="width:100%;">
+  </div>
+</div>
+
+
+<div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
+  <div style="width: 52%; padding: 5px;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/move_table_walls_0_20231118_192908.png" style="width:100%;">
+  </div>
+  <div style="width: 50%; padding: 5px;">
+    <img src="{{ site.url }}/assets/shortcutting/exp/ablation/move_table_walls_1_20231118_192908.png" style="width:100%;">
+  </div>
+</div>
+
+Here, it can be seen that there seems to be a quite big influence of how we sample, namely that the higher probability to sample a larger set of indices leads to faster runtime in this case.
+Comparing the plots here with the one above, one can see that this version of sampling indices performs essentially the same as the vanilla shortcutting version, while reaching roughly the same cost as the uniform subset shortcutting.
+
+The result leads me to believe that there might be some better strategy, that is possibly taking into account the history of the process (e.g. trying to shortcut larger sets initially, and later during the process favorably sampling smaller sets).
 
 #### Takeways
 Clearly, there are a few things that one should keep in mind when implementing shortcutting.
