@@ -4,8 +4,9 @@ title: Home
 custom_css: cv
 ---
 
-I'm Valentin! I am a PhD student in [Marc Toussaint's](https://marc-toussaint.net) [LIS group](https://argmin.lis.tu-berlin.de/) at TU Berlin, working on task and motion planning (TAMP) using optimization techniques, in addition to sampling based planners, with inspiration from control theory.
-I am associated with [IntCDC](https://www.intcdc.uni-stuttgart.de/), and am involved in several projects at the intersection of robotics and architecture.
+I'm Valentin! I am a Postdoc at the [Computational Robotics Lab](https://crl.ethz.ch/index.html) at ETH.
+Previously, I was in [Marc Toussaint's](https://marc-toussaint.net) [LIS group](https://argmin.lis.tu-berlin.de/) at TU Berlin, working on task and motion planning (TAMP) using optimization techniques, in addition to sampling based planners, with inspiration from control theory.
+I was associated with [IntCDC](https://www.intcdc.uni-stuttgart.de/), and was involved in several projects at the intersection of robotics and architecture.
 
 Generally, I like making robotics code go fast. Most of the time, the code I am looking at has strong relations to control systems, optimization, trajectory planning, or numerical methods.
 Before taking on my current position, I have been a mechanical engineering student at ETH Zurich, and have focussed on robotics, systems and control.
@@ -16,7 +17,7 @@ In 2021, I (virtually) visited [Jon Gammell's](https://robotic-esp.com/people/ga
 I like cycling, used to row competitively, like all kinds of other sports, and to my friends delight I am an avid cook.
 
 I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest:
-<code>v [at] vhartmann [dot] com</code> for side-projects, <code>valentin [dot] hartmann [at] ipvs [dot] uni-stuttgart [dot] de</code> for more academic chatter.
+<code>v [at] vhartmann [dot] com</code> for side-projects, <code>valentin [dot] hartmann [at] inf [dot] ethz [dot] ch</code> for more academic chatter.
 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
 
@@ -24,7 +25,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Preprints/Under Review
-- [iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning](https://quimortiz.github.io/idbastar/), Joaquim Ortiz-Haro, Wolfgang Hoenig, Valentin Noah Hartmann, Marc Toussaint, [[arxiv](https://arxiv.org/abs/2311.03553)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=tGuPuihXSbg)]
+- [iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning](https://quimortiz.github.io/idbastar/), Joaquim Ortiz-Haro, Wolfgang Hoenig, **Valentin N. Hartmann**, Marc Toussaint, [[arxiv](https://arxiv.org/abs/2311.03553)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=tGuPuihXSbg)]
 - [Effort Level Search in Infinite Completion Trees with Application to Task-and-Motion Planning](https://www.user.tu-berlin.de/mtoussai/24-CompletionTrees/), Marc Toussaint, Joaquim Ortiz-Haro, **Valentin N. Hartmann**, Erez Karpas, Wolfgang Hönig, Under review at ICRA24
 
 ### Journals
