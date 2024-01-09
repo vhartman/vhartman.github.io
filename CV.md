@@ -9,7 +9,7 @@ custom_css: cv
 Detailed CV: <a href="/assets/vhartman_cv_en_1p.pdf">[PDF]</a>
 
 ## Experience
-### [CRL](https://crl.ethz.ch/index.html)
+### [ETH Zurich - CRL](https://crl.ethz.ch/index.html)
 <div class='subtitle'>Postdoctoral Researcher<span class="position-duration">01/24 - current</span></div>
 
 ### [Intrinsic](https://intrinsic.ai/)
