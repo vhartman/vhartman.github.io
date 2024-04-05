@@ -2,7 +2,7 @@
 layout: post
 title:  "Faster sampling of sum-of-infinity-norm bounded sets"
 #subtitle: "Analyzing runtime of different post pro"
-date:   2024-03-15 12:00:00 +0200
+date:   2024-04-04 12:00:00 +0200
 permalink: /inf-norm-sampling/
 categories: science research pathplanning
 ---
@@ -14,7 +14,7 @@ categories: science research pathplanning
 </p>
 
 Sampling based path planning works by uniformly sampling points from a set, and building a tree, and at some point a path from it.
-If we do path planning and use the infinity norm as cost, we can not do some fancy things, such as informed sampling easily{% include sidenote.html text='Code for the plots and timings in this pose can be found [here]()'%}.
+If we do path planning and use the infinity norm as cost, we can not do some fancy things, such as informed sampling easily{% include sidenote.html text='Code for the plots and timings in this pose can be found [here](https://gist.github.com/vhartman/ae925ba676c5c1abc65f8a1cc3a5c4b6)'%}.
 
 #### Informed sampling
 In sampling based path plannning, informed sampling is the process of only sampling points that can actually decrease the total cost of the path.
@@ -280,7 +280,7 @@ The main difference between the batch-version and the normal version is that we 
 We can do many comparisons and generations of random numbers at the same time, and do not have to do it one by one.
 This runs the risk that we might generate too many samples if we choose the batch size too large.
 
-We look at some timings of the approaches for different dimensions and for each dimension three different bounds: a tight one (i.e., $$c_b$$ close to the mimimum achievable cost), a medium tight one, and a very relaxed bound (logarithmic plot).
+We look at some timings of the approaches for different dimensions and for each dimension three different bounds: a tight one (i.e., $$c_b$$ close to the mimimum achievable cost{% include sidenote.html text='All the coordinates of the start are at -1, and the ones of the goal at 1, bringing the minimum cost to 2.'%}), a medium tight one, and a very relaxed bound (logarithmic plot).
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 70%; padding: 5px;">
@@ -291,9 +291,9 @@ We look at some timings of the approaches for different dimensions and for each 
 Here, we can see three things:
 - batch sampling is much faster than the non-batched version
 - sampling from the box constrained region first massively speeds up the sampling overall for 'tight' bounds
-- there is a point where it does not matter which method we choose to use, since the cost is not the constraining factor anymore, but the bounds of the robot are the main constraint.
+- there is a point where it does not matter which method we choose to use, since the cost is not the constraining factor anymore, but the bounds of the robot are the main constraint. However, there is alo no downside in choosing the 'more complex' method of sampling from the box-constrained region.
 
-We also show a benchmarking comarison, where we keep the dimension fixed, and vary the bound $$c_b$$ to see how much influence this has.
+We also show a benchmarking comparison, where we keep the dimension fixed (at 6), and vary the bound $$c_b$$ to see how much influence this has.
 
 <div style="width: 90%; display: flex; justify-content: center; align-items: center; margin: auto;">
   <div style="width: 50%; padding: 5px;">
@@ -329,7 +329,7 @@ The approach I took so far for this problem is rejection sampling in the space d
 This is fairly inefficient.
 
 Replacing the uniform sampling of the robot-configuration with the box-constrained sampling already gives a solid speedup.
-I want to investigate if changing the tiem-sampling to something better helps the performance of ST-RRT\*.
+I want to investigate if changing the time-sampling to something better helps the performance of ST-RRT\*.
 
 I am not sure how well batched samping works in this setting.
 This should be explored.
