@@ -8,21 +8,25 @@ categories: science research pathplanning
 ---
 
 <p class="preface">
-    In path planning, the cost function is commonly the path lenght. This leads to the euclidean norm as distance function.
-    However, if we care about e.g., planning with a robot arm, and we want to minimize the time that a path takes, we should use the infinity norm.
+    In path planning, the cost function is commonly the path length. This leads to the euclidean norm as distance function.
+    However, if we care about, e.g., planning with a robot arm, and we want to minimize the time that a path takes, the euclidean norm does nor make sense, and we should use the infinity norm.
     Using the infinity norm for the cost makes some things more annoying. Here is how to solve them.
 </p>
 
-Sampling based path planning works by uniformly sampling points from a set, and building a tree, and at some point a path from it.
-If we do path planning and use the infinity norm as cost, we can not do some fancy things, such as informed sampling easily{% include sidenote.html text='Code for the plots and timings in this pose can be found [here](https://gist.github.com/vhartman/ae925ba676c5c1abc65f8a1cc3a5c4b6)'%}.
+Sampling based path planning works by uniformly sampling points from a set, and building a tree by connecting the samples.
+Eventually, a path from the start to the goal is part of the tree.
+If we do path planning and use the infinity norm as cost, we can not do some fancy things that can be done when using the euclidean norm as cost.
+One such example is informed sampling.
+
+Code for the plots and timings in this post can be found [here](https://gist.github.com/vhartman/ae925ba676c5c1abc65f8a1cc3a5c4b6).
 
 #### Informed sampling
-In sampling based path plannning, informed sampling is the process of only sampling points that can actually decrease the total cost of the path.
-That is, given some previously found path $$p$$ and its cost $$c$$, we only want to sample points that can connect thet start and the goal with a cost lower than the already found cost $$c$$.
+In sampling based path plannning, informed sampling is the process of only sampling points that can actually decrease the total cost of the path, which speeds up convergence of the planning algorithms tremendously.
+That is, given some previously found best path $$p$$ and the corresponding best cost $$c_b$$, we only want to sample points that can connect thet start and the goal with a cost lower than the already found cost $$c_b$$.
 The set of points that can connect a single start and a single goal with a cost that is lower than $$c$$ is {% include sidenote.html text='Something similar can be written down for multiple starts and goals.'%}
 $$\mathcal{X}^* = \{x\in\mathcal{X} |\ f(x, x_s) + f(x, x_g) < c_b\}$$
 
-If our cost $$f$$ is the euclidean norm, we can do what is described in the paper by Jon Gammell [here](https://arxiv.org/pdf/1404.2334.pdf).
+If our cost $$f$$ is the euclidean norm, we can do what is described in the paper by Jon Gammell [here](https://arxiv.org/pdf/1404.2334.pdf), which allows for direct uniform sampling of the set.
 If our cost is the infinity norm, this does unfortunately not work{% include sidenote.html text='It also does not work as nicely for multiple starts and goals.'%}.
 Substituting the infinity norm for $$f$$ above, our set becomes
 
@@ -221,7 +225,7 @@ def rejection_sampling_with_box(bounds, xs, xf, cb, N=1):
                 return pts
 ```
 
-Inspired by a previous blog post, we'll also have a look at batch-sampling of the two approaches above.
+Inspired by [a previous blog post](/ball_sampling), we'll also have a look at batch-sampling of the two approaches above.
 
 
 ```python
@@ -276,7 +280,7 @@ def batch_rejection_sampling_with_box(bounds, xs, xf, cb, N=1, batch_size=1):
             return pts
 ```
 
-The main difference between the batch-version and the normal version is that we make use of the numy vectorization much more.
+The main difference between the batch-version and the normal version is that we make use of the numpy vectorization much more.
 We can do many comparisons and generations of random numbers at the same time, and do not have to do it one by one.
 This runs the risk that we might generate too many samples if we choose the batch size too large.
 
