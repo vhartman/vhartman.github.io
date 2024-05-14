@@ -29,6 +29,7 @@ I have an open list of ideas for which I am looking for collaborators (external 
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Preprints/Under Review
+- [iDb-RRT: Sampling-based Kinodynamic Motion Planning with Motion Primitives and Trajectory Optimization](https://quimortiz.github.io/idbrrt/), Joaquim Ortiz-Haro, Wolfgang Hönig, **Valentin N. Hartmann**, Marc Toussaint, and Ludovic Righetti [[arxiv](https://arxiv.org/abs/2403.10745)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=3ToQU-qLWg0)]
 - [iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning](https://quimortiz.github.io/idbastar/), Joaquim Ortiz-Haro, Wolfgang Hoenig, **Valentin N. Hartmann**, Marc Toussaint, [[arxiv](https://arxiv.org/abs/2311.03553)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=tGuPuihXSbg)]
 
 ### Journals
