@@ -29,7 +29,6 @@ I have an open list of ideas for which I am looking for collaborators (external 
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Preprints/Under Review
-- [iDb-RRT: Sampling-based Kinodynamic Motion Planning with Motion Primitives and Trajectory Optimization](https://quimortiz.github.io/idbrrt/), Joaquim Ortiz-Haro, Wolfgang Hönig, **Valentin N. Hartmann**, Marc Toussaint, and Ludovic Righetti [[arxiv](https://arxiv.org/abs/2403.10745)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=3ToQU-qLWg0)]
 - [iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning](https://quimortiz.github.io/idbastar/), Joaquim Ortiz-Haro, Wolfgang Hoenig, **Valentin N. Hartmann**, Marc Toussaint, [[arxiv](https://arxiv.org/abs/2311.03553)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=tGuPuihXSbg)]
 
 ### Journals
@@ -38,7 +37,8 @@ Also see my [Google Scholar Profile here](https://scholar.google.com/citations?u
 - *Learning Robotic Manipulation of Natural Materials with Variable Properties for Construction Tasks*, Nicolas Kubail Kalousdian, Grzegorz Łochnicki, **Valentin N. Hartmann**, Samuel Leder, Ozgur S. Oguz, Achim Menges, Marc Toussaint, IEEE Robotics and Automation Letters (RA-L) 2022 \[[paper](https://ieeexplore.ieee.org/document/9735376)\]
 
 ### Conferences
-- [Effort Level Search in Infinite Completion Trees with Application to Task-and-Motion Planning](https://www.user.tu-berlin.de/mtoussai/24-CompletionTrees/), Marc Toussaint, Joaquim Ortiz-Haro, **Valentin N. Hartmann**, Erez Karpas, Wolfgang Hönig, Accepted for publication at ICRA24
+- [iDb-RRT: Sampling-based Kinodynamic Motion Planning with Motion Primitives and Trajectory Optimization](https://quimortiz.github.io/idbrrt/), Joaquim Ortiz-Haro, Wolfgang Hönig, **Valentin N. Hartmann**, Marc Toussaint, and Ludovic Righetti, IROS 2024 [[arxiv](https://arxiv.org/abs/2403.10745)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=3ToQU-qLWg0)]
+- [Effort Level Search in Infinite Completion Trees with Application to Task-and-Motion Planning](https://www.user.tu-berlin.de/mtoussai/24-CompletionTrees/), Marc Toussaint, Joaquim Ortiz-Haro, **Valentin N. Hartmann**, Erez Karpas, Wolfgang Hönig, ICRA24
 - [*Efficient Path Planning In Manipulation Planning Problems by Actively Reusing Validation Effort*](/manipulation-path-planning/), **Valentin N. Hartmann**, Joaquim Ortiz-Haro, Marc Toussaint. International Conference on Intelligent Robots and Systems (IROS) 2023 \[[arxiv](https://arxiv.org/abs/2303.00637)\]
 - [*Effort Informed Roadmaps (EIRM\*): Efficient Asymptotically Optimal Multiquery Planning by Actively Reusing Validation Effort*](https://robotic-esp.com/code/eirmstar/), **Valentin N. Hartmann**, Marlin P. Strub, Marc Toussaint, Jonathan D. Gammell. ISRR 2022.  \[[arxiv](https://arxiv.org/abs/2205.08480)\], \[[youtube](https://www.youtube.com/watch?v=OjcnjuJLVUY)\], \[[springer](https://link.springer.com/chapter/10.1007/978-3-031-25555-7_37)\]
 - [*ST-RRT\*: Asymptotically-Optimal Bidirectional Motion Planning through Space-Time*](strrt), Francesco Grothe, **Valentin N. Hartmann**, Andreas Orthey, Marc Toussaint, ICRA 2022, \[[arXiv](https://arxiv.org/abs/2203.02176)\] 
