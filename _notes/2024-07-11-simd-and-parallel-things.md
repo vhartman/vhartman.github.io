@@ -7,7 +7,7 @@ categories: performance
 ---
 
 <p class="preface">
-    There was a paper a bit ago that presents a really fast motion planner, using amongst other things SIMD programming for collision checking of edges (which is usually the most time intensive step in motion planning for robots).
+    There was a paper some time ago that presents a really fast motion planner, using amongst other things SIMD programming for collision checking of edges (which is usually the most time intensive step in motion planning for robots).
     This got me more into SIMD programming, and hoarding a handful of links related to high-performing implementations of common robotics algorithms.
     This post is me closing a bunch of tabs and archiving their content here in case I'll need it again. 
 </p>
@@ -18,9 +18,11 @@ One of the things that they leverage is the parallelization of collision checkin
 Compared to 'traditional' parallelization over multiple cores, they do parallel collision checking using vectorization with SIMD.
 
 Since they took a while to open-source their code, I made some experiments myself, which is in very rough shape, but can be found [on github](https://github.com/vhartman/simd-experiments).
-This shows a ~10x speedup on 2D collision checking (albeit not demoed in a motion planning setting).
+This shows a ~10x speedup on 2D collision checking (albeit not demoed in a motion planning setting). {% include sidenote.html text='There will be a full post on this at some point, and I\'ll hopefully also clean the mess there up a bit.'%}
 
 In the rest of the note, I want to organize a few links on SIMD blog-posts, posts on how to achieve high performance implementations of various algorithms (matmul for example), and a large part of robotics papers/algorithms.
+
+There are likely many, many more very relevant and very interesting posts/papers and other forms of writeups. These are just the ones I stumbled across.
 
 #### Generic cool performance related literature
 - A while ago there was a discussion on hackernews of an old (2011) post on [SIMD vs SIMT vs SMT](https://yosefk.com/blog/simd-simt-smt-parallelism-in-nvidia-gpus.html). However, the consensus seems to be that quite a lot of things have changed since then, and the differences between the different programming models are not as distinguished anymore since the three different approaches borrowed many things from each other.
@@ -50,7 +52,6 @@ In the rest of the note, I want to organize a few links on SIMD blog-posts, post
 - [Real time iterations with MPC](https://cse.lab.imtlucca.it/~bemporad/publications/papers/ijc_rtiltv.pdf) is a core contribution that shows how to apply (nonlinear) MPC in reality, by only doing a few iterations at a time, and therefore guaranteeing compute times of the control algorithm.
 
 **Optimizers**
-For many robotics applications, optimizers are _very_ important.
 - [OSQP](https://osqp.org/docs/index.html) is one of the most used solvers for quadratic programs.
 - [Clarabel](https://clarabel.org/stable/) is new, implemented in rust, being able to deal with cones.
 - [Crocoddyl](https://arxiv.org/pdf/1909.04947) is a formulation of DDP for contact-switched systems.
