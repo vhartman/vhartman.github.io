@@ -2,7 +2,7 @@
 layout: post
 title:  "On variable timestepping in model predicitve control"
 #subtitle: "or: .."
-date:   2023-06-22 12:00:00 +0200
+date:   2024-08-07 12:00:00 +0200
 permalink: /variable-dt-mpc/
 categories: mpc science
 ---
@@ -20,7 +20,7 @@ That is, instead of the typical MPC formulation
 
 $$
 \begin{align}
-u^* = & \min_u \sum_i^N j(x_i, u_i)\\
+u^* = & \min_{x, u} j_N(x_N) + \sum_i^{N-1} j(x_i, u_i)\\
 \text{s.t.} \ \ & x_0 = x(0)\\
 &x_{t+i} = x_i + \Delta t f(x_i, u_i) \\
 & x_i\in \mathcal{X},  u_i \in \mathcal{U}\\
@@ -28,11 +28,12 @@ u^* = & \min_u \sum_i^N j(x_i, u_i)\\
 \end{align}
 $$
 
-I want to have a look at
+Here, $$j$$ is a possibly non-convex cost term, $$f$$ are the dynamics of the system we are interested in, $$\mathcal{X}, \mathcal{U}$$ are the domains of the state and the input respectively, and $$g$$ is a constraint function.
+Compared to this more or less standard formulation, I want to have a look at
 
 $$
 \begin{align}
-u^* = & \min_u \sum_i^N j(x_i, u_i)\\
+u^* = & \min_{x, u} j_N(x_N) + \sum_i^{N-1} j(x_i, u_i)\\
 \text{s.t.} \ \ & x_0 = x(0)\\
 &x_{t+i} = x_i + \Delta t_if(x_i, u_i) \\
 & x_i\in \mathcal{X},  u_i \in \mathcal{U}\\
@@ -41,10 +42,10 @@ u^* = & \min_u \sum_i^N j(x_i, u_i)\\
 $$
 
 which is virtually the same, except that there is the index $$i$$ on the timestep $$\Delta t$$.
-Here, $$j$$ is a possibly non-convex cost term, $$f$$ are the dynamics of the system we are interested in, $$\mathcal{X}, \mathcal{U}$$ are the domains of the state and the input respectively, and $$g$$ is a constraint function.
 
-Of course, this variable timestepping approach could be implemented in any optimal control setting with a receding horizon such as vanilla MPC or MPPI (model predictive path integral control).
-It might even be advantageous in a trajectorz optimization setting to not use completely uniform discretizations.
+Of course, this variable timestepping approach could be implemented in any optimal control setting with a receding horizon such as vanilla MPC, dynamic programming approaches, or MPPI (model predictive path integral control).{% include sidenote.html text='It might even be advantageous in some settings of a trajectory optimization setting to not use completely uniform discretizations.'%}
+
+In this post, I will have a look at an iLQR implementation, and a MPC implementation with variable timesteps.
 
 #### Related work
 I always assumed that something similar to what I had in mind here must already have been done _somewhere_, but maybe its just not the thing that the academic community is interested in?
@@ -61,6 +62,8 @@ humanoid robots](https://homes.cs.washington.edu/~todorov/papers/ErezHumanoids13
 I am interested in how you should choose your timesteps, and what improvement you can expect _at a constant compute time_.
 There is little discussion of that in any of those papers above, only the mention that "there is a design tradeoff", and that "small steps in the beginning, and large steps later" are better.
 
+And while I completely belive that this strategy is the correct one, I would like to see some more experiments on it, get an intuition how much compute time can be saved, and check if this is really the best strategy.
+
 There were two more papers that I could find that go in a similar direction, albeit going a step further: they are automatically adjusting the timestep-size to get a dense representation of the system at points where it matters, and a finer one where it does not:
 
 - [A Variable-Sampling Time Model Predictive Control Algorithm for Improving Path-Tracking Performance of a Vehicle](https://www.mdpi.com/1424-8220/21/20/6845)
@@ -68,45 +71,28 @@ There were two more papers that I could find that go in a similar direction, alb
 
 The objective in those papers seems to be an increased accuracy, not a decreased computational cost though.
 
-# Model predicitve contouring control (MPCC)
-Model predictive controuring control{% include sidenote.html text='More on it here.'%} is an approach that is based on MPC to track a given path, while maximizing the progress along that same path.
+# The problems
 
-$$
-\min_u \int e(\phi(\theta), x) dt
-$$
+To test the variable timestepping approach, I will have a look at two problems here:
 
-That is, the goal is to move along a path as quickly as possible, while staying inside the constraints given.
-
-# The setup
-Instead of going for the racecar, we'll first have a look at steering a masspoint along a line, while respecting the boundaries, and joint limits (i.e. accelerations, velocities).
-
-That being said, our system is simply a second order integrator for now - we'll later come back to the racecar dynamics.
-
-$$
-\alpha
-$$
-
-The racetrack is the following:
-
-<div style="width: 90%;margin:auto">
-    <img src="{{ site.url }}/assets/bike-neurons/circle_path.png" style="width:46%; padding: 10px">
+- The inverted pendulum on a cart pole (_the_ classical control benchmark).<br><br>
+  The dynamic of the cart pole problem can be found here, and the state is four dimensional, and the input is scalar.
+  The goal here is to swing the pendulum up, and stabilize it at the top (the unstable equilibrium).
+  There are input and state constraints.
+  A possible solution to the problem looks like this:
+  <div style="width: 90%;margin:auto; text-align: center;">
     <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
-</div>
-
-and is represented as a spline.
-
-The constraints are velocity constraints, acceleration constraints, and the track constraints.
-
-# The implementation
-
-Now, actually implementing the controller requires discretizing the equations above and linearizing them at each timestep.
-But instead of the normal approach of using uniform timesteps, we'll test a set of non-uniform time stepping schemes.
-
-The optimization problem we'll implement is:
-
-$$
-\min_u \sum ...
-$$
+  </div>
+- Steering a racecar around a racetrack using model predictive contouring control (MPCC).<br><br>
+  The dynamics of the racecar are taken from here, and are approximated by the bycicle model.
+  The state is XX dimensional, and the input has two dimensions.
+  As MPCC introduces additional states and inputs, the resulting system is XX dimensional, with three input states.<br><br>
+  The racetrack also has boundaries that we will introduce by enforcing a maximum distance between the middle line and the center of the car.
+  The constraints are then velocity constraints, acceleration constraints, and the track constraints.
+  A possible solution looks like this:
+  <div style="width: 90%;margin:auto; text-align: center;">
+    <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
+  </div>
 
 # Experiments
 I have implemented this whole thing in ...{% include sidenote.html text='Code is available [].'%}
