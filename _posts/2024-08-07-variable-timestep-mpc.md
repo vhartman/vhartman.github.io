@@ -35,8 +35,12 @@ We do this by varying the prediction horizon in the controller, and plotting the
 To ensure that we obtain some solution even when constraints are violated, we formulate the constraints as soft constraints with high weights.
 
 <div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_5.png" style="width:29%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_10.png" style="width:29%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_20.png" style="width:29%; padding: 10px">
+  <figcaption><span style="color: #1f77b4;">Blue</span> is position, <span style="color: #ff7f0e;">orange</span> is velocity, and <span style="color: #2ca02c;">green</span> is acceleration. The constraints for each variable are shown in the corresponding color.</figcaption>
 </div>
+<br>
 
 It should be clearly visible that the shorter horizons violate the constraint.
 Intuitively, what happens here is that the short horizon leads to a priorization of accelerating quickly, and only 'getting to know' about the constraint too late to slow down, thereby violating the constraint{% include sidenote.html text='To a certain extent, this could be alleviated with the "correct" final cost and final constraint, however, the final cost is hard to get "correct", and constraining the final set to a velocity from which we can safely stop makes the system too conservative.'%}.
@@ -45,8 +49,8 @@ For the second point, we now keep the prediction horizon the same for all runs, 
 Next to it, we plot the time it took the solver to find a solution for the MPC problem.
 
 <div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
-  <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_cost.png" style="width:46%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_comp_time.png" style="width:46%; padding: 10px">
 </div>
 
 While in this case, we always find _a_ solution, the solution quality when using a finer discretization is clearly superior{% include sidenote.html text='While there is a clear difference, it is not as large as it is in other (more nonlinear) systems like a quadcopter.'%}, but we also have the problem of a much larger compute time that is required.
@@ -123,32 +127,23 @@ To test the variable timestepping approach, I will have a detailed look at two p
   There are input and state constraints.
   A possible solution to the problem looks like this:
   <div style="width: 90%;margin:auto; text-align: center;">
-    <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
+    <img src="{{ site.url }}/assets/nu_mpc/cartpole_anim.gif" style="width:75%; padding: 10px">
   </div>
-- Steering a racecar around a racetrack using model predictive contouring control (MPCC).<br><br>
-  The dynamics of the racecar are taken from here, and are approximated by the bycicle model.
-  The state is XX dimensional, and the input has two dimensions.
-  As MPCC introduces additional states and inputs, the resulting system is XX dimensional, with three input states.<br><br>
-  The racetrack also has boundaries that we will introduce by enforcing a maximum distance between the middle line and the center of the car.
-  The constraints are then velocity constraints, acceleration constraints, and the track constraints.
-  A possible solution looks like this:
+
+- Recovering a 2D quadcopter from an inverted position. The dynamics of this are again relatively standard, and can be found e.g. here.
+  A solution looks like this:
   <div style="width: 90%;margin:auto; text-align: center;">
-    <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
+    <img src="{{ site.url }}/assets/nu_mpc/quadcopter_animation.gif" style="width:75%; padding: 10px">
   </div>
 
 #### What are we actually testing?
 
 We are interested in figuring out if we can save time in our MPC controllers while keeping the performance approximately the same via variable timestepping.
 Thus, what we test is an MPC controller with various numbers of timesteps with a nonuniform discretization, and plot the computation time and the quality of the solution.
-What we would expect (hope to get) would something like this:
-
-<div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
-</div>
-
+What we would expect (hope to get) is something like a pareto optimality front.
 This would allow us to fairly seamlessly trade off computation time and solution quality.
 In this first experiment, we'll use a linearly increasing stepsize.
-In order to isolate the compute time (which we want to analyze) from other effects, we'll fix the horizon length. That is, our timestep is
+In order to isolate the compute time (which we want to analyze) from other effects, we'll fix the prediction horizon length. That is, our timestep is
 
 $$
 \Delta t_i = \Delta t_0 + \alpha i
@@ -167,28 +162,56 @@ with a similar constraint as before, which can again be (this time iteratievely)
 We compare these nonuniform disretizations to a constant discretizatoin with the same number of timesteps.
 Note that this leads to larger timesteps in the beginning directly.
 
-Running this experiment for both the cartpole system and the racecar looks like so:
+Running this experiment for both the cartpole system and the quadcopter looks like so:
 
 <div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
-  <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/cartpole_cost_comp.png" style="width:46%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/quadcopter_cost_comp.png" style="width:46%; padding: 10px">
 </div>
 
-We clearly see what we hoped to see, and apparently get savings of up to XX percent in computation time, while staying relatively close to the 'optimal' solution that we get with a fine constant time discretization.
+We clearly see what we hoped to see, and apparently get savings of up to 80% percent in computation time, while staying relatively close to the 'optimal' solution that we get with a fine constant time discretization.
 
-Similarly, we could keep the compute time somewhat constant (by fixing the number of discretization steps), and increase the time horizon.
-In this case, we get the plots below:
+Similar to the motivational experiment before, the cost differences that can be obtained are not _huge_ in these experiments.
+This can partially be ascribed to the fact that the systems are still relatively simple.
+However, in the cartpole experiment, we can also see a nice demonstration of the non-uniform discretization: Controllers with a lower compute time (~50% of the uniformly discretized) MPC controller still find a solution, and achieve a good cost.
+Compared to that, all solutions with a cost >1000 do not find a solution, and do not manage to control the cart pole system to the instable equilibrium at the top.
+
+#### A brief look at a more complex system
+After these quantitative tests, I want to have a look at steering a racecar around a racetrack using model predictive contouring control (MPCC).
+
+The dynamics of the racecar are taken from here, and are approximated by the bycicle model.
+The state is 8 dimensional, and the input has two dimensions.
+As MPCC introduces additional states and inputs, the resulting system is 10 dimensional, with three input states.
+
+The racetrack also has boundaries that we will introduce by enforcing a maximum distance between the middle line and the center of the car.
+The constraints are then velocity constraints, acceleration constraints, and the track constraints.
+A possible solution looks like this:
+<div style="width: 90%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/nu_mpc/racecar_sol.gif" style="width:75%; padding: 10px">
+</div>
+Here, the rectangle is the car, and the blue line is the predicted path at that time-instant.
+
+The setting we consider now for designing a controller is one where we assume that we have a fixed compute budget allocated for a controller.
+We then want to find the controller that stays in this copmute budget, and minimizes some cost functional. 
+In our case, the cost is the minimizatoin of the laptimes while staying in the track limits.
+Our two parameters to choose are then the discretization timestep and the prediction horizon.
+
+
+Below, we plot{% include sidenote.html text="For the sake of plotting, we'll assume that the car will follow the track in any case reasonably well, but to be sure, we'll double check track violations."%} the lap times for a grid search over discretization timesteps and number of timesteps in the prediction horizon for the uniform controller, and the two non-uniform discretization strategies.
 
 <div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
-  <img src="{{ site.url }}/assets/bike-neurons/square_path.png" style="width:46%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/quadcopter_cost_comp.png" style="width:29%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/quadcopter_cost_comp.png" style="width:29%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/quadcopter_cost_comp.png" style="width:29%; padding: 10px">
 </div>
-
 
 # Conclusion & Outlook
 
 Looking at the results it is quite clear that one should not discretize the continuous control problem uniformly if one cares about performance.
 I think the specific way to discretize is up for discussion, but the experiments show quite convincingly that a compareable solution quality can be obtained with much less computational cost when using a non-uniform disretization.
+
+Further, the experiments suggest that there is a bigger advantage to use such a non-uniform discretization if the systems is operating at the boundary of the constraints, and needs to e.g. not exceed a positional constraint.
+Here, a larger lookahead is required, which can either be enabled by a larger discretization timestep (and acreifice performance by doing so) or via nonuniform discretization (which seems to sacrifice less performance).
 
 #### Next steps
 There are many things one could do here. First should probably be an implementation in C++ to see how the results and speedups hold up in a real implementation compared to the python versions I have here.
