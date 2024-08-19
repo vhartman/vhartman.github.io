@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "On variable timestepping in model predictive control"
+title:  "On non-uniform timestepping in model predictive control"
 #subtitle: "or: .."
 date:   2024-08-07 12:00:00 +0200
 permalink: /variable-dt-mpc/
@@ -18,7 +18,7 @@ Ever since I learned about MPC, I was wondering if the whole thing would not be 
 This can be motivated quite simply: We only need to be _really_ accurate for the timestep we are applying in the next control update.
 In general, the rest is only there to get some intuition on what happens after, and - at least intuitively - does not have to be as accurate.
 
-Code for everything can be found here.
+Code for everything can be found [here](https://github.com/vhartman/nu-nmpc/tree/master).
 
 # Motivating example
 
@@ -42,23 +42,36 @@ To ensure that we obtain some solution even when constraints are violated, we fo
 </div>
 <br>
 
-It should be clearly visible that the shorter horizons violate the constraint.
+The corresponding input that was used to obtain the plot above is 
+
+<div style="width: 90%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/nu_mpc/input_lin_sys_n_5.png" style="width:29%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/input_lin_sys_n_10.png" style="width:29%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/input_lin_sys_n_20.png" style="width:29%; padding: 10px">
+</div>
+<br>
+
+It should be clearly visible that the shorter horizons violate the constraint more{% include sidenote.html text='I want to point out that the longer horizons also violate the constraint, mainly due to how I implement the soft constraint handling. With a higher penalty, this violation decreases more. The correct way to handle this wuld be via lagrange multipliers.'%}.
 Intuitively, what happens here is that the short horizon leads to a priorization of accelerating quickly, and only 'getting to know' about the constraint too late to slow down, thereby violating the constraint{% include sidenote.html text='To a certain extent, this could be alleviated with the "correct" final cost and final constraint, however, the final cost is hard to get "correct", and constraining the final set to a velocity from which we can safely stop makes the system too conservative.'%}.
 
 For the second point, we now keep the prediction horizon the same for all runs, but we vary the size of the timestep that we use for the discretization, and plot the open loop cost below.
+We do only alter the prediction discretization, we still call the controller at the same frequency.
 Next to it, we plot the time it took the solver to find a solution for the MPC problem.
 
 <div style="width: 90%;margin:auto; text-align: center;">
   <img src="{{ site.url }}/assets/nu_mpc/lin_sys_cost.png" style="width:46%; padding: 10px">
   <img src="{{ site.url }}/assets/nu_mpc/lin_sys_comp_time.png" style="width:46%; padding: 10px">
+  <figcaption>Here, we have a prediction horizon of 0.8s, and therefore N=10 corresponds to dt=0.08s, N=20 to 0.04s, N=30 to 0.026s, and N=40 to 0.02s.</figcaption>
 </div>
+<br>
 
 While in this case, we always find _a_ solution, the solution quality when using a finer discretization is clearly superior{% include sidenote.html text='While there is a clear difference, it is not as large as it is in other (more nonlinear) systems like a quadcopter.'%}, but we also have the problem of a much larger compute time that is required.
 
 Then, as claimed in the intro, in an ideal world, we would like to have a combination of small timesteps, and long prediction horizon in order to obtain the best solution we can get.
 
 # What are we going to do?
-Instead of doing the normal MPC discretization strategy of 'every timestep is exactly the same' we'll increase the timesteps over the prediction horizon.
+Instead of doing the normal MPC discretization strategy of 'every timestep is exactly the same' we'll vary the timesteps over the prediction horizon.
+For now, we constrain ourself to a predetermined sequence of timesteps.
 
 The standard MPC formulation looks roughly like this:
 
@@ -134,15 +147,19 @@ To test the variable timestepping approach, I will have a detailed look at two p
   A solution looks like this:
   <div style="width: 90%;margin:auto; text-align: center;">
     <img src="{{ site.url }}/assets/nu_mpc/quadcopter_animation.gif" style="width:75%; padding: 10px">
+  <figcaption>The dot indicates the top of the quadrotor.</figcaption>
   </div>
 
 #### What are we actually testing?
 
 We are interested in figuring out if we can save time in our MPC controllers while keeping the performance approximately the same via variable timestepping.
-Thus, what we test is an MPC controller with various numbers of timesteps with a nonuniform discretization, and plot the computation time and the quality of the solution.
+Thus, what we test is an MPC controller with various numbers of timesteps $$N$$ with a non-uniform discretization, and plot the computation time and the quality (cost) of the solution.
+We compare these non-uniform discretizations to a constant discretization with the same number of timesteps.
+Note that this leads to larger timesteps in the beginning directly.
 
-What we would expect (hope to get) is something like a pareto optimality front, where the nonuniform discretization hopefully has the lowest cost at a given ompute time, respectively has the lowest compute time at a given cost.
+What we would expect (hope to get) is something like a pareto optimality front, where the non-uniform discretization hopefully has the lowest cost at a given compute time, respectively has the lowest compute time at a given cost.
 This would allow us to fairly seamlessly trade off computation time and solution quality.
+
 In order to isolate the compute time (which we want to analyze) from other effects, we'll fix the prediction horizon length. 
 In this first experiment, we'll test two different discretization strategies, namely a linearly incresing one, and a exponentially increasing one. That is, our timestep for the the linearly increasing approach is
 
@@ -160,18 +177,16 @@ $$
 
 with a similar constraint as before, which can again be (this time iteratievely) solved for alpha.
 
-We compare these nonuniform disretizations to a constant discretization with the same number of timesteps.
-Note that this leads to larger timesteps in the beginning directly.
-
-In the following, we'll run each experiment multiple times in order to ensure that we get sensible compute times, and not just one off results.
-
+As mentioned above, we run{% include sidenote.html text="We'll run each experiment multiple times in order to ensure that we get sensible compute times, and not just one off results. We then plot the median compute time and cost in addition to the uncertainty."%} the controller{% include sidenote.html text="For all the gory details of the implementation, please have a look at the implementation."%} on a given system - for now without noise - and plot the open loop cost of the resulting trajectory against the computation time that the controller took.
+Importantly, as compute time, we use the time that the solver took - that is, we ignore that more timesteps also need more time for linearization of the system dynamics.
 Before running this experiment on the systems introduced above, we run the MPC controllers on the masspoint example that we used as motivation:
+
 <div style="width: 90%;margin:auto; text-align: center;">
   <img src="{{ site.url }}/assets/nu_mpc/masspoint_cost_comp.png" style="width:46%; padding: 10px">
 </div>
 
 And as we hoped, we get a curve that results in better cost solutions at lower computation times.
-This is however a relatively simple system, and the cost difference is quite small.
+This is however a relatively simple system, and the cost difference is relatively small for the specific cost matrices we chose.
 
 Continuing with the cartpole system and the quadcopter looks like so:
 
@@ -213,18 +228,13 @@ Our two parameters to choose are then the discretization timestep and the predic
 
 Below, we plot{% include sidenote.html text="For the sake of plotting, we'll assume that the car will follow the track in any case reasonably well, but to be sure, we'll double check track violations."%} the lap times for a grid search over discretization timesteps and number of timesteps in the prediction horizon for the uniform controller, and the two non-uniform discretization strategies.
 
-<div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/nu_mpc/quadcopter_cost_comp.png" style="width:29%; padding: 10px">
-  <img src="{{ site.url }}/assets/nu_mpc/quadcopter_cost_comp.png" style="width:29%; padding: 10px">
-  <img src="{{ site.url }}/assets/nu_mpc/quadcopter_cost_comp.png" style="width:29%; padding: 10px">
-</div>
 
 # Conclusion & Outlook
 Looking at the results it is quite clear that one should not discretize the continuous control problem uniformly if one cares about performance.
-I think the specific way to discretize is up for discussion, but the experiments show quite convincingly that a compareable solution quality can be obtained with much less computational cost when using a non-uniform disretization.
+I think the specific way to discretize is up for discussion, but the experiments show quite convincingly that a compareable solution quality can be obtained with much less computational cost when using a non-uniform discretization.
 
 Further, the experiments suggest that there is a bigger advantage to use such a non-uniform discretization if the systems is operating at the boundary of the constraints, and needs to e.g. not exceed a positional constraint.
-Here, a larger lookahead is required, which can either be enabled by a larger discretization timestep (and sacrifice performance by doing so) or via nonuniform discretization (which seems to sacrifice less performance).
+Here, a larger lookahead is required, which can either be enabled by a larger discretization timestep (and sacrifice performance by doing so) or via non-uniform discretization (which seems to sacrifice less performance).
 
 I think this can be partially explained by the fact that a longer discretization step can be seen as a lowpass filter on the control signal, thereby disallowing high frequency actions{% include sidenote.html text='This is an idea that I need to devote some more time to. Intuitively it feels right to say that a given discretization allows actions only below some frequency. There should be some connection between system performance and possible control frequency.'%}.
 If we have a system that requres high frequency actions sometimes, this non-uniform discretization is helpful.
@@ -235,9 +245,14 @@ Of course this also means that since we only allow high frequency actions at the
 There are many things one could do here. First should probably be an implementation in C++ to see how the results and speedups hold up in a real implementation compared to the python versions I have here.
 I have no reason to expect drastic differences, but you never know.
 
+In addition, there are a few things that should be done to strengthen the analysis:
+- Analyze different start states and ensure that the results hold up, and we did not only 'find' system-cost-state combinations that lend itself to the non-uniform discretization
+- Look at the behaviour for 'more realistic' settings: Check how this approach handles disturbances, noise, and how this approach works when employed in an RTI scheme.
+- Influence of the integrator that is used for discretization on the strategy. I found that with a simple euler integrator, large timesteps did not work well anymore (this means that sometimes the uniform controller works a bit better than in the plots above, and sometimes drastically worse. Roughly the same for the non-uniform discretization).
+- Another metric for how good your controller is is how well the predicted path is being followed, i.e. answering the question 'are we actually at the state that we predicted $$x$$ seconds ago?' For a good controller, the prediction should closely align with where we actually end up. At least in the scenario with little noise.
+
 Then, there are a variety of other things one should have a look at and analyze further. Amongst other things
 
-- Influence of the integrator that is used for discretization on the strategy. I found that with a simple euler integrator, large timesteps did not work well anymore (this means that sometimes the uniform controller works a bit better than in the plots above, and sometimes drastically worse. Roughly the same for the nonuniform discretization).
 - Conditioning the stepsize on something, possibly a reference trajectory, or the solution of the previous timestep
   - I do feel like it should be possible to figure out some approach to figure out where fine timesteps are required, and where we do not need a fine discretizaztion online in an RTI scheme.
   - Similarly, incorporating stepsize control from numerical integration in MPC like approaches might lead to a good stepsize-choice-policy.
