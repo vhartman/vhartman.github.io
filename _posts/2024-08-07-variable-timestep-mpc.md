@@ -2,7 +2,7 @@
 layout: post
 title:  "Initial tests with non-uniform discretization in model predictive control"
 #subtitle: "or: .."
-date:   2024-08-07 12:00:00 +0200
+date:   2024-08-22 12:00:00 +0200
 permalink: /variable-dt-mpc/
 categories: mpc science
 ---
@@ -22,7 +22,7 @@ This is computationally not feasible.
 
 We'll have a look here if the approach outlined above (not discretizing the MPC problem uniformly) can somehow combine the goals of being accurate while also being computationally efficient, and therefore either give better solutions, or give similar solutions at lower copmutational cost.
 
-Code for everything can be found [here](https://github.com/vhartman/nu-nmpc/tree/master).
+Code for everything can be found [here](https://github.com/vhartman/nu-nmpc/tree/blog_version).
 
 # Motivating example
 
