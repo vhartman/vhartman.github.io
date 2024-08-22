@@ -1,11 +1,18 @@
 ---
 layout: post
-title:  "On non-uniform timestepping in model predictive control"
+title:  "Initial tests with non-uniform discretization in model predictive control"
 #subtitle: "or: .."
 date:   2024-08-07 12:00:00 +0200
 permalink: /variable-dt-mpc/
 categories: mpc science
 ---
+
+<p class="preface">
+The model predicitve control you learn about during your studies is always presented with a uniform discretization.
+Ever since I learned about MPC, I was wondering if the whole thing would not be much more efficient by using a variable timestep.
+This can be motivated quite simply: We only need to be accurate for the timestep we are applying in the next control update.
+In general, the rest is only there to get some intuition on what happens after, and - at least intuitively - does not have to be as accurate.
+</p>
 
 Model predictive control is a control method that uses a model to predict what will happen in the future.
 With this prediction, one can find the best control input for some user-defined objective function.
@@ -13,10 +20,7 @@ When implementing this, there is always a trade-off between how much control aut
 Common wisdom is that we would like to have a prediction that goes into the future as far as possible, but we would also like to have a very good prediction accuracy.
 This is computationally not feasible.
 
-The model predicitve control you learn about during your studies is always presented with uniform timestepping.
-Ever since I learned about MPC, I was wondering if the whole thing would not be much more efficient by using a variable timestep.
-This can be motivated quite simply: We only need to be _really_ accurate for the timestep we are applying in the next control update.
-In general, the rest is only there to get some intuition on what happens after, and - at least intuitively - does not have to be as accurate.
+We'll have a look here if the approach outlined above (not discretizing the MPC problem uniformly) can somehow combine the goals of being accurate while also being computationally efficient, and therefore either give better solutions, or give similar solutions at lower copmutational cost.
 
 Code for everything can be found [here](https://github.com/vhartman/nu-nmpc/tree/master).
 
@@ -90,9 +94,9 @@ Compared to this more or less standard formulation, I want to have a look at
 
 $$
 \begin{align}
-u^* = & \min_{x, u} j_N(x_N) + \sum_i^{N-1} \Delta t_i j(x_i, u_i)\\
+u^* = & \min_{x, u} j_N(x_N) + \sum_i^{N-1} \color{red}{\Delta t_i} j(x_i, u_i)\\
 \text{s.t.} \ \ & x_0 = x(0)\\
-&x_{t+i} = x_i + \Delta t_i f(x_i, u_i) \\
+&x_{t+i} = x_i + \color{red}{\Delta t_i} f(x_i, u_i) \\
 & x_i\in \mathcal{X},  u_i \in \mathcal{U}\\
 & x_i\leq g(x_i, u_i)
 \end{align}
@@ -100,9 +104,10 @@ $$
 
 which is virtually the same, except that there is the index $$i$$ on the timestep $$\Delta t$$, and the stage-cost is scaled by the magnitude of the timestep.
 
-Of course, this variable timestepping approach could be implemented in any optimal control setting with a receding horizon such as vanilla MPC, dynamic programming approaches, or MPPI (model predictive path integral control){% include sidenote.html text='It is more questionable if this works well for MPPI, since we do not do traditional optimization here which scales with the number of desicion variables. It could work well, as it still reduces the size of the decision space.'%}{% include sidenote.html text='It might even be advantageous in some settings of a trajectory optimization setting to not use completely uniform discretizations.'%}.
+Of course, this variable timestepping approach could be implemented in any optimal control setting with a receding horizon such as vanilla MPC, dynamic programming approaches, or MPPI (model predictive path integral control){% include sidenote.html text='It is more questionable if this works well for MPPI, since we do not do traditional optimization here where the compute time scales with the number of decision variables. It could work well, as it still reduces the size of the decision space.'%}{% include sidenote.html text='It might even be advantageous in some settings of a trajectory optimization setting to not use completely uniform discretizations.'%}.
 
-In this post, I will have a look at an iLQR implementation, and a MPC implementation with variable timesteps.
+In this post, I will have a look at a MPC implementation with variable timesteps.
+In the code, there is also an iLQR controller and an MPPI controller with variable timesteps, but I did not properly benchmark it.
 
 #### Related work
 I always assumed that something similar to what I had in mind here must already have been done _somewhere_, but maybe its just not the thing that the academic community is interested in?
@@ -126,8 +131,7 @@ There were two more papers that I could find that go in a similar direction, alb
 - [A Variable-Sampling Time Model Predictive Control Algorithm for Improving Path-Tracking Performance of a Vehicle](https://www.mdpi.com/1424-8220/21/20/6845)
 - [Variable Sampling MPC via Differentiable Time-Warping Function](https://arxiv.org/abs/2301.08397)
 
-The objective in those papers seems to be an increased accuracy, not a decreased computational cost though.
-
+The objective in those papers seems to be an increased accuracy, not a decreased computational cost though, but I would not be surprised if this approach could also be used to obtain better performing controllers at a specific compute budget.
 
 # Experiments
 
@@ -150,15 +154,16 @@ To test the variable timestepping approach, I will have a detailed look at two p
   <figcaption>The dot indicates the top of the quadrotor.</figcaption>
   </div>
 
-#### What are we actually testing?
+#### Experiments
 
 We are interested in figuring out if we can save time in our MPC controllers while keeping the performance approximately the same via variable timestepping.
 Thus, what we test is an MPC controller with various numbers of timesteps $$N$$ with a non-uniform discretization, and plot the computation time and the quality (cost) of the solution.
-We compare these non-uniform discretizations to a constant discretization with the same number of timesteps.
-Note that this leads to larger timesteps in the beginning directly.
+We compare these non-uniform discretizations to a constant discretization with the same number of timesteps{% include sidenote.html text="Note that this leads to larger timesteps in the beginning directly, and would need to be dealt with specifically in some cases when deploying to a robot."%}.
 
 What we would expect (hope to get) is something like a pareto optimality front, where the non-uniform discretization hopefully has the lowest cost at a given compute time, respectively has the lowest compute time at a given cost.
 This would allow us to fairly seamlessly trade off computation time and solution quality.
+
+**Discretization strategies**
 
 In order to isolate the compute time (which we want to analyze) from other effects, we'll fix the prediction horizon length. 
 In this first experiment, we'll test two different discretization strategies, namely a linearly incresing one, and a exponentially increasing one. That is, our timestep for the the linearly increasing approach is
@@ -176,8 +181,14 @@ $$
 $$
 
 with a similar constraint as before, which can again be (this time iteratievely) solved for alpha.
+Compared to these two discretization strategies, we have the uniform approach, where 
 
-As mentioned above, we run{% include sidenote.html text="We'll run each experiment multiple times in order to ensure that we get sensible compute times, and not just one off results. We then plot the median compute time and cost in addition to the uncertainty."%} the controller{% include sidenote.html text="For all the gory details of the implementation, please have a look at the implementation."%} on a given system - for now without noise - and plot the open loop cost of the resulting trajectory against the computation time that the controller took.
+$$
+\Delta t_i = \frac{T_{pred}}{N}
+$$
+
+#### What are we actually testing?
+As mentioned above, we run{% include sidenote.html text="We'll run each experiment multiple times in order to ensure that we get sensible compute times, and not just one off results. We then plot the median compute time and cost in addition to the uncertainty."%} the controller{% include sidenote.html text="For all the gory details of the implementation, please have a look at the code."%} on a given system - for now without noise - and plot the open loop cost of the resulting trajectory against the computation time that the controller took.
 Importantly, as compute time, we use the time that the solver took - that is, we ignore that more timesteps also need more time for linearization of the system dynamics.
 Before running this experiment on the systems introduced above, we run the MPC controllers on the masspoint example that we used as motivation:
 
@@ -193,48 +204,83 @@ Continuing with the cartpole system and the quadcopter looks like so:
 <div style="width: 90%;margin:auto; text-align: center;">
   <img src="{{ site.url }}/assets/nu_mpc/cartpole_cost_comp.png" style="width:46%; padding: 10px">
   <img src="{{ site.url }}/assets/nu_mpc/quadcopter_cost_comp.png" style="width:46%; padding: 10px">
+  <figcaption>Left is the cartpole system, right is the quadcopter.</figcaption>
 </div>
+<br>
 
-We clearly see what we hoped to see, and apparently get savings of up to 80% percent in computation time, while staying relatively close to the 'optimal' solution that we get with a fine constant time discretization.
+In general, we clearly see what we hoped to see, and apparently get savings of up to 80% percent in computation time, while staying relatively close to the 'optimal' solution that we get with a fine constant time discretization.
 
-Similar to the motivational experiment before, the cost differences that can be obtained are not _huge_ in these experiments.
-This can partially be ascribed to the fact that the systems are still relatively simple.
-However, in the cartpole experiment, we can also see a nice demonstration of the non-uniform discretization: Controllers with a lower compute time (~50% of the uniformly discretized) MPC controller still find a solution, and achieve a good cost.
+One thing to point out here is that the unifom discretization fails for a low number of discretization points, while the non-uniform discretization still finds solutions even at very coarse discretizations.
+In the cartpole experiment, we can also see a nice demonstration of the non-uniform discretization: Controllers with a lower compute time (~50% of the uniformly discretized) MPC controller still find a solution, and achieve a good cost.
 Compared to that, all solutions with a cost >1000 do not find a solution, and do not manage to control the cart pole system to the instable equilibrium at the top.
 
 It does appear like there is a slight difference in choice of non-uniform discretization, namely the linear slightly outperforming the exponential approach.
 However, the difference is small and might very well be noise.
 
 #### A brief look at a more complex system
-After these quantitative tests, I want to have a look at steering a racecar around a racetrack using model predictive contouring control (MPCC).
+After these quantitative tests, I want to have a look at steering a racecar around a racetrack using model predictive contouring control ([MPCC](https://arxiv.org/abs/1711.07300)).
 
 The dynamics of the racecar are taken from here, and are approximated by the bycicle model.
 The state is 8 dimensional, and the input has two dimensions.
 As MPCC introduces additional states and inputs, the resulting system is 10 dimensional, with three input states.
 
-The racetrack also has boundaries that we will introduce by enforcing a maximum distance between the middle line and the center of the car.
+The racetrack - for now a simple figure 8 - also has boundaries that we will introduce by enforcing a maximum distance between the middle line and the center of the car.
 The constraints are then velocity constraints, acceleration constraints, and the track constraints.
-A possible solution looks like this:
-<div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/nu_mpc/racecar_sol.gif" style="width:75%; padding: 10px">
+Possible solutions look like this:
+  <div style="width: 90%;margin:auto; text-align: center;">
+  <div style="width: 150%; margin-left: 50%; transform: translateX(-50%); text-align: center;">
+    <img src="{{ site.url }}/assets/nu_mpc/amzracecar_animation_fig8_short_crop.gif" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/nu_mpc/amzracecar_animation_fig8_crop.gif" style="width:45%; padding: 10px">
+  </div>
+  <figcaption>On the left, we have a prediction horizon of T=0.5s, where on the right we have a horizon of T=1s.</figcaption>
+<br>
 </div>
-Here, the rectangle is the car, and the blue line is the predicted path at that time-instant.
+Here, the grey line is the reference path, the black lines are the track constraints, the rectangle is the car, the blue line is the predicted path at that time-instant, the orange line is the path the car took, and the blue dot is the projection of the car onto the reference path.
 
-The setting we consider now for designing a controller is one where we assume that we have a fixed compute budget allocated for a controller.
-We then want to find the controller that stays in this compute budget, and minimizes some cost functional. 
-In our case, the cost is the minimization of the laptimes while staying in the track limits.
-Our two parameters to choose are then the discretization timestep and the prediction horizon.
+As before, we fix the prediction horizon, so that the parameter to look at is the number of discretization timesteps.
+In our case, the cost is the minimization of the laptimes while staying in the track limits, which we hope to achieve with the MPCC controller.
 
+Of course, we could also vary the prediction horizon to see if a different combination of $$(N, T_{pred})$$ might yield better results than the one we are looking at here.
+However, I decided that this is out of scope.
+Additionally, I do believe that even if a different tuple $$(N, T_{pred})$$ would give better results for the uniform discretization, the non-uniform discretization should still yield better results overall.
 
-Below, we plot{% include sidenote.html text="For the sake of plotting, we'll assume that the car will follow the track in any case reasonably well, but to be sure, we'll double check track violations."%} the lap times for a grid search over discretization timesteps and number of timesteps in the prediction horizon for the uniform controller, and the two non-uniform discretization strategies.
+Since we are not directly minimizing lap time using the MPCC controller, but rather the surrogate function 'maximize progress', only looking at the laptime as quality criterion can be misleading{% include sidenote.html text='In an ideal world, we would look directly at the cost we are actually trying to minimize for comparison, but I am too lazy to implement this for the MPCC controller.'%}.
+Thus, we also take into account that different controllers might violate constraints at different rates, and plot both laptimes and contraint violations against the computation time.
 
+<div style="width: 90%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/nu_mpc/amzracecar_laptimes_comp_fig8.png" style="width:46%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/amzracecar_violations_comp_fig8.png" style="width:46%; padding: 10px">
+</div>
+
+Here, it is not as clear to me that the non-uniform discretization is overall better than the standard uniform discretization.
+While the non-uniform discretization is better on not violating the constraints, the uniform discretization leads to lower laptimes.
+These are clearly directly related, and it might be an interesting experiment to increase the penalties for the constraints (respectively implement them properly and see what happens).
+
+Finally, we run the racecar on the same racetrack as in the original paper from [Alex Liniger](https://github.com/alexliniger/MPCC/tree/master):
+<div style="width: 90%;margin:auto; text-align: center;">
+  <div style="width: 150%; margin-left: 50%; transform: translateX(-50%); text-align: center;">
+    <img src="{{ site.url }}/assets/nu_mpc/amzracecar_animation_race_short_crop.gif" style="width:45%; padding: 10px">
+    <img src="{{ site.url }}/assets/nu_mpc/amzracecar_animation_race_crop.gif" style="width:45%; padding: 10px">
+  </div>
+  <figcaption>On the left, we have a prediction horizon of T=0.5s, where on the right we have a horizon of T=1s.</figcaption>
+<br>
+</div>
+
+We again plot the same things as we did above for the racecar (with a prediction horizon of T=1s):
+
+<div style="width: 90%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/nu_mpc/amzracecar_laptimes_comp_race.png" style="width:46%; padding: 10px">
+  <img src="{{ site.url }}/assets/nu_mpc/amzracecar_violations_comp_race.png" style="width:46%; padding: 10px">
+</div>
+
+Interestingly, in this case, we see that the non-uniform discretization both leads to better laptimes, and a lower violation of the track constraints.
 
 # Conclusion & Outlook
 Looking at the results it is quite clear that one should not discretize the continuous control problem uniformly if one cares about performance.
 I think the specific way to discretize is up for discussion, but the experiments show quite convincingly that a compareable solution quality can be obtained with much less computational cost when using a non-uniform discretization.
 
 Further, the experiments suggest that there is a bigger advantage to use such a non-uniform discretization if the systems is operating at the boundary of the constraints, and needs to e.g. not exceed a positional constraint.
-Here, a larger lookahead is required, which can either be enabled by a larger discretization timestep (and sacrifice performance by doing so) or via non-uniform discretization (which seems to sacrifice less performance).
+Here, a larger lookahead is required, which can either be enabled by a larger discretization timestep (and sacrifice performance by doing so) or via non-uniform discretization which seems to sacrifice less performance in the experiments I made here.
 
 I think this can be partially explained by the fact that a longer discretization step can be seen as a lowpass filter on the control signal, thereby disallowing high frequency actions{% include sidenote.html text='This is an idea that I need to devote some more time to. Intuitively it feels right to say that a given discretization allows actions only below some frequency. There should be some connection between system performance and possible control frequency.'%}.
 If we have a system that requres high frequency actions sometimes, this non-uniform discretization is helpful.
