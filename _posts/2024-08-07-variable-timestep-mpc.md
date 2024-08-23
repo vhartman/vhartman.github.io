@@ -8,7 +8,7 @@ categories: mpc science
 ---
 
 <p class="preface">
-The model predicitve control you learn about during your studies is always presented with a uniform discretization.
+The model predictive control you learn about during your studies is always presented with a uniform discretization.
 Ever since I learned about MPC, I was wondering if the whole thing would not be much more efficient by using a variable timestep.
 This can be motivated quite simply: We only need to be accurate for the timestep we are applying in the next control update.
 In general, the rest is only there to get some intuition on what happens after, and - at least intuitively - does not have to be as accurate.
@@ -20,7 +20,7 @@ When implementing this, there is always a trade-off between how much control aut
 Common wisdom is that we would like to have a prediction that goes into the future as far as possible, but we would also like to have a very good prediction accuracy.
 This is computationally not feasible.
 
-We'll have a look here if the approach outlined above (not discretizing the MPC problem uniformly) can somehow combine the goals of being accurate while also being computationally efficient, and therefore either give better solutions, or give similar solutions at lower copmutational cost.
+We'll have a look here if the approach outlined above (not discretizing the MPC problem uniformly) can somehow combine the goals of being accurate while also being computationally efficient, and therefore either give better solutions, or give similar solutions at lower computational cost.
 
 Code for everything can be found [here](https://github.com/vhartman/nu-nmpc/tree/blog_version).
 
@@ -55,8 +55,8 @@ The corresponding input that was used to obtain the plot above is
 </div>
 <br>
 
-It should be clearly visible that the shorter horizons violate the constraint more{% include sidenote.html text='I want to point out that the longer horizons also violate the constraint, mainly due to how I implement the soft constraint handling. With a higher penalty, this violation decreases more. The correct way to handle this wuld be via lagrange multipliers.'%}.
-Intuitively, what happens here is that the short horizon leads to a priorization of accelerating quickly, and only 'getting to know' about the constraint too late to slow down, thereby violating the constraint{% include sidenote.html text='To a certain extent, this could be alleviated with the "correct" final cost and final constraint, however, the final cost is hard to get "correct", and constraining the final set to a velocity from which we can safely stop makes the system too conservative.'%}.
+It should be clearly visible that the shorter horizons violate the constraint more{% include sidenote.html text='I want to point out that the longer horizons also violate the constraint, mainly due to how I implement the soft constraint handling. With a higher penalty, this violation decreases more. The correct way to handle this would be via lagrange multipliers.'%}.
+Intuitively, what happens here is that the short horizon leads to a prioritization of accelerating quickly, and only 'getting to know' about the constraint too late to slow down, thereby violating the constraint{% include sidenote.html text='To a certain extent, this could be alleviated with the "correct" final cost and final constraint, however, the final cost is hard to get "correct", and constraining the final set to a velocity from which we can safely stop makes the system too conservative.'%}.
 
 For the second point, we now keep the prediction horizon the same for all runs, but we vary the size of the timestep that we use for the discretization, and plot the open loop cost below.
 We do only alter the prediction discretization, we still call the controller at the same frequency.
@@ -118,13 +118,13 @@ Acados was the only library that I found that has the option to use variable tim
 Recently, when reading something completely different, I found papers that follow a similar approach: 
 - [STORM: An Integrated Framework for Fast Joint-Space Model-Predictive Control for Reactive Manipulation](https://proceedings.mlr.press/v164/bhardwaj22a/bhardwaj22a.pdf) which uses the approach for MPPI.
 - [An integrated system for real-time Model Predictive Control of
-humanoid robots](https://homes.cs.washington.edu/~todorov/papers/ErezHumanoids13.pdf) which mentions this approach at thevery end of section III.
+humanoid robots](https://homes.cs.washington.edu/~todorov/papers/ErezHumanoids13.pdf) which mentions this approach at the very end of section III.
 - [Distributing Collaborative Multi-Robot Planning with Gaussian Belief Propagation](https://arxiv.org/pdf/2203.11618.pdf) - there is a brief mention of 'increasing time-gaps between consecutive states', but this is never elaborated after, and not really visible in the video demonstration.
 
 I am interested in how you should choose your timesteps, and what improvement you can expect _at a constant compute time_.
 There is little discussion of that in any of those papers above, only the mention that "there is a design tradeoff", and that "small steps in the beginning, and large steps later" are better.
 
-And while I completely belive that this strategy is the correct one, I would like to see some more experiments on it, get an intuition how much compute time can be saved, and check if this is really the best strategy.
+And while I completely believe that this strategy is the correct one, I would like to see some more experiments on it, get an intuition how much compute time can be saved, and check if this is really the best strategy.
 
 There were two more papers that I could find that go in a similar direction, albeit going a step further: they are automatically adjusting the timestep-size to get a dense representation of the system at points where it matters, and a finer one where it does not:
 
@@ -212,7 +212,7 @@ In general, we clearly see what we hoped to see, and apparently get savings of u
 
 One thing to point out here is that the unifom discretization fails for a low number of discretization points, while the non-uniform discretization still finds solutions even at very coarse discretizations.
 In the cartpole experiment, we can also see a nice demonstration of the non-uniform discretization: Controllers with a lower compute time (~50% of the uniformly discretized) MPC controller still find a solution, and achieve a good cost.
-Compared to that, all solutions with a cost >1000 do not find a solution, and do not manage to control the cart pole system to the instable equilibrium at the top.
+Compared to that, all solutions with a cost >1000 do not find a solution, and do not manage to control the cart pole system to the unstable equilibrium at the top.
 
 It does appear like there is a slight difference in choice of non-uniform discretization, namely the linear slightly outperforming the exponential approach.
 However, the difference is small and might very well be noise.
@@ -220,7 +220,7 @@ However, the difference is small and might very well be noise.
 #### A brief look at a more complex system
 After these quantitative tests, I want to have a look at steering a racecar around a racetrack using model predictive contouring control ([MPCC](https://arxiv.org/abs/1711.07300)).
 
-The dynamics of the racecar are taken from here, and are approximated by the bycicle model.
+The dynamics of the racecar are taken from here, and are approximated by the bicycle model.
 The state is 8 dimensional, and the input has two dimensions.
 As MPCC introduces additional states and inputs, the resulting system is 10 dimensional, with three input states.
 
@@ -283,7 +283,7 @@ Further, the experiments suggest that there is a bigger advantage to use such a 
 Here, a larger lookahead is required, which can either be enabled by a larger discretization timestep (and sacrifice performance by doing so) or via non-uniform discretization which seems to sacrifice less performance in the experiments I made here.
 
 I think this can be partially explained by the fact that a longer discretization step can be seen as a lowpass filter on the control signal, thereby disallowing high frequency actions{% include sidenote.html text='This is an idea that I need to devote some more time to. Intuitively it feels right to say that a given discretization allows actions only below some frequency. There should be some connection between system performance and possible control frequency.'%}.
-If we have a system that requres high frequency actions sometimes, this non-uniform discretization is helpful.
+If we have a system that requires high frequency actions sometimes, this non-uniform discretization is helpful.
 
 Of course this also means that since we only allow high frequency actions at the start of the prediction window, there must be some approach that outperforms ours if we need a high frequency action later in the prediction window.
 
