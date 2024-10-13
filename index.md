@@ -28,10 +28,8 @@ I have an open list of ideas for which I am looking for collaborators (external 
 ## Publications
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
-### Preprints/Under Review
-- [iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning](https://quimortiz.github.io/idbastar/), Joaquim Ortiz-Haro, Wolfgang Hoenig, **Valentin N. Hartmann**, Marc Toussaint, [[arxiv](https://arxiv.org/abs/2311.03553)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=tGuPuihXSbg)]
-
 ### Journals
+- [iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning](https://quimortiz.github.io/idbastar/), Joaquim Ortiz-Haro, Wolfgang Hoenig, **Valentin N. Hartmann**, Marc Toussaint, IEEE T-RO 2024 [[arxiv](https://arxiv.org/abs/2311.03553)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=tGuPuihXSbg)]
 - [*Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly*](/multi-robot/), **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint. IEEE T-RO 2022. \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\], \[[paper](https://ieeexplore.ieee.org/document/9868234)\]
 - *Leveraging Building Material as Part of the In-Plane Robotic Kinematic System for Collective Construction*, Samuel Leder, H. Kim, Ozgur S. Oguz, Nicolas Kubail Kalousdian, **Valentin N. Hartmann**, Achim Menges, Marc Toussaint, Metin Sitti. Advanced Science 2022\[[paper](http://doi.org/10.1002/advs.202201524)\]
 - *Learning Robotic Manipulation of Natural Materials with Variable Properties for Construction Tasks*, Nicolas Kubail Kalousdian, Grzegorz Łochnicki, **Valentin N. Hartmann**, Samuel Leder, Ozgur S. Oguz, Achim Menges, Marc Toussaint, IEEE Robotics and Automation Letters (RA-L) 2022 \[[paper](https://ieeexplore.ieee.org/document/9735376)\]
