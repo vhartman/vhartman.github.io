@@ -1,0 +1,375 @@
+---
+layout: paper_page
+title: A Benchmark for Optimal Multi-Modal Multi-Robot Multi-Goal Path Planning with Given Robot Assignment
+permalink: /mrmg-planning/
+---
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="TAPAS: a dataset for Multi agent task and motion planning.">
+  <meta name="keywords" content="TAPAS, TAMP">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Benchmark for Optimal Multi-Modal Multi-Robot Multi-Goal Path Planning with Given Robot Assignment
+  </title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{'/assets/mrmg/static/css/bulma.min.css'| relative_url}}">
+  <!-- <link rel="stylesheet" href="./static/css/bulma-carousel.min.css"> -->
+  <!-- <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
+  <link rel="stylesheet" href="{{'/assets/mrmg/static/css/fontawesome.all.min.css' | relative_url}}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="{{'/assets/mrmg/static/css/index.css'|relative_url}}">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="{{'assets/mrmg/static/js/fontawesome.all.min.js'|relative_url}}"></script>
+
+</head>
+
+<section class="hero" style=".hero * {
+    all: unset;
+    display: revert;
+}">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">A Benchmark for Optimal Multi-Modal Multi-Robot Multi-Goal Path
+            Planning with Given Robot Assignment</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://vhartmann.com/">Valentin N. Hartmann</a>,</span>
+            <span class="author-block">
+              Tirza Heinle,</span>
+            <span class="author-block">
+              <a href="https://crl.ethz.ch/people/coros/index.html">Stelian Coros</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Computational Robotics Lab, Department of Computer Science, ETH Zurich</span>
+          </div>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="./static/tapas_paper.pdf" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/vhartman/multirobot-pathplanning-benchmark"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!--<span class="link-block">
+                <a href="anonymous"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github" aria-hidden="true"></i>
+                  </span>
+                  <span>Scene Generator</span>
+                  </a>
+              </span>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div style="width: 100%; justify-content: center; align-items: center; margin: auto; text-align: center;">
+        <video id="teaser" autoplay muted loop playsinline width="96.6%">
+          <source
+            src="https://github.com/vhartman/multirobot-pathplanning-benchmark/raw/refs/heads/master/assets/crl_four_no_bug.mp4            "
+            type="video/mp4">
+        </video>
+        <!-- <br>
+        <br>
+        
+        <video id="teaser" autoplay muted loop playsinline width="49%">
+          <source
+            src="https://github.com/vhartman/multirobot-pathplanning-benchmark/raw/refs/heads/master/assets/box_rearrangement.mp4"
+            type="video/mp4">
+        </video>
+        <video id="teaser" autoplay muted loop playsinline width="47.2%">
+          <source
+            src="https://github.com/vhartman/multirobot-pathplanning-benchmark/raw/refs/heads/master/assets/box_stacking_four_in_use.mp4"
+            type="video/mp4">
+        </video> -->
+      </div>
+
+      <br>
+
+      <h2 class="subtitle has-text-centered">
+        A benchmark for optimal multi robot planning over long horizons.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In many industrial robotics applications, multiple robots are working in a shared workspace to complete a
+            set of tasks as quickly as possible. Such settings can be treated as multi-modal multi-robot multi-goal path
+            planning problems, where each robot has to reach an ordered sequence of goals. Existing approaches to this
+            type of problem solve this using prioritization or assume synchronous completion of tasks, and are thus
+            neither optimal nor complete. We formalize this problem as a single path planning problem and introduce a
+            benchmark encompassing a diverse range of problem instances including scenarios with various robots,
+            planning horizons, and collaborative tasks such as handovers.
+          </p>
+          <p>
+            Along with the benchmark, we adapt an RRT* and a PRM*
+            planner to serve as a baseline for the planning problems.
+            Both planners work in the composite space of all robots and
+            introduce the required changes to work in our setting.
+            Unlike existing approaches, our planner and formulation is
+            not restricted to discretized 2D workspaces, supports a changing
+            environment, and works for heterogeneous robot teams over
+            multiple modes with different constraints, and multiple goals.
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Dataset. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Multi Robot Multi Goal Motion Planning</h2>
+        <div class="content has-text-justified">
+          <p>
+            This benchmark addresses multi-modal, multi-robot, multi-goal path planning, where multiple robots must
+            reach ordered goal sequences while considering interactions like object handovers. Unlike traditional
+            methods, our approach is not restricted to 2D workspaces, supports dynamic environments, and enables
+            heterogeneous robot teams.
+          </p>
+        </div>
+
+        <h2 class="title is-4">Problem Setting</h2>
+        <div style="width: 100%; justify-content: center; align-items: center; margin: auto; text-align: center;">
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            The problem is formalized as a single composite-space planning problem, where each robot
+            follows a sequence of goals while avoiding collisions. Some goals require multi-robot coordination, leading
+            to mode transitions where environmental constraints change dynamically.
+          </p>
+
+          <p>
+            The goal sequence can be specified as a fully ordered sequence, or more flexibly as a dependency graph
+            between tasks:
+          </p>
+
+          <div style="width: 100%; justify-content: center; align-items: center; margin: auto; text-align: center;">
+            <img
+              src="https://raw.githubusercontent.com/vhartman/multirobot-pathplanning-benchmark/refs/heads/master/assets/goal_specifications.png"
+              style="width:100%; object-fit: cover; object-position: bottom ;" />
+          </div>
+
+        </div>
+
+        <h2 class="title is-4">Scenarios</h2>
+        <div style="width: 100%; justify-content: center; align-items: center; margin: auto; text-align: center;">
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            The benchmark includes 21 diverse problem instances, ranging from simple validation cases to complex,
+            high-dimensional settings with up to 5 robots and 74 subgoals. Tasks include rearrangement, stacking, mobile
+            assembly, and cooperative manipulation.
+          </p>
+          <p>
+            Some examples with their corresponding subgoals can be seen below:
+          </p>
+
+          <div style="width: 100%; justify-content: center; align-items: center; margin: auto; text-align: center;">
+            <img
+              src="https://github.com/vhartman/multirobot-pathplanning-benchmark/blob/master/assets/modes/piano_modes.gif?raw=true"
+              style="width:20.5%; object-fit: cover; object-position: bottom ;" />
+            <img
+              src="https://github.com/vhartman/multirobot-pathplanning-benchmark/blob/master/assets/modes/random_2d_modes.gif?raw=true"
+              style="width:20.5%; object-fit: cover; object-position: bottom ;" />
+            <img
+              src="https://github.com/vhartman/multirobot-pathplanning-benchmark/blob/master/assets/modes/handover_2d_modes.gif?raw=true"
+              style="width:20.5%; object-fit: cover; object-position: bottom ;" />
+            <img
+              src="https://github.com/vhartman/multirobot-pathplanning-benchmark/blob/master/assets/modes/bottles_modes.gif?raw=true"
+              style="width:24.5%; object-fit: cover; object-position: bottom ;" />
+          </div>
+
+          <br>
+
+          <div style="width: 100%; justify-content: center; align-items: center; margin: auto; text-align: center;">
+            <img
+              src="https://github.com/vhartman/multirobot-pathplanning-benchmark/blob/master/assets/modes/welding_modes.gif?raw=true"
+              style="width:24.5%; object-fit: cover; object-position: bottom ;" />
+            <img
+              src="https://github.com/vhartman/multirobot-pathplanning-benchmark/blob/master/assets/modes/box_stacking_modes.gif?raw=true"
+              style="width:24.5%; object-fit: cover; object-position: bottom ;" />
+            <img
+              src="https://github.com/vhartman/multirobot-pathplanning-benchmark/blob/master/assets/modes/triple_waypoints_modes.gif?raw=true"
+              style="width:24.5%; object-fit: cover; object-position: bottom ;" />
+            <img
+              src="https://github.com/vhartman/multirobot-pathplanning-benchmark/blob/master/assets/modes/crl_two_modes.gif?raw=true"
+              style="width:24.5%; object-fit: cover; object-position: bottom ;" />
+          </div>
+          <br>
+
+          <p>
+            Some of the intermediate configurations we show there are in collision since we simply reset the agent
+            without a goal to its home pose.
+          </p>
+        </div>
+
+
+        <h2 class="title is-4">Motion Planners</h2>
+        <div class="content has-text-justified">
+          <p>
+            Two baseline planners—an RRT*-based planner and a PRM*-based planner—are adapted to handle mode transitions
+            and dependency constraints. Both are probabilistically complete and asymptotically optimal, with locally
+            informed sampling and partial shortcutting for improved efficiency.
+          </p>
+        </div>
+
+
+        <h2 class="title is-6">Locally Informed Sampling</h2>
+        <div class="content has-text-justified">
+          <p>
+            Standard informed sampling techniques struggle in high-dimensional, multi-goal problems due to large search
+            spaces. To improve efficiency, we introduce locally informed sampling, which selects sampling regions based
+            on the structure of the current best path. By sampling between intermediate waypoints rather than globally,
+            this method accelerates convergence and enhances planner performance.
+          </p>
+        </div>
+
+
+
+        <!--
+        <h2 class="title is-4">Getting Started</h2>
+        <div class="content has-text-justified">
+          <p>
+            ...
+          </p>
+
+        </div> -->
+      </div>
+    </div>
+    <!--/ Dataset. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Dataset. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Experiments</h2>
+        <div class="content has-text-justified">
+          <p>
+            Below, we show plans from multiple environments.
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <div style="display: flex; justify-content: center; gap: 2%; text-align: center;">
+            <div>
+              <p><strong>Multi Arm Reorientation</strong></p>
+              <video id="teaser" autoplay muted loop playsinline width="94%">
+                <source
+                  src="https://github.com/vhartman/multirobot-pathplanning-benchmark/raw/refs/heads/master/assets/box_rearrangement.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+            <div>
+              <p><strong>Box Stacking</strong></p>
+              <video id="teaser" autoplay muted loop playsinline width="100%">
+                <source
+                  src="https://github.com/vhartman/multirobot-pathplanning-benchmark/raw/refs/heads/master/assets/box_stacking_four_in_use.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <br>
+          <div style="display: flex; justify-content: center; gap: 2%; text-align: center;">
+            <div>
+              <p><strong>Hallway</strong></p>
+              <video id="teaser" autoplay muted loop playsinline width="70%">
+                <source
+                  src="https://github.com/vhartman/multirobot-pathplanning-benchmark/raw/refs/heads/master/assets/other_hallway_sum.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+            <div>
+              <p><strong>Random 2D</strong></p>
+              <video id="teaser" autoplay muted loop playsinline width="63%">
+                <source
+                  src="https://github.com/vhartman/multirobot-pathplanning-benchmark/raw/refs/heads/master/assets/random_2d.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+            <div>
+              <p><strong>Mobile Assembly</strong></p>
+              <video id="teaser" autoplay muted loop playsinline width="100%">
+                <source
+                  src="https://github.com/vhartman/multirobot-pathplanning-benchmark/raw/refs/heads/master/assets/mobile_four_dep.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <!--/ Dataset. -->
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      The website design was
+      adapted from <a href="https://nerfies.github.io" class="external-link"><span class="dnerf">Nerfies</span></a>.
+    </div>
+  </div>
+</footer>
