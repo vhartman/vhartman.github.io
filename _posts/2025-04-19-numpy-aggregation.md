@@ -24,11 +24,10 @@ c(q_1, q_2) =  w\sum_{i\in R} ||q_1^i - q_2^i||_2 + (1-w)\max_{i\in R} ||q_1^i -
 $$
 
 where $$q_1 = [q_1^1 ... q_1^R]$$, and the same for $$q_2$$.
-It is important to note here that I do want to compute this number for many different configurations $$q$$, so clearly I want to batch this
-{% include sidenote.html text="In the very initial version of the function computing these values, I did actually not batch this. Batching this computation made a huge difference, but we start from the batched version as baseline here."%}.
+It is important to note here that I do want to compute this number for many different configurations $$q$$, so clearly I want to batch this computation {% include sidenote.html text="In the very initial version of the function computing these values, I did actually not batch this. Batching this computation made a huge difference, but we start from the batched version as baseline here."%}.
 
-In the general case, we also don't always use the euclidean norm as single-robot metric, but sometimes want to use a more general L-p norm. 
-In the following code, we consider two cases, the euclidean norm, and the maximum of the absolute values, i.e. the inf-norm:
+In the general case, we also don't always use the euclidean norm as single-robot metric (i.e., as the inner part of the computation), but sometimes want to use a more general L-p norm. 
+In the following experiments, we consider two cases, the euclidean norm, and the maximum of the absolute values, i.e. the inf-norm:
 
 $$
 c(q_1, q_2) =  w\sum_{i\in R} \max_j|q_1^{i,j} - q_2^{i,j}| + (1-w)\max_{i\in R} \max_j|q_1^{i,j} - q_2^{i,j}|
@@ -47,8 +46,7 @@ Code for everything can be found [here](https://github.com/vhartman/nu-nmpc/tree
 
 # Baseline
 
-Translating the formula above into code is relatively straightforward along with adding some logic to decide what we should compute depending on the function parameters:
-
+We add some logic to decide what we need to compute depending on the function parameters, and translate the formulas above into code using all the numpy functions that make our life quite easy:
 
 ```python
 def batch_config_cost(
@@ -87,9 +85,17 @@ def batch_config_cost(
         return np.sum(all_robot_dists, axis=0)
 ```
 
-Since this is part of [the work on multi-robot planning](/mrmg-planning/), I am doing the testing and benchmarking using pytest and pytest-benchmark.
+We need to take some care that we aggregate over the correct axes, but other than that, this code is relatively straightforward.
 
-We'll run this for different numbers of points, and different dimensionalities of slices, and plot the runtime vs the number of points in a batch, resulting in the following curves:
+You might argue now that the way that I choose here for the multi-robot configuration does not make sense, and you could make the whole thing better (more amenable to numpy/vectorization) by representing a single multi robot configuration as 2 dimensional array, where you have one configuration per robot.
+The collection of multiple robots would then become a 3 dimensional array, and the only thing that yo'd need to do is to let your ooperations run over the correct axes.
+
+And I'd love to do this! But unfortunately, my robots can all have different configuration spaces, and numpy does apparently not really like ragged arrays.
+So at least for now, we are doing the linear layout (i.e., simply stacking all the single robot configurations), and deal with the slicing of the configuration.
+
+Since this is part of [the work on multi-robot planning](/mrmg-planning/), I am doing the testing and benchmarking using pytest and pytest-benchmark.
+We'll run this for different numbers of points, and different dimensionalities of slices, and plot the runtime vs the number of points in a batch.
+We'll run this both for the sum and for the max aggregation, resulting in the following curves:
 
 <div style="width: 90%;margin:auto; text-align: center;">
   <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_5.png" style="width:29%; padding: 10px">
@@ -99,6 +105,8 @@ We'll run this for different numbers of points, and different dimensionalities o
 </div>
 
 Even though this is not slow on an absolute scale, in the motion planning pipeline, this made up for a majority of the runtime, since this is called very often in some of the subroutines.
+
+# Einsum?
 
 # Enter: numba
 Running cProfile on this whole thing shows that computing the euclidean distance over the slices is most problematic, and we'll first focus on this part.
@@ -169,8 +177,8 @@ with this performance:
 </div>
 
 #### Speeding up the sum and max reductions
-So far, we optimized the per-agent-metric-copmutation, and did not touch the aggregation.
-With all the optimizations we did now, cProfile shows that the `sum` and the `max` are now a relavant part of the total copmutation time.
+So far, we optimized the per-agent-metric-computation, and did not touch the aggregation.
+With all the optimizations we did now, cProfile shows that the `sum` and the `max` are now a large part of the total computation time.
 
 Since we were succesful with numba before, why change the receipe? Here we go:
 
