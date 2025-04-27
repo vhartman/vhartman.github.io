@@ -24,7 +24,7 @@ c(q_1, q_2) =  w\sum_{i\in R} ||q_1^i - q_2^i||_2 + (1-w)\max_{i\in R} ||q_1^i -
 $$
 
 where $$q_1 = [q_1^1 ... q_1^R]$$, and the same for $$q_2$$.
-It is important to note here that I do want to compute this number for many different configurations $$q$$, so clearly I want to batch this computation {% include sidenote.html text="In the very initial version of the function computing these values, I did actually not batch this. Batching this computation made a huge difference, but we start from the batched version as baseline here."%}.
+It is important to note here that I do want to compute this number for many different configurations $$q$$, so clearly I want to batch this computation{% include sidenote.html text="In the very initial version of the function computing these values, I did actually not batch this. Batching this computation made a huge difference, but we start from the batched version as baseline here."%}.
 
 In the general case, we also don't always use the euclidean norm as single-robot metric (i.e., as the inner part of the computation), but sometimes want to use a more general L-p norm. 
 In the following experiments, we consider two cases, the euclidean norm, and the maximum of the absolute values, i.e. the inf-norm:
@@ -40,13 +40,13 @@ So in total, there's four possible combinations of things that we might need to 
 - metric: euclidean, reduction: max
 - metric: abs max, reduction: max
 
-Additionally to this, we should distinguish in our function if we are computing a one-to-many distance, or if we are doing many-to-many distances{% include sidenote.html text="Due to legacy code choices, that will b changed as result of this experiment."%}.
+Additionally to this, we should distinguish in our function if we are computing a one-to-many distance, or if we are doing many-to-many distances{% include sidenote.html text="Due to legacy code choices, that will be changed as result of this experiment."%}.
 
-Code for everything can be found [here](https://github.com/vhartman/nu-nmpc/tree/blog_version).
+Code for everything can be found [here](https://github.com/vhartman/sliced-dist-bench), and more plots for different dimensions etc. can be found [here](https://github.com/vhartman/sliced-dist-bench/tree/master/final_plots).
 
 # Baseline
 
-We add some logic to decide what we need to compute depending on the function parameters, and translate the formulas above into code using all the numpy functions that make our life quite easy:
+We add some logic to decide what we need to compute depending on the function parameters, and translate the formulas above into code using all the numpy functions that make our life quite easy {% include sidenote.html text='We are only going to benchmark the one-to-many setting here. In the other setting, the conversion to a numpy array is a very slow part, and I do not know how to deal with this without a more significant change.'%}:
 
 ```python
 def batch_config_cost(
@@ -68,13 +68,8 @@ def batch_config_cost(
         agent_slices = starts[0].q.array_slice
 
     if metric == "euclidean":
-        all_robot_dists = np.zeros((starts._num_agents, diff.shape[0]))
-
-        squared_diff = diff * diff
         for i, (s, e) in enumerate(starts.array_slice):
-            # Use sqrt(sum(x^2)) instead of np.linalg.norm
-            # and pre-computed squared differences
-            all_robot_dists[i, :] = np.sqrt(np.sum(squared_diff[:, s:e], axis=1))
+            all_robot_dists[i, :] = np.linalg.norm(diff[:, s:e], axis=1)
     else:
         for i, (s, e) in enumerate(agent_slices):
             all_robot_dists[i, :] = np.max(np.abs(diff[:, s:e]), axis=1)
@@ -87,34 +82,25 @@ def batch_config_cost(
 
 We need to take some care that we aggregate over the correct axes, but other than that, this code is relatively straightforward.
 
-You might argue now that the way that I choose here for the multi-robot configuration does not make sense, and you could make the whole thing better (more amenable to numpy/vectorization) by representing a single multi robot configuration as 2 dimensional array, where you have one configuration per robot.
-The collection of multiple robots would then become a 3 dimensional array, and the only thing that yo'd need to do is to let your ooperations run over the correct axes.
+You might argue now that the way that I choose here for the representation for the multi-robot configuration does not make sense, and you could make the whole thing better (more amenable to numpy/vectorization) by representing a single multi robot configuration as 2 dimensional array, where you have one configuration per robot.
+The collection of multiple robots would then become a 3 dimensional array, and the only thing that yo'd need to do is to let your operations run over the correct axes.
 
-And I'd love to do this! But unfortunately, my robots can all have different configuration spaces, and numpy does apparently not really like ragged arrays.
+And I'd love to do this! But unfortunately, my robots can all have different configuration spaces with various dimensionalities, and numpy does apparently not really like ragged arrays.
 So at least for now, we are doing the linear layout (i.e., simply stacking all the single robot configurations), and deal with the slicing of the configuration.
 
-Since this is part of [the work on multi-robot planning](/mrmg-planning/), I am doing the testing and benchmarking using pytest and pytest-benchmark.
+In addition to the code above, I am also running a version that 'manually' copmutes the euclidean distance via `sqrt(sum(x^2))`, since I read something on stackoverflow that there is a chance that this is faster in certain cases.
+
 We'll run this for different numbers of points, and different dimensionalities of slices, and plot the runtime vs the number of points in a batch.
-We'll run this both for the sum and for the max aggregation, resulting in the following curves:
+We'll do this both for the sum and for the max aggregation, resulting in the following curves for our baseline{% include sidenote.html text="Since this is part of [the work on multi-robot planning](/mrmg-planning/), I am doing the testing and benchmarking using pytest and pytest-benchmark, as this is what I am using there."%}{% include sidenote.html text='I will  show the curves for a system with 2 agents each having 7 DoF, and one with 3 agents each having 3 DoF. The sum and max graphs look roughly similar, and are very straighforward to produce using the code linked above.'%}:
 
-<div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_5.png" style="width:29%; padding: 10px">
-  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_10.png" style="width:29%; padding: 10px">
-  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_20.png" style="width:29%; padding: 10px">
-  <figcaption><span style="color: #1f77b4;">Blue</span> is position, <span style="color: #ff7f0e;">orange</span> is velocity, and <span style="color: #2ca02c;">green</span> is acceleration. The constraints for each variable are shown in the corresponding color.</figcaption>
+<div style="width: 100%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/sliced-dists/baseline/sum_3_3_3.png" style="width:45%; padding: 10px">
+  <img src="{{ site.url }}/assets/sliced-dists/baseline/sum_7_7.png" style="width:45%; padding: 10px">
 </div>
 
+We can see that the 'manual' sum-of-squares computation is actually faster than using the numpy norm.
 Even though this is not slow on an absolute scale, in the motion planning pipeline, this made up for a majority of the runtime, since this is called very often in some of the subroutines.
-
-# Einsum?
-
-# Enter: numba
-Running cProfile on this whole thing shows that computing the euclidean distance over the slices is most problematic, and we'll first focus on this part.
-
-<div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_20.png" style="width:29%; padding: 10px">
-  <figcaption>The flamegraph corrsponding to the baseline version.</figcaption>
-</div>
+Running cProfile on the code above shows that computing the euclidean distance over the slices is most time consuming, and we'll first focus on this part.
 
 #### Speeding up the euclidean distance over slices
 
@@ -122,79 +108,186 @@ As first attempt to speed this up, we'll just take the thing as a whole and jit 
 There are a few small things we need to do, since numba does not like some of the things we did so far, i.e., the numba version I am using does not like the axis-argument in the max/sum function.
 
 ```python
-@jit
-def compute_sliced_euclidean_dists():
-  pass
+@numba.jit((numba.float64[:, :], numba.int64[:, :]), nopython=True, fastmath=True)
+def compute_sliced_dists(squared_diff: NDArray, slices: NDArray) -> NDArray:
+    num_slices = len(slices)
+    num_samples = squared_diff.shape[0]
+    dists = np.empty((num_slices, num_samples), dtype=np.float64)
+
+    for i in range(num_slices):
+        s, e = slices[i]
+        dists[i, :] = np.sqrt(np.sum(squared_diff[:, s:e], axis=1))
+
+    return dists
 ```
 
 This results in the following curve, already giving a sizeable speedup.
-This speedup is (was) already enough to not make this part of the code the bottleneck anymore at the time.
+
+<div style="width: 100%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/sliced-dists/naive_numba/sum_3_3_3.png" style="width:45%; padding: 10px">
+  <img src="{{ site.url }}/assets/sliced-dists/naive_numba/sum_7_7.png" style="width:45%; padding: 10px">
+</div>
+
+This speedup is (was) already enough together with the batching to not make this part of the code the bottleneck anymore at the time.
 However, we are now in the rabbithole of trying to optimize this as much as possible, so we go on.
 
-We can try to parallelize this:
+We can try to parallelize this, instead of only hoping that numba will vectorize this nicely (since I would have assumed initially that numpy code is vectorized itself - we don't trust this stuff anymore now.):
 
 ```python
-@jit
-def parallel_compute_sliced_euclidean_dists():
-  pass
+@numba.jit((numba.float64[:, :], numba.int64[:, :]), nopython=True, parallel=True)
+def numba_parallelized_sum(
+    squared_diff: NDArray, slices: NDArray
+) -> NDArray:
+    num_agents = len(slices)
+    dists = np.zeros((num_agents, squared_diff.shape[0]))
+
+    for i in numba.prange(num_agents):
+        s, e = slices[i]
+        dists[i, :] = np.sqrt(np.sum(squared_diff[:, s:e], axis=1))
+
+    return dists
 ```
 
-Sadly, this did not work. 
+Sadly, this did not work well:
+
+<div style="width: 100%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/sliced-dists/parallel/sum_3_3_3.png" style="width:45%; padding: 10px">
+  <img src="{{ site.url }}/assets/sliced-dists/parallel/sum_7_7.png" style="width:45%; padding: 10px">
+</div>
+
 I do not have a great explanation, but I am assuming that the overhead of using prange/the overhead of parallelization is simply not worth it given that the operations that are being executed in parallel are relatively quick itself.
+It might also be the case that this only starts making sense once you have many more agents (but in the settings I care about for the moment, you'll never deal with more than ~4-6 agents).
+My final guess is that it might simply not work well on my CPU.
+
+We can also see thath the error bars of the timing of the parallelized runs are all over the place, suggesting that there might simply be impact from other things running at the same time.
 
 We can still do better for the sliced distance by rewriting the jitted function a bit.
-For some reason, unrolling the loop gives a speedup for us here:
+For some reason, getting rid of numpy, and writing the loop for the sum of squares manually gives a speedup for us here:
 
 ```python
-@jit
-def unrolled_compute_sliced_euclidean_dists():
-  pass
+@numba.jit((numba.float64[:, :], numba.int64[:, :]), nopython=True, fastmath=True, parallel=True)
+def compute_sliced_dists_naive_unrolled(squared_diff: NDArray, slices: NDArray) -> NDArray:
+    """Compute Euclidean distances for sliced configurations with optimizations."""
+    num_slices = len(slices)
+    num_samples = squared_diff.shape[0]
+    dists = np.empty((num_slices, num_samples), dtype=np.float64)
+
+    # Process each slice independently
+    for i in range(num_slices):
+        s, e = slices[i]
+        slice_width = e - s
+
+        # Optimize the inner loop for better vectorization and cache usage
+        for j in range(num_samples):
+            sum_squared = 0.0
+            # For larger slices, use a regular loop which Numba can vectorize
+            for k in range(s, e):
+                sum_squared += squared_diff[j, k]
+
+            dists[i, j] = np.sqrt(sum_squared)
+
+    return dists
 ```
 
 And the corresponding curves:
 
-<div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_20.png" style="width:29%; padding: 10px">
-  <figcaption>The flamegraph corrsponding to the baseline version.</figcaption>
+<div style="width: 100%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/sliced-dists/unrolled/sum_3_3_3.png" style="width:45%; padding: 10px">
+  <img src="{{ site.url }}/assets/sliced-dists/unrolled/sum_7_7.png" style="width:45%; padding: 10px">
 </div>
 
-Finally, until now, I did believe that at least multiplying is fast in numpy.
+The final thing we'll have a look at is the fact that we computed the squared difference outside of the numba code so far.
+Until now, I did believe that at least multiplying is fast in numpy.
 But moving the computation of the squared distances into the jitted function gives us another speedup.
 I do however believe that this is largely since this gets rid of a big chunk of memory allocation.
 With this, the code currently looks like this:
 
 ```python
-@jit
-def unrolled_compute_sliced_euclidean_dists():
-  pass
+@numba.jit((numba.float64[:, :], numba.int64[:, :]), nopython=True, fastmath=True, parallel=True)
+def compute_sliced_dists_naive_unrolled_non_squared(diff: NDArray, slices: NDArray) -> NDArray:
+    """Compute Euclidean distances for sliced configurations with optimizations."""
+    num_slices = len(slices)
+    num_samples = diff.shape[0]
+    dists = np.empty((num_slices, num_samples), dtype=np.float64)
+
+    # Process each slice independently
+    for i in range(num_slices):
+        s, e = slices[i]
+        slice_width = e - s
+
+        # Optimize the inner loop for better vectorization and cache usage
+        for j in range(num_samples):
+            sum_squared = 0.0
+            for k in range(s, e):
+                sum_squared += diff[j, k] * diff[j, k]
+
+            dists[i, j] = np.sqrt(sum_squared)
+
+    return dists
 ```
 
 with this performance:
 
-<div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_20.png" style="width:29%; padding: 10px">
-  <figcaption>The flamegraph corrsponding to the baseline version.</figcaption>
+<div style="width: 100%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/sliced-dists/unrolled_no_square/sum_3_3_3.png" style="width:45%; padding: 10px">
+  <img src="{{ site.url }}/assets/sliced-dists/unrolled_no_square/sum_7_7.png" style="width:45%; padding: 10px">
 </div>
+
+which is a decent speedup compared to the previous version when dealing with large batches and 'large' slices (on the right).
 
 #### Speeding up the sum and max reductions
 So far, we optimized the per-agent-metric-computation, and did not touch the aggregation.
 With all the optimizations we did now, cProfile shows that the `sum` and the `max` are now a large part of the total computation time.
 
-Since we were succesful with numba before, why change the receipe? Here we go:
+Since we were succesful with numba before, why change the receipe? Since we have two different possible reductions, we have the sum reduction:
 
 ```python
-def compute_sum_max_reduction():
-  pass
+@numba.jit(numba.float64[:](numba.float64[:, :]), nopython=True, fastmath=True)
+def compute_sum_reduction(dists: NDArray) -> NDArray:
+    """Compute sum reduction across robot distances."""
+    num_slices, num_samples = dists.shape
+    result = np.empty(num_samples, dtype=np.float64)
 
-def compute_max_reduction():
-  pass
+    # Manually compute sum along axis 0
+    for j in range(num_samples):
+        sum_val = 0.0
+        for i in range(num_slices):
+            sum_val += dists[i, j]
+        result[j] = sum_val
+
+    return result
+
 ```
 
-Curves:
+And the max reduction:
 
-<div style="width: 90%;margin:auto; text-align: center;">
-  <img src="{{ site.url }}/assets/nu_mpc/lin_sys_n_20.png" style="width:29%; padding: 10px">
-  <figcaption>The flamegraph corrsponding to the baseline version.</figcaption>
+```python
+@numba.jit(
+    numba.float64[:](numba.float64[:, :], numba.float64), nopython=True, fastmath=True
+)
+def compute_max_sum_reduction(dists: NDArray, w: float) -> NDArray:
+    """Compute max + w*sum reduction across robot distances."""
+    num_slices, num_samples = dists.shape
+    result = np.empty(num_samples, dtype=np.float64)
+
+    # Manually compute max along axis 0
+    for j in range(num_samples):
+        max_val = dists[0, j]
+        sum_val = dists[0, j]
+        for i in range(1, num_slices):
+            if dists[i, j] > max_val:
+                max_val = dists[i, j]
+            sum_val += dists[i, j]
+        result[j] = max_val + w * sum_val
+
+    return result
+```
+
+Introducing this now brings down the performance a bit more:
+
+<div style="width: 100%;margin:auto; text-align: center;">
+  <img src="{{ site.url }}/assets/sliced-dists/numba_reduction/sum_3_3_3.png" style="width:45%; padding: 10px">
+  <img src="{{ site.url }}/assets/sliced-dists/numba_reduction/sum_7_7.png" style="width:45%; padding: 10px">
 </div>
 
 And this is the point where I am stopping now.
@@ -208,3 +301,9 @@ Another thing to optimize now would be avoiding the branching in the function it
 I guess my takeaway here is that you should not always blindly believe the default options to be the fastest.
 There are many places where people will just tell you that numpy clearly is the fastest - and it likely is in most cases!
 But in reality this is extremely dependent on your array sizes and the workload in general.
+
+The other problem that still exists can be found in the many to many dist/cost computation: the creation of the array from the list of states.
+
+I did try to experiment a bit with preallocation of arrays, and seeing if this makes life easier, but it did not change much at the time.
+
+This points to an issue that is rooted a bit more deeply in the design choices that I made: There must be a better way to ensure that the configurations that I am creating are more easily accessible than they are currently when stored in this list format.
