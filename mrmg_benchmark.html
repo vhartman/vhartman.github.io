@@ -9,7 +9,8 @@ permalink: /mrmg-planning/
   <meta name="description" content="A Benchmark for Optimal Multi-Modal Multi-Robot Multi-Goal Path Planning with Given Robot Assignment">
   <meta name="keywords" content="multi-agent-planning, robot">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A Benchmark for Optimal Multi-Modal Multi-Robot Multi-Goal Path Planning with Given Robot Assignment
+  <title>
+    Sampling-Based Multi-Modal Multi-Robot Multi-Goal Path Planning
   </title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
@@ -34,13 +35,17 @@ permalink: /mrmg-planning/
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">A Benchmark for Optimal Multi-Modal Multi-Robot Multi-Goal Path
-            Planning with Given Robot Assignment</h1>
+          <h1 class="title is-1 publication-title"> 
+            Sampling-Based Multi-Modal Multi-Robot Multi-Goal Path Planning
+          </h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://vhartmann.com/">Valentin N. Hartmann</a>,</span>
             <span class="author-block">
               Tirza Heinle,</span>
+            <span class="author-block">
+              <a href="https://yijiangh.github.io/">Yijiang Huang</a>,
+            </span>
             <span class="author-block">
               <a href="https://crl.ethz.ch/people/coros/index.html">Stelian Coros</a>,
             </span>
@@ -55,7 +60,7 @@ permalink: /mrmg-planning/
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="../assets/mrmg/a_benchmark_for_mr_mg_pf.pdf" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://arxiv.org/abs/2503.03509" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
                   </span>
@@ -123,6 +128,19 @@ permalink: /mrmg-planning/
   </div>
 </section>
 
+
+<div class="note-section" style="padding:0.5rem 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <p class="is-size-8 has-text-grey" style="font-style: italic; margin:0;">
+          Note: This was previously published as "A Benchmark for Optimal Multi-Modal Multi-Robot Multi-Goal Path Planning with Given Robot Assignment".
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -131,24 +149,10 @@ permalink: /mrmg-planning/
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            In many industrial robotics applications, multiple robots are working in a shared workspace to complete a
-            set of tasks as quickly as possible. Such settings can be treated as multi-modal multi-robot multi-goal path
-            planning problems, where each robot has to reach an ordered sequence of goals. Existing approaches to this
-            type of problem solve this using prioritization or assume synchronous completion of tasks, and are thus
-            neither optimal nor complete. We formalize this problem as a single path planning problem and introduce a
-            benchmark encompassing a diverse range of problem instances including scenarios with various robots,
-            planning horizons, and collaborative tasks such as handovers.
+            In many robotics applications, multiple robots are working in a shared workspace to complete a set of tasks as fast as possible. Such settings can be treated as multi-modal multi-robot multi-goal path planning problems, where each robot has to reach a set of goals. Existing approaches to this type of problem solve this using prioritization or assume synchronous task completion, and are thus neither optimal nor complete. We formalize this problem as a single centralized path planning problem and present planners that are probabilistically complete and asymptotically optimal. 
           </p>
           <p>
-            Along with the benchmark, we adapt an RRT* and a PRM*
-            planner to serve as a baseline for the planning problems.
-            Both planners work in the composite space of all robots and
-            introduce the required changes to work in our setting.
-            Unlike existing approaches, our planner and formulation is
-            not restricted to discretized 2D workspaces, supports a changing
-            environment, and works for heterogeneous robot teams over
-            multiple modes with different constraints, and multiple goals.
-
+            The planners plan in the composite space of all robots and are modifications of standard sampling-based planners with the required changes to work in our multi-modal, multi-robot, multi-goal setting. We validate the planners on a diverse range of problems including scenarios with various robots, planning horizons, and collaborative tasks such as handovers, and compare the planners against a suboptimal prioritized planner.
           </p>
         </div>
       </div>
@@ -255,7 +259,7 @@ permalink: /mrmg-planning/
 
           <p>
             Some of the intermediate configurations we show there are in collision since we simply reset the agent
-            without a goal to its home pose.
+            without a goal to its home pose (which might be in collision if the robot is now moving an object).
           </p>
         </div>
 
@@ -305,7 +309,7 @@ permalink: /mrmg-planning/
         <h2 class="title is-3">Experiments</h2>
         <div class="content has-text-justified">
           <p>
-            Below, we show plans from multiple environments.
+            Below, we show plans from multiple environments that were planned with one of the planners that we describe in the paper.
           </p>
         </div>
 

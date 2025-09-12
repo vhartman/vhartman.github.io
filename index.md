@@ -35,8 +35,8 @@ Preferably in Zurich/Switzerland, and ideally with a mix of homeoffice and in pe
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Under review
-- [_A Benchmark for Optimal Multi-Modal Multi-Robot Multi-Goal Path Planning with Given Robot Assignment_](/mrmg-planning/), **Valentin N. Hartmann**, Tirza Heinle, Stelian Coros, Under review at IROS'25, [[code](https://github.com/vhartman/multirobot-pathplanning-benchmark)], [[arxiv](https://arxiv.org/abs/2503.03509)]
-- _A comparison of visual representations for real-world reinforcement learning in the context of vacuum gripping_, Nico Sutter, **Valentin N. Hartmann**, Stelian Coros, Under review at IROS'25, [[code](https://github.com/nisutte/voxel-serl)], [[arxiv](https://arxiv.org/abs/2503.02405)]
+- [_Sampling-Based Multi-Modal Multi-Robot Multi-Goal Path Planning_](/mrmg-planning/), **Valentin N. Hartmann**, Tirza Heinle, Yijiang Huang, Stelian Coros, Under review, [[code](https://github.com/vhartman/multirobot-pathplanning-benchmark)], [[arxiv](https://arxiv.org/abs/2503.03509)]
+- _A comparison of visual representations for real-world reinforcement learning in the context of vacuum gripping_, Nico Sutter, **Valentin N. Hartmann**, Stelian Coros, [[code](https://github.com/nisutte/voxel-serl)], [[arxiv](https://arxiv.org/abs/2503.02405)]
 
 ### Journals
 
