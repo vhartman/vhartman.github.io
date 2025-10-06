@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sampling manifolds for robotics path planning"
-date:   2024-10-01 12:00:00 +0200
+date:   2025-10-01 12:00:00 +0200
 permalink: /sampling-constraints/
 categories: performance planning
 ---
