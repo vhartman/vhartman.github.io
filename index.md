@@ -20,8 +20,8 @@ I did a few internships at various companies (notably Amazon and BCG Gamma), and
 
 I like cycling, used to row competitively, like all kinds of other sports, and to my friends delight I am an avid cook.
 
-I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest:
-<code>v [at] vhartmann [dot] com</code> for side-projects, <code>valentin [dot] hartmann [at] inf [dot] ethz [dot] ch</code> for more academic chatter.
+<!-- I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest:
+<code>v [at] vhartmann [dot] com</code> for side-projects, <code>valentin [dot] hartmann [at] inf [dot] ethz [dot] ch</code> for more academic chatter. -->
 
 <p class="preface">
 I am looking around a bit for things/jobs to do after my postdoc - please reach out if you are looking for anything from motion planning/control/optimization in robotics or generally anything where code should go fast. I am quite easily motivated for any kind of intellectually challenging work.
