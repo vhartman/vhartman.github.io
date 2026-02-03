@@ -6,6 +6,7 @@ custom_css: cv
 
 I'm Valentin! I am a Postdoc at the [Computational Robotics Lab](https://crl.ethz.ch/index.html) at ETH.
 I am working on real-world multi-agent task and motion planning, and am interested in how to deal with uncertainty, and how to get robots to be adaptive to changing circumstances.
+This includes learning based methods (RL/IL/VLAs) and classicel methods, and what I find most interesting: finding combinatoins to leverage the strengths of either approaches.
 
 I am always looking for good students - please reach out if you are interested in working with me!
 
