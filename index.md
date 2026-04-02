@@ -36,7 +36,6 @@ I like cycling, used to row competitively, like all kinds of other sports, and t
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Under review
-- [_Sampling-Based Multi-Modal Multi-Robot Multi-Goal Path Planning_](/mrmg-planning/), **Valentin N. Hartmann**, Tirza Heinle, Yijiang Huang, Stelian Coros, Under review, [[code](https://github.com/vhartman/multirobot-pathplanning-benchmark)], [[arxiv](https://arxiv.org/abs/2503.03509)]
 - _A comparison of visual representations for real-world reinforcement learning in the context of vacuum gripping_, Nico Sutter, **Valentin N. Hartmann**, Stelian Coros, [[code](https://github.com/nisutte/voxel-serl)], [[arxiv](https://arxiv.org/abs/2503.02405)]
 
 ### Journals
@@ -48,7 +47,7 @@ Also see my [Google Scholar Profile here](https://scholar.google.com/citations?u
 - _Learning Robotic Manipulation of Natural Materials with Variable Properties for Construction Tasks_, Nicolas Kubail Kalousdian, Grzegorz Łochnicki, **Valentin N. Hartmann**, Samuel Leder, Ozgur S. Oguz, Achim Menges, Marc Toussaint, IEEE Robotics and Automation Letters (RA-L) 2022 \[[paper](https://ieeexplore.ieee.org/document/9735376)\]
 
 ### Conferences
-
+- [_Sampling-Based Multi-Modal Multi-Robot Multi-Goal Path Planning_](/mrmg-planning/), **Valentin N. Hartmann**, Tirza Heinle, Yijiang Huang, Stelian Coros, To be published at WAFR '26, [[code](https://github.com/vhartman/multirobot-pathplanning-benchmark)], [[arxiv](https://arxiv.org/abs/2503.03509)]
 - [_iDb-RRT: Sampling-based Kinodynamic Motion Planning with Motion Primitives and Trajectory Optimization_](https://quimortiz.github.io/idbrrt/), Joaquim Ortiz-Haro, Wolfgang Hönig, **Valentin N. Hartmann**, Marc Toussaint, and Ludovic Righetti, IROS 2024 [[arxiv](https://arxiv.org/abs/2403.10745)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=3ToQU-qLWg0)]
 - [_Effort Level Search in Infinite Completion Trees with Application to Task-and-Motion Planning_](https://www.user.tu-berlin.de/mtoussai/24-CompletionTrees/), Marc Toussaint, Joaquim Ortiz-Haro, **Valentin N. Hartmann**, Erez Karpas, Wolfgang Hönig, ICRA24
 - [_Efficient Path Planning In Manipulation Planning Problems by Actively Reusing Validation Effort_](/manipulation-path-planning/), **Valentin N. Hartmann**, Joaquim Ortiz-Haro, Marc Toussaint. International Conference on Intelligent Robots and Systems (IROS) 2023 \[[arxiv](https://arxiv.org/abs/2303.00637)\]
