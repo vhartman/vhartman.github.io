@@ -4,8 +4,14 @@ title: Home
 custom_css: cv
 ---
 
+<p class="preface">
+I am looking around a bit for things/jobs to do after my postdoc - please reach out if you are looking for anything from motion planning/control/optimization/learning for manipulation in robotics or generally anything where code should go fast. I am quite easily motivated for any kind of intellectually challenging work.
+Preferably in Zurich/Switzerland, and ideally with a mix of homeoffice and in person work.
+</p>
+
 I'm Valentin! I am a Postdoc at the [Computational Robotics Lab](https://crl.ethz.ch/index.html) at ETH.
 I am working on real-world multi-agent task and motion planning, and am interested in how to deal with uncertainty, and how to get robots to be adaptive to changing circumstances.
+This includes learning based methods (RL/IL/VLAs) and classicel methods, and what I find most interesting: finding combinatoins to leverage the strengths of either approaches.
 
 I am always looking for good students - please reach out if you are interested in working with me!
 
@@ -20,13 +26,8 @@ I did a few internships at various companies (notably Amazon and BCG Gamma), and
 
 I like cycling, used to row competitively, like all kinds of other sports, and to my friends delight I am an avid cook.
 
-I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest:
-<code>v [at] vhartmann [dot] com</code> for side-projects, <code>valentin [dot] hartmann [at] inf [dot] ethz [dot] ch</code> for more academic chatter.
-
-<p class="preface">
-I am looking around a bit for things/jobs to do after my postdoc - please reach out if you are looking for anything from motion planning/control/optimization in robotics or generally anything where code should go fast. I am quite easily motivated for any kind of intellectually challenging work.
-Preferably in Zurich/Switzerland, and ideally with a mix of homeoffice and in person work.
-</p>
+<!-- I have an open list of ideas for which I am looking for collaborators (external pressure to complete something!) [here](/ideas/). Contact me if anything catches your interest:
+<code>v [at] vhartmann [dot] com</code> for side-projects, <code>valentin [dot] hartmann [at] inf [dot] ethz [dot] ch</code> for more academic chatter. -->
 
 <hr style="width:80%;margin-left: auto; margin-right: auto; margin-top: 40px;margin-bottom: 20px;">
 
@@ -35,18 +36,18 @@ Preferably in Zurich/Switzerland, and ideally with a mix of homeoffice and in pe
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Under review
-- [_Sampling-Based Multi-Modal Multi-Robot Multi-Goal Path Planning_](/mrmg-planning/), **Valentin N. Hartmann**, Tirza Heinle, Yijiang Huang, Stelian Coros, Under review, [[code](https://github.com/vhartman/multirobot-pathplanning-benchmark)], [[arxiv](https://arxiv.org/abs/2503.03509)]
 - _A comparison of visual representations for real-world reinforcement learning in the context of vacuum gripping_, Nico Sutter, **Valentin N. Hartmann**, Stelian Coros, [[code](https://github.com/nisutte/voxel-serl)], [[arxiv](https://arxiv.org/abs/2503.02405)]
 
 ### Journals
 
+- [_Bridging Physical and Digital Domains of Coreless Wound Fibrous Structures: Benchmarking a Simulation Method_](https://academic.oup.com/jcde/advance-article/doi/10.1093/jcde/qwag031/8529017), R Duque Estrada, L Balangé, C Zechmeister, **V N Hartmann**, F Kannenberg, M Toussaint, V Schwieger, A Menges. Journal of Computational Design and Engineering 2026.
 - [_iDb-A\*: Iterative Search and Optimization for Optimal Kinodynamic Motion Planning_](https://quimortiz.github.io/idbastar/), Joaquim Ortiz-Haro, Wolfgang Hoenig, **Valentin N. Hartmann**, Marc Toussaint, IEEE T-RO 2024 [[arxiv](https://arxiv.org/abs/2311.03553)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=tGuPuihXSbg)]
 - [_Long-Horizon Multi-Robot Rearrangement Planning for Construction Assembly_](/multi-robot/), **Valentin N. Hartmann**, Andreas Orthey, Danny Driess, Ozgur S. Oguz, Marc Toussaint. IEEE T-RO 2022. \[[arxiv](https://arxiv.org/abs/2106.02489)\], \[[youtube](https://youtu.be/GqhouvL5dig)\], \[[paper](https://ieeexplore.ieee.org/document/9868234)\]
 - _Leveraging Building Material as Part of the In-Plane Robotic Kinematic System for Collective Construction_, Samuel Leder, H. Kim, Ozgur S. Oguz, Nicolas Kubail Kalousdian, **Valentin N. Hartmann**, Achim Menges, Marc Toussaint, Metin Sitti. Advanced Science 2022\[[paper](http://doi.org/10.1002/advs.202201524)\]
 - _Learning Robotic Manipulation of Natural Materials with Variable Properties for Construction Tasks_, Nicolas Kubail Kalousdian, Grzegorz Łochnicki, **Valentin N. Hartmann**, Samuel Leder, Ozgur S. Oguz, Achim Menges, Marc Toussaint, IEEE Robotics and Automation Letters (RA-L) 2022 \[[paper](https://ieeexplore.ieee.org/document/9735376)\]
 
 ### Conferences
-
+- [_Sampling-Based Multi-Modal Multi-Robot Multi-Goal Path Planning_](/mrmg-planning/), **Valentin N. Hartmann**, Tirza Heinle, Yijiang Huang, Stelian Coros, To be published at WAFR '26, [[code](https://github.com/vhartman/multirobot-pathplanning-benchmark)], [[arxiv](https://arxiv.org/abs/2503.03509)]
 - [_iDb-RRT: Sampling-based Kinodynamic Motion Planning with Motion Primitives and Trajectory Optimization_](https://quimortiz.github.io/idbrrt/), Joaquim Ortiz-Haro, Wolfgang Hönig, **Valentin N. Hartmann**, Marc Toussaint, and Ludovic Righetti, IROS 2024 [[arxiv](https://arxiv.org/abs/2403.10745)], [[code](https://github.com/quimortiz/dynoplan)], [[video](https://www.youtube.com/watch?v=3ToQU-qLWg0)]
 - [_Effort Level Search in Infinite Completion Trees with Application to Task-and-Motion Planning_](https://www.user.tu-berlin.de/mtoussai/24-CompletionTrees/), Marc Toussaint, Joaquim Ortiz-Haro, **Valentin N. Hartmann**, Erez Karpas, Wolfgang Hönig, ICRA24
 - [_Efficient Path Planning In Manipulation Planning Problems by Actively Reusing Validation Effort_](/manipulation-path-planning/), **Valentin N. Hartmann**, Joaquim Ortiz-Haro, Marc Toussaint. International Conference on Intelligent Robots and Systems (IROS) 2023 \[[arxiv](https://arxiv.org/abs/2303.00637)\]
