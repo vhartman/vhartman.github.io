@@ -26,7 +26,7 @@ That being said, this seems to be somewhat niche knowledge, since many people we
 I never really dove much deeper at the time (mostly for the lack of time), regarding why that is, if all solvers are affected, and on which type of problem(s) such speedups can be observed.
 But the topic has occupied a bit of my brain since then, and I wanted to finally investigate a bit more why and how this happens, and this would have the nice by-product that I could point people to this artifact when I tell them about this effect (and get it out of my brain).
 
-The code for this post is available [here](here){% include sidenote.html text='The initial problems and test were done completely by me a long time ago, and now with claude, I was able to speed up much of the experimentation. Thus, large parts of the code are written by claude, as I decided at some point that I could use this post to experiment a bit with how to best work with AI. Everything in this text is written by me with some proof reading by claude.'%}.
+The code for this post is available [here](https://github.com/vhartman/opt-scaling-exp){% include sidenote.html text='The initial problems and test were done completely by me a long time ago, and now with claude, I was able to speed up much of the experimentation. Thus, large parts of the code are written by claude, as I decided at some point that I could use this post to experiment a bit with how to best work with AI. Everything in this text is written by me with some proof reading by claude.'%}.
 
 # Related literature
 
