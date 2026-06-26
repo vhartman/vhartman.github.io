@@ -14,9 +14,8 @@ This page is a loose collection of some thoughts, collection of links for specif
   {% assign sorted = site.notes | sort: 'date' | reverse  %}
   {% for note in sorted %}
     <li>
-      <h3 style="position: relative">
-        <span class="post-meta" style=" position: absolute; width: 120px; top: .6em; left: -90px; ">
-              {{ note.date | date: "%b %-d %Y"}}</span>
+      <h3 class="post-list-title">
+        <span class="post-meta post-list-date">{{ note.date | date: "%b %-d %Y"}}</span>
           <a class="post-link" href="{{ note.url }}">
             {{ note.title }}
           </a>

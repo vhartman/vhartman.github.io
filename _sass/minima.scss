@@ -52,3 +52,33 @@ $on-laptop:        800px !default;
 
 .site-nav {display: block; text-align: center; float: none}
 body {padding-left: calc(100vw - 100%);}
+
+// The mobile drop-down menu is absolutely positioned but had z-index:auto, so
+// positioned page content (e.g. Bulma's position:relative containers on the
+// paper pages) painted on top and swallowed the taps. Lift it above everything.
+@include media-query($on-palm) {
+  .site-nav { z-index: 100; }
+}
+
+// Site name: centered above the nav on wide screens (as before), but kept at the
+// top of the page (next to the burger) instead of inside the collapsed menu.
+.site-brand {
+  display: block;
+  text-align: center;
+  margin: 5pt;
+  line-height: 1em;
+  font-size: 8pt;
+  color: gray;
+}
+@include media-query($on-palm) {
+  .site-brand {
+    position: absolute;
+    top: 27px; // vertically aligned with the 36px burger (top: 9px)
+    left: $spacing-unit * 0.5;
+    transform: translateY(-50%);
+    margin: 0;
+    font-size: 9pt;
+    text-align: left;
+    z-index: 100;
+  }
+}

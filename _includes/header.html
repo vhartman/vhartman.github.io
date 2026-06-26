@@ -4,6 +4,8 @@
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
 
+    <span class="site-brand">Valentin N. Hartmann</span>
+
     {%- if page_paths -%}
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -18,7 +20,6 @@
         </label>
 
         <div class="trigger">
-          <p style="margin: 5pt 5pt -5pt 5pt;line-height: 1em;font-size: 8pt;color:  gray;">Valentin N. Hartmann</p>
           <a class="page-link" href="/">Home</a>
           <a class="page-link" href="/posts/">Posts</a>
           <a class="page-link" href="/notes/">Notes</a>

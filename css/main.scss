@@ -70,4 +70,46 @@ span.newthought { font-variant: small-caps;
 
 input.margin-toggle { display: none; }
 
+// --- Posts list: date set into the left margin (was inline styles in home.html) ---
+.post-list-title { position: relative; }
+.post-list-date {
+    position: absolute;
+    width: 120px;
+    top: .6em;
+    left: -90px;
+}
+
+// On narrow screens there is no left gutter to hold the date, so it gets
+// clipped off the left edge / overlaps the title. Drop it inline above the title.
+@media (max-width: 900px) {
+    .post-list-title { position: static; }
+    .post-list-date {
+        position: static;
+        display: block;
+        width: auto;
+        margin: 0 0 .1em 0;
+        font-size: .8em;
+    }
+}
+
+// Tufte-style margin notes only fit when there is a wide right margin (>=1200px).
+// Below that they overflow the viewport (horizontal scroll) or, on phones, sit on
+// top of the body text. Collapse them into inline foot-style notes instead.
+@media (max-width: 1200px) {
+    .sidenote, .marginnote,
+    li .sidenote, li .marginnote,
+    blockquote .sidenote, blockquote .marginnote,
+    .callout .sidenote, .callout .marginnote {
+        float: none;
+        clear: both;
+        display: block;
+        width: auto;
+        max-width: 100%;
+        margin: .8em 1em;
+        padding-left: .8em;
+        border-left: 3px solid #ddd;
+        font-size: 9pt;
+    }
+}
+
 
