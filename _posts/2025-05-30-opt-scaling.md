@@ -95,9 +95,9 @@ And then there is some mentions of scaling in the classic works:
 
 And finally, some papers do mention scaling, or even completely focus on scaling and how to do it:
 - [Some discussion and suggestions for how to scale in trajectory optimization](https://arxiv.org/pdf/2106.09125) and some more from the [same author](https://arxiv.org/pdf/1906.04857). Unfortunately, in neither of the papers, there is a comparison between the scaled and the unscaled opt. problems.
-- ["Scaling and Balancing for High-Performance Computation of Optimal Controls"](https://arxiv.org/abs/1810.11073) is a paper on how to scale stuff.
-- ["Exploiting Scaling Constants to Facilitate the Convergence of Indirect Trajectory Optimization Methods"](https://arxiv.org/abs/2208.11273): paper
-- [Effects on scaling in ipopt](https://arxiv.org/pdf/1301.7283)
+- ["Scaling and Balancing for High-Performance Computation of Optimal Controls"](https://arxiv.org/abs/1810.11073) is a paper on how to scale stuff, but it is seemingly quite theoretical.
+- ["Exploiting Scaling Constants to Facilitate the Convergence of Indirect Trajectory Optimization Methods"](https://arxiv.org/abs/2208.11273) is a paper that is (to me) similar to the one above with the same caveats.
+- [Effects on scaling in ipopt](https://arxiv.org/pdf/1301.7283) is a more detailed analysis what effects scaling have on the ipopt solver.
 
 I might have looked at these papers a bit too superficially, but in my opinion there is not a lot of simple understandable advice (besides from Betts), and the effect sizes seem underdiscussed to me, and the analysis of when it actually matters is missing to me personally.
 
@@ -178,8 +178,8 @@ Betts further gives the advice that we can also scale our cost function with a c
 Finally, before moving on, I want to mention that most of the things we now introduced also works for nonlinear problems. 
 We have to be somewhat careful with warm starting if we do SQP, but a basic diagonal scaling/change of variables effectively always works also in NLPs.
 
-#### Receipe
-Thus, to scale a QP that we would like to solve, a simple receipe can be the following:
+#### Recipe
+Thus, to scale a QP that we would like to solve, a simple recipe can be the following:
 
 1. Choose $$P = A^{-1}$$, $$F = I$$.
 2. Choose $$A = \text{diag}(l)$$ or $$A = \text{diag}(r)$$, respectively choose the scaling such that on the diagonal of $$A$$, you have the expected values for your solution.
@@ -188,7 +188,7 @@ Thus, to scale a QP that we would like to solve, a simple receipe can be the fol
 5. Solve the QP.
 6. Compute the original solution via $$x = A\hat{x}$$.
 
-This is a decent approach if we assume that we have these constraints, and we expect that the constraints are active at the optimal solution.
+This is a decent approach if we assume that we have constraints that bound our lower/upper values of our state (i.e. $$l$$ or $$r$$), or if we can assume that we know the range of our values in the optimal solution.
 If we do not have the constraints $$l$$ or $$r$$, or they are not the same, it can be very helpful to use the linear term $$b$$ as well to ensure that we get constraints as we would like to have them.
 If we do not expect that the constraints are actually active, they still usually give some indication on the magnitude of the various variables.
 In this case, we choose the terms on the diagonal of $$A$$ such that the terms are (after scaling) roughly equal to 1 as mentioned above before.
