@@ -13,8 +13,6 @@ I'm Valentin! I am a Postdoc at the [Computational Robotics Lab](https://crl.eth
 I am working on real-world multi-agent task and motion planning, and am interested in how to deal with uncertainty, and how to get robots to be adaptive to changing circumstances.
 This includes learning based methods (RL/IL/VLAs) and classical methods, and what I find most interesting: finding combinatoins to leverage the strengths of either approaches.
 
-I am always looking for good students - please reach out if you are interested in working with me!
-
 Previously, I was in [Marc Toussaint's](https://marc-toussaint.net) [LIS group](https://argmin.lis.tu-berlin.de/) at TU Berlin, working on task and motion planning (TAMP) using optimization techniques, in addition to sampling based planners, with inspiration from control theory.
 I was associated with [IntCDC](https://www.intcdc.uni-stuttgart.de/), and was involved in several projects at the intersection of robotics and architecture.
 
