@@ -4,10 +4,10 @@ title: Home
 custom_css: cv
 ---
 
-<p class="preface">
+<!--<p class="preface">
 I am looking around a bit for things/jobs to do after my postdoc - please reach out if you are looking for anything from motion planning/control/optimization/learning for manipulation in robotics or generally anything where code should go fast. I am quite easily motivated for any kind of intellectually challenging work.
 Preferably in Zurich/Switzerland, and ideally with a mix of homeoffice and in person work.
-</p>
+</p>-->
 
 I'm Valentin! I am a Postdoc at the [Computational Robotics Lab](https://crl.ethz.ch/index.html) at ETH.
 I am working on real-world multi-agent task and motion planning, and am interested in how to deal with uncertainty, and how to get robots to be adaptive to changing circumstances.
