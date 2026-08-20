@@ -347,6 +347,7 @@ function rebuildLegend() {
 function setPath(i, s = 0) {
   if (!manifest) return;
   state.pathIdx = i;
+  pathSelect.selectedIndex = i;
   const r = rec();
   state.step = Math.min(Math.max(s, 0), r.steps - 1);
   applyStatic(r);
@@ -594,7 +595,8 @@ function activate(folder) {
   playBtn.classList.add('primary');
   // resize before the first draw — resizing a canvas clears its content
   resizeTimeline();
-  setPath(0, 0);
+  // default to the final (best) incumbent path
+  setPath(manifest.paths.length - 1, 0);
   setLocked(false);
 }
 
