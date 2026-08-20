@@ -1,0 +1,8 @@
+[
+  { "folder": "box_stacking_two_robots", "label": "Box stacking, two robots" },
+  { "folder": "ur5_box_stacking", "label": "Box stacking, four robots" },
+  { "folder": "spiral_tower", "label": "Spiral Tower" },
+  { "folder": "mobile_wall", "label": "Mobile Wall" },
+  { "folder": "box_rearrangement", "label": "Box rearrangement" },
+  { "folder": "box_reorientation", "label": "Box reorientation" }
+]
