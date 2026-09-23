@@ -1,0 +1,18 @@
+[
+  {
+    "folder": "fabrica_car_current",
+    "label": "Fabrica Car · 4 UR arms"
+  },
+  {
+    "folder": "chair_current",
+    "label": "Chair · 4 UR arms"
+  },
+  {
+    "folder": "real_bench_husky",
+    "label": "Husky bench · 2 arms"
+  },
+  {
+    "folder": "cross_openarm_current",
+    "label": "Cross · 4 OpenArm arms"
+  }
+]

@@ -1,0 +1,424 @@
+---
+layout: paper_page
+title: 'Wʀᴀᴘ: Fixtureless Wrench-aware Multi-Robot Assembly Planning'
+---
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="WRAP: Fixtureless Wrench-aware Multi-Robot Assembly Planning">
+  <meta name="keywords" content="robot assembly, multi-robot planning, task and motion planning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="WRAP: Fixtureless Wrench-aware Multi-Robot Assembly Planning">
+  <meta property="og:image" content="assets/social-card.jpg">
+  <title>Wʀᴀᴘ: Fixtureless Wrench-aware Multi-Robot Assembly Planning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        tags: 'ams',
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    body { font-family: "Noto Sans", sans-serif; }
+    .publication-title, .publication-authors, .teaser { font-family: "Google Sans", sans-serif; }
+    .publication-authors a { color: hsl(204, 86%, 53%) !important; }
+    .publication-authors a:hover { text-decoration: underline; }
+    .author-block { display: inline-block; }
+    .link-block a { margin: 5px 2px; }
+    .teaser .media-wrap { margin-left: auto; margin-right: auto; }
+    .section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .media-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 180px;
+      overflow: hidden;
+      background: #f4f4f4;
+      color: #777;
+    }
+    .media-wrap.wide { aspect-ratio: 16 / 9; }
+    .media-wrap.standard { aspect-ratio: 4 / 3; }
+    .media-wrap > video, .media-wrap > img {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .media-placeholder { padding: 1.5rem; text-align: center; font-size: .9rem; }
+    .media-placeholder strong { display: block; color: #555; margin-bottom: .35rem; }
+    .todo { color: #777; font-style: italic; }
+    .caption { margin-top: .65rem; font-size: .9rem; color: #555; }
+    .example-title { margin-top: .75rem !important; margin-bottom: .25rem !important; }
+    .result-figure { margin-bottom: 2rem; }
+    .comparison-label { margin-bottom: .6rem; font-weight: 600; }
+    pre { text-align: left; white-space: pre-wrap; }
+    .bibtex { position: relative; }
+    .copy-button { position: absolute; z-index: 2; top: .65rem; right: .65rem; }
+    .footer { padding: 2.5rem 1.5rem; }
+    @media screen and (max-width: 768px) {
+      .publication-title { font-size: 2.25rem !important; }
+      .section { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Wʀᴀᴘ: Fixtureless Wrench-aware Multi-Robot Assembly Planning</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://vhartmann.com/">Valentin N. Hartmann</a>,</span>
+              <span class="author-block">Huang Su,</span>
+              <span class="author-block"><a href="https://yijiangh.github.io/">Yijiang Huang</a>,</span>
+              <span class="author-block"><a href="https://crl.ethz.ch/people/coros/index.html">Stelian Coros</a></span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Computational Robotics Lab, Department of Computer Science, ETH Zürich</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block"><a href="#" class="button is-normal is-rounded is-dark"><span class="icon"><i class="ai ai-arxiv"></i></span><span>Paper</span></a></span>
+                <span class="link-block"><a href="#" class="button is-normal is-rounded is-dark"><span class="icon">&lt;/&gt;</span><span>Code</span></a></span>
+                <span class="link-block"><a href="#video" class="button is-normal is-rounded is-dark"><span class="icon">▶</span><span>Video</span></a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section teaser" id="video">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="media-wrap wide">
+            <video autoplay muted loop playsinline preload="metadata"><source src="assets/wrap/real_compressed_2x_half_trim5s.mp4" type="video/mp4"></video>
+            <!-- <div class="media-placeholder"><strong>Teaser video</strong>25–30 s montage: multi-arm assembly, support during insertion, and screwing.</div> -->
+          </div>
+          <h2 class="subtitle has-text-centered">A plan from Wrap executed on a dual arm system.</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>Assembly using robots often requires specially designed fixtures, or relies on top-down only assembly strategies.
+Using multiple robots, we can avoid using fixtures and make robotic assembly more flexible.
+Planning assembly sequences for multiple robots is challenging due to the high number of possible task assignments and orders.
+In addition, we need to reason over forces that occur during the assembly process, e.g., to decide if multiple robots are required for support, or if external support such as a table should be used.
+</p>
+<p>
+We present Wʀᴀᴘ, a multi-robot assembly planner for multi-part assemblies, given the inter-part ordering-dependencies, the part meshes, and their initial state.
+We formulate a linear program to reason about valid grasps for supporting the forces that occur during assembly.
+The search leverages the assembly sequence, and greedily finds a feasible solution per assembly step by computing a heuristic via a cheap backwards search, and using the heuristic in the more expensive forward search.
+</p><p>
+We then solve the multi-robot, multi-goal motion planning problem, and for execution, we split the plan into contact-rich assembly skills, and free space motion.
+We benchmark the planner on a variety of multi-part assemblies, and apply the planner to groups of robots differing in size and kinematics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Fixtureless Assembly Planning</h2>
+          <div class="content has-text-justified">
+            <p class="">Imagine building a lego set: You get an instruction booklet that tells ou the order in which you need to assemble the parts that you got, but it does not tell you how to grasp a piece, or how to bring the pieces to the desired goal location in the required orientation, or how to apply the force needed. In this example, we often use our hands, or the table as support of a sub-assembly for the forces of pushing parts together: We do not have a specific fixture in which we place the objects for assembly.</p>
+            <p class="">Informally, this is what we are trying to get robots to do. However, robots without dexterous hands are severly limited in how they can reorient objects, and thus need to do it via handovers, or repeatedly setting the objects down, and regrasping.</p>
+            <p class="">We formulate this problem as a search-problem where we try to find the multi-robot sequence that achieves the full assembly at its end. In this search problem, we need to figure out how to balance the forces that are happening in the assembly steps, we need to deal with the branching of the search from the many pick and place transformations, and we need to find a motion plan at the end.</p>
+            <p>To achieve this, Wʀᴀᴘ combines:</p>
+            <ul>
+              <li>lazy milestone-based task planning guided by a backwards abstraction,</li>
+              <li>mechanics-aware reasoning about grasps, table contacts, cooperative holding, and bracing, and</li>
+              <li>joint keyframe selection, collision-free motion planning, and execution retiming.</li>
+            </ul>
+            <p>We give a brief description of parts of the system below:</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="wide">
+            <img src="assets/wrap/overview-wrap.png" alt="Overview of the fixtureless assembly planning method">
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-4">Search</h2>
+          <div class="content has-text-justified">
+            <p class="">The core idea of the search is that we want to leverage information from assembly, and from disassembly of the object. First, in the high level loop, we choose one of the possible next steps from the inter-part dependencies that we are given.</p>
+            <p class="">We then try to find a feasible robot action sequence to fulfill this one goal. The actions we are considering are pick, place, handover, add_grasp, remove_grasp, and assemble. We also support a 'reorient' action, but do not use that in this work.</p>
+          </div>
+
+          <h2 class="title is-5">Backward Search</h2>
+          <div class="content has-text-justified">
+            <p class="">
+              In the backward search, we compute a heuristic that we use in the forward search. We do that by running a search from all possible goal states that have the parts that we want to assemble in this current search.
+              The search proceeds by applying the actions backwards, i.e. 'pick' becomes 'place', 'handover' stays 'handover', but the direction changes, etc.
+            </p>
+            <p class="">
+              We do not blindly just apply the backwards actions, but we do some filtering with cheap validity checks:
+            </p>
+            <ul>
+              <li>Wrench feasibility: We check if the forces that arise in an assembly check (and in any other action) by formulating a linear program for all parts in the currently considered subassembly. This LP tells us if the robots can support the external forces.
+                <div style="margin: 1rem 0;">
+                  \begin{equation}
+                  \label{eq:per_part_eq}
+                  \sum_{i\in\mathcal{R}(p)\cup \{\text{table}\}}\mathbf{w}_i
+                  +
+                  \sum_{q\in\mathcal{N}(p)}\mathbf{t}_{qp}
+                  +
+                  \mathbf{w}^{\mathrm{ext}}_p
+                  =
+                  \mathbf{0},
+                  \quad \forall p\in\mathcal{P},
+                  \end{equation}
+                  \begin{equation}
+                  \label{eq:wrench-feasibility}
+                  \begin{aligned}
+                  \exists \quad & \mathbf{w}_\text{table}, \{\mathbf{w}_r\}_{r\in\mathcal{R}}, \{\mathbf{t}_{pq}\}_{(p,q)\in\mathcal{E}}
+                  \\
+                  \text{s.t.} \quad &
+                  \eqref{eq:per_part_eq},\\
+                  &
+                  \mathbf{w}_r \in \mathcal{W}_r, \ \ \ \ \forall r\in\mathcal{R}, \ \ \ \ \ \ 
+                  \mathbf{w}_t \in \mathcal{W}_\text{table}, \\&
+                  \mathbf{t}_{pq} \in \mathcal{T}_{p,q}, \ \ \ \forall (p,q)\in\mathcal{E},
+                  \end{aligned}
+                  \end{equation}
+                </div>
+                
+                where what each variable means can be seen in the illustration:
+              
+                <div class="standard" style="margin: .75rem auto 0; max-width: 600px; text-align: center;">
+                  <img src="assets/wrap/force_eq_nice.png" alt="Wrench feasibility: the linear program checks whether the robots can support the external forces during assembly">
+                </div>
+              </li>
+
+              <li>End effector collision checking: We place floating end effectors at the desired grasp transformation and check if they are collision free.</li>
+            </ul>
+          </div>
+
+          <h2 class="title is-5">Forward Search</h2>
+          <div class="content has-text-justified">
+            <p class="">
+              In the forward search, we leverage the heuristic that we computed in the backward search.
+              Here, we check if we can actually satisfy the constraints that the actions impose, e.g., grasping an object with a robot in a specific way, or handing an object over betweeen two robots.
+            </p>
+            <p class="">
+              We do this using an optimization based solver, which we initialize with an analytic solution whenever possible. 
+            </p>
+          </div>
+
+          <h2 class="title is-4">Motion Planning & Execution</h2>
+          <div class="content has-text-justified">
+            <p class="">Once a valid task sequence was found, we first co-optimize all robot configurations using dynamic programming, and then compute a motion plan for our multi-goal, multi-robot, multi-mode planning problem using <a href="https://vhartmann.com/mrmg-planning/">a bidirectional RRT</a>. We retime this to make the plan dynamically feasible for the robots, and insert the controllers for the manipulation steps and then run it either in simulation, or on the real robot system.</p>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Examples</h2>
+          <div class="content has-text-justified">
+            <p>We show our planner on two OpenArms, and on UR5es. We vary the team size from 2 to 4 robots, and demonstrate planing of 11 different objects, including comparisons to objects from <a href="https://arxiv.org/abs/2506.05168">Fabrica</a>. We do not rely on a specific mating primitive, and show both linear insertion, and a screw-connection.</p></div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Fabrica Car</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/wrap/sim/posters/fabrica_car.jpg"><source src="assets/wrap/sim/fabrica_car.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Fabrica car</strong>Four-robot CAD assembly</div></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Chair with subassembly</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/wrap/sim/posters/chair_final.jpg"><source src="assets/wrap/sim/chair_final.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Bench</strong>Dual-arm Husky workcell</div></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Fabrica Duct</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/wrap/sim/posters/duct_4_ur.jpg"><source src="assets/wrap/sim/duct_4_ur.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Fabrica duct</strong>Deep insertions in shared space</div></div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Cross with OpenArm</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/wrap/sim/posters/cross_openarm.jpg"><source src="assets/wrap/sim/cross_openarm.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Cross</strong>OpenArm embodiment</div></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Fabrica Stool</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/wrap/sim/posters/stool_final.jpg"><source src="assets/wrap/sim/stool_final.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Screw stool</strong>Parameterized screw skill</div></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">12-Part Cube</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/wrap/sim/posters/cube_two_ur.jpg"><source src="assets/wrap/sim/cube_two_ur.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Cube</strong>Long-horizon assembly</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-5">Failure examples when planning without wrenches</h2>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Process Wrench Ignored</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/wrap/sim/posters/pushing_failure.jpg"><source src="assets/wrap/sim/pushing_failure.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Unsupported insertion</strong>Table placement slides or tips</div></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">End-effector (vacuum gripper) misuse</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/wrap/sim/posters/assemble_failure.jpg"><source src="assets/wrap/sim/assemble_failure.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Unsupported vacuum mating</strong>The insertion fails to seat without planned support</div></div>
+        </div>
+      </div>
+      <div class="columns is-centered"><div class="column is-four-fifths content has-text-justified"><p class="todo">[Brief limitations paragraph: discrete grasp and placement candidates; quasi-static mechanics and calibrated capability envelopes; bounded execution errors handled by feedback skills.]</p></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-5">Interactive Plan</h2>
+          <div class="content has-text-justified">
+            <p>Below, there is a 3D viewer to display a selection of plans, which are replays from the physics simulator.</p>
+          </div>
+          <div style="max-width: 900px; margin: 0 auto 24px;">
+            <iframe
+              src="assets/wrap/viewer/index.html?data=fabrica_car"
+              title="Fixtureless multi-robot assembly replay viewer"
+              loading="lazy"
+              allowfullscreen
+              style="width: 100%; height: 600px; border: 1px solid #dbdbdb; border-radius: 8px; background: #f7f6f3;">
+            </iframe>
+            <p class="caption has-text-centered">Fabrica car assembly with four UR robots. Click <em>Load assets</em> to download the interactive replay.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="section" id="results">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Results</h2>
+          <div class="content has-text-justified">
+            <p>We show how taking the wrenches that happen during assembly influences the search, and how our approach scales with more robots and more objects.</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column result-figure"><div class="media-wrap standard"><img src="assets/search-comparison.svg" alt="Search comparison"><div class="media-placeholder"><strong>Search comparison</strong>Time and plan cost across scenarios</div></div><p class="caption has-text-centered todo">[Main search result.]</p></div>
+        <div class="column result-figure"><div class="media-wrap standard"><img src="assets/scaling.svg" alt="Assembly scaling"><div class="media-placeholder"><strong>Scaling</strong>Parts, robots, and process load</div></div><p class="caption has-text-centered todo">[Main scaling result.]</p></div>
+        <div class="column result-figure"><div class="media-wrap standard"><img src="assets/simulation-success.svg" alt="Simulation success"><div class="media-placeholder"><strong>Simulation</strong>Success under alternative support models</div></div><p class="caption has-text-centered todo">[Main execution result.]</p></div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Reproducing the Results</h2>
+          <div class="content has-text-justified todo"><p>[Two sentences describing the released code, assets, and benchmark data.]</p></div>
+          <pre><code># Task plan and motion plan
+python3 main.py --solve --search-profile standard \
+  --motion-plan --motion-profile standard \
+  --assembly cross --parts 7 --num-robots 2 --robot ur5 \
+  --save plan.json --mp-save motion.json
+
+# Execute the saved path
+python3 sim.py run plan.json --mp-path motion.json \
+  --execution-timing phase --record replay.npz</code></pre>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">BibTeX</h2>
+          <div class="bibtex">
+            <button class="button is-small copy-button" type="button" onclick="copyBibtex()">Copy</button>
+            {% raw %}<pre id="bibtex"><code>@inproceedings{hartmann2027fixtureless,
+  title     = {{WRAP}: Fixtureless Wrench-aware Multi-Robot Assembly Planning},
+  author    = {Hartmann, Valentin N. and Su, Huang and Huang, Yijiang and Coros, Stelian},
+  booktitle = {[TODO]},
+  year      = {[TODO]}
+}</code></pre>{% endraw %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        The website design was
+        adapted from <a href="https://nerfies.github.io" class="external-link"><span class="dnerf">Nerfies</span></a>.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.media-wrap video').forEach((video) => {
+      const placeholder = video.parentElement.querySelector('.media-placeholder');
+      video.addEventListener('loadeddata', () => { if (placeholder) placeholder.style.display = 'none'; }, { once: true });
+      video.addEventListener('error', () => { video.style.display = 'none'; });
+      const source = video.querySelector('source');
+      if (source) source.addEventListener('error', () => { video.style.display = 'none'; });
+    });
+    document.querySelectorAll('.media-wrap img').forEach((image) => {
+      const placeholder = image.parentElement.querySelector('.media-placeholder');
+      image.addEventListener('load', () => { if (placeholder) placeholder.style.display = 'none'; }, { once: true });
+      image.addEventListener('error', () => { image.style.display = 'none'; });
+    });
+    async function copyBibtex() {
+      const text = document.querySelector('#bibtex code').innerText;
+      const button = document.querySelector('.copy-button');
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = 'Copied';
+        window.setTimeout(() => { button.textContent = 'Copy'; }, 1400);
+      } catch (_) { button.textContent = 'Select text'; }
+    }
+  </script>
