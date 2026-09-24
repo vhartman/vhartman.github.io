@@ -1,0 +1,56 @@
+---
+# Styles applied only to the publications page (linked via `custom_css`).
+# This file is scoped by virtue of only being loaded on /publications/.
+---
+
+/* section headings (Under review / Journals / Conferences / Workshops).
+   !important is needed to override the small `h3` in css/cv.scss. */
+.post-content h3 {
+    font-size: 1.05em !important;
+    font-weight: 700;
+    margin-top: 1.7em;
+    margin-bottom: 0.45em !important;
+}
+
+/* no bullet markers, but keep the exact same indentation: the markers are
+   drawn in the padding area, so removing them does not move the text. */
+.post-content ul {
+    list-style: none;
+}
+
+/* more breathing room between entries */
+.post-content li {
+    padding-bottom: 16px;
+}
+
+/* titles are written as *emphasis* in the markdown. That emphasis is now purely
+   a styling hook: the titles are no longer links, since every destination is
+   listed explicitly in the link row. Rendered upright at normal weight, so the
+   title leads by colour and position rather than by weight. */
+.post-content li > em {
+    font-style: normal;
+}
+
+/* author line sits a touch below the title in size, and slightly fainter */
+.pub-authors {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* venue + year label. Shifted left so it hangs into the margin and reads as a
+   divider between entries rather than as another line of the entry.
+   `left` is the dial: -50px sits flush with the section headings / content
+   edge, smaller values tuck it closer to the title. */
+.pub-venue {
+    position: relative;
+    left: -15px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #6b6b6b;
+}
+
+/* the [arxiv] / [code] / [video] line: a touch smaller, but the links keep the
+   site's link colour so they still read as links */
+.pub-links {
+    font-size: 0.85em;
+}
