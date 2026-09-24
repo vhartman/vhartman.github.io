@@ -34,7 +34,8 @@ I like cycling, used to row competitively, like all kinds of other sports, and t
 Also see my [Google Scholar Profile here](https://scholar.google.com/citations?user=MNuTR9YAAAAJ&hl=en).
 
 ### Under review
-- _A comparison of visual representations for real-world reinforcement learning in the context of vacuum gripping_, Nico Sutter, **Valentin N. Hartmann**, Stelian Coros, [[code](https://github.com/nisutte/voxel-serl)], [[arxiv](https://arxiv.org/abs/2503.02405)]
+- [_WRAP: Fixtureless Wrench-aware Multi-Robot Assembly Planning_](/wrap), **Valentin N. Hartmann**, Huang Su, Yijiang Huang, Stelian Coros
+- _Multi-Robot Multi-Goal Motion Planning with Stochastic Skills_, William Schnyder, **Valentin N. Hartmann**, Stelian Coros
 
 ### Journals
 
