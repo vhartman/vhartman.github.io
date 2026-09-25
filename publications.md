@@ -16,6 +16,8 @@ Also see my [Google Scholar Profile here](https://scholar.google.com/citations?u
   <span class="pub-links">[website](/wrap) · [arxiv](https://arxiv.org/abs/2609.29407)</span>
 - _Multi-Robot Multi-Goal Motion Planning with Stochastic Skills_<br>
   <span class="pub-authors">William Schnyder, **Valentin N. Hartmann**, Stelian Coros</span>
+- _PoliMop: Policy-in-the-Loop Motion Planning in 3D Spaces for Mobile Robots_ <br>
+  <span class="pub-authors">Yael Fassbind, **Valentin N. Hartmann**, Huang Su, Yijiang Huang, Stelian Coros</span><br>
 
 ### Journals
 
