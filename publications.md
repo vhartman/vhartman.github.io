@@ -13,7 +13,7 @@ Also see my [Google Scholar Profile here](https://scholar.google.com/citations?u
 ### Under review
 - _WRAP: Fixtureless Wrench-aware Multi-Robot Assembly Planning_<br>
   <span class="pub-authors">**Valentin N. Hartmann**, Huang Su, Yijiang Huang, Stelian Coros</span><br>
-  <span class="pub-links">[website](/wrap)</span>
+  <span class="pub-links">[website](/wrap) · [arxiv](https://arxiv.org/abs/2609.29407)</span>
 - _Multi-Robot Multi-Goal Motion Planning with Stochastic Skills_<br>
   <span class="pub-authors">William Schnyder, **Valentin N. Hartmann**, Stelian Coros</span>
 
