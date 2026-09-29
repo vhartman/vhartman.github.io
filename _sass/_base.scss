@@ -123,6 +123,70 @@ details.results-details .results-legend {
     color: #555;
 }
 
+/* Compact diagnostic summary used in the multi-robot shortcutting post. */
+.diagnostics-table-wrap {
+    margin: 1.25em 0 1.75em;
+    overflow-x: auto;
+}
+
+.diagnostics-table {
+    width: 100%;
+    min-width: 640px;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-variant-numeric: tabular-nums;
+}
+
+.diagnostics-table th,
+.diagnostics-table td {
+    padding: 0.65em 0.75em;
+    border: 0;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+.diagnostics-table thead th {
+    border-bottom: 1px solid #999;
+    background: transparent;
+    color: inherit;
+    font-weight: 600;
+    text-align: right;
+    vertical-align: bottom;
+}
+
+.diagnostics-table thead th:first-child,
+.diagnostics-table tbody th {
+    text-align: left;
+}
+
+.diagnostics-table thead span,
+.diagnostics-table thead small {
+    display: block;
+}
+
+.diagnostics-table thead small {
+    color: #666;
+    font-size: 0.85em;
+    font-weight: 400;
+}
+
+.diagnostics-table tbody th {
+    font-weight: 500;
+}
+
+.diagnostics-table tbody td {
+    text-align: right;
+}
+
+.diagnostics-table tbody tr + tr th,
+.diagnostics-table tbody tr + tr td {
+    border-top: 1px solid #e5e5e5;
+}
+
 a:hover{
     color: #ff00a5;
 }
