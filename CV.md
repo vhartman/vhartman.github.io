@@ -10,7 +10,7 @@ Detailed CV: <a href="/assets/vhartman_cv_en_1p.pdf">[PDF]</a>
 
 ## Experience
 ### [ETH Zurich - CRL](https://crl.ethz.ch/index.html)
-<div class='subtitle'>Postdoctoral Researcher<span class="position-duration">01/24 - current</span></div>
+<div class='subtitle'>Postdoctoral Researcher<span class="position-duration">01/24 - 09/26</span></div>
 
 ### [Intrinsic](https://intrinsic.ai/)
 <div class='subtitle'>PhD Resident in the Motion & Control Team<span class="position-duration">08/22 - 12/22</span></div>

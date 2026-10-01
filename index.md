@@ -9,7 +9,7 @@ I am looking around a bit for things/jobs to do after my postdoc - please reach 
 Preferably in Zurich/Switzerland, and ideally with a mix of homeoffice and in person work.
 </p>-->
 
-I'm Valentin! I am a Postdoc at the [Computational Robotics Lab](https://crl.ethz.ch/index.html) at ETH.
+I'm Valentin! I was a Postdoc at the [Computational Robotics Lab](https://crl.ethz.ch/index.html) at ETH.
 I am working on real-world multi-agent task and motion planning, and am interested in how to deal with uncertainty, and how to get robots to be adaptive to changing circumstances.
 This includes learning based methods (RL/IL/VLAs) and classical methods, and what I find most interesting: finding combinatoins to leverage the strengths of either approaches.
 
