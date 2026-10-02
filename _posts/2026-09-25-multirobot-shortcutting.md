@@ -317,13 +317,12 @@ The same is true for 'random robot + compatible run', and 'random robot subset +
 Tree + group gain, and our own round robin version seems to consistently be among the best.
 
 We have run the best versions from here on a broader set of scenarios to see if there's any significant difference in some of the other scenarios.{% include sidenote.html text='To save some time, I have only ran this on one path + 3 seeds.'%}
-The summary is effectively 'there is no huge difference', but you can see the plots below.
+The summary is effectively 'there is no huge difference in most scenarios', but you can see the plots below.
 
 <details>
 <summary>Additional offline scenarios</summary>
-<img src="{{ site.url }}/assets/multi-robot-shortcutting/broader-offline-scenarios.png" alt="Offline comparison of the selected shortcutting methods across additional scenarios" style="width:100%;">
+<img src="{{ site.url }}/assets/multi-robot-shortcutting/broader-offline-scenarios.png" alt="Offline comparison of the selected shortcutting methods across the complete broad benchmark" style="width:100%;">
 </details>
-
 
 #### Online shortcutting
 For online shortcutting, we simply run the planner in its optimizing mode, which calls the shortcutter whenever a new plan that improves upon the previous cost is found.
@@ -360,6 +359,17 @@ I was wondering if we should allocate more (or less?) time then.{% include siden
 
 But we can see that the differences are not that big.
 There's a chance that we should give much more budget, but that would fundamentally change the planner, and I am not a fan of that.
+
+#### Scaling with the number of robots
+
+I also did some very brief scaling tests: We have a setting where we just duplicate the same single robot stacking scenario $$N$$ times.
+This means that we are getting a single problem with more robots and more tasks, but the robots do not interact with each other at all in this setting.
+In an ideal world, this would also mean that the achievable cost in all scenarios is _exactly_ the same (or technically ever so slightly higher, as we are imposing an order on the pick and place actions).
+
+<img src="{{ site.url }}/assets/multi-robot-shortcutting/isolated-box-stacking-scaling-curves.png" alt="Cost-over-time curves for isolated box stacking with one to six robots" style="width:100%;">
+
+We ran the shortcutters there as well, and again as before, we can see similar effects as before.
+They do seem to get more extreme the more robots we add, but I would argue that this is quite natural, as the problems become more complex.
 
 # Take away?
 
