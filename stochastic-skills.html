@@ -1,0 +1,371 @@
+---
+layout: paper_page
+title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
+---
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Multi-Robot Multi-Goal Motion Planning with Stochastic Skills">
+  <meta name="keywords" content="multi-robot motion planning, manipulation skills, stochastic skills, Markov decision process, task and motion planning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Multi-Robot Multi-Goal Motion Planning with Stochastic Skills">
+  <meta property="og:image" content="assets/social-card.jpg">
+  <title>Multi-Robot Multi-Goal Motion Planning with Stochastic Skills</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        tags: 'ams',
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <link rel="stylesheet" href="{{ '/css/paper-chrome.css' | relative_url }}">
+
+  <style>
+    body { font-family: "Noto Sans", sans-serif; }
+    .publication-title, .publication-authors, .teaser { font-family: "Google Sans", sans-serif; }
+    .publication-authors a { color: hsl(204, 86%, 53%) !important; }
+    .publication-authors a:hover { text-decoration: underline; }
+    .author-block { display: inline-block; }
+    .link-block a { margin: 5px 2px; }
+    .teaser .media-wrap { margin-left: auto; margin-right: auto; }
+    .section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .media-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 180px;
+      overflow: hidden;
+      background: #f4f4f4;
+      color: #777;
+    }
+    .media-wrap.wide { aspect-ratio: 16 / 9; }
+    .media-wrap.standard { aspect-ratio: 4 / 3; }
+    .media-wrap > video, .media-wrap > img {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .media-placeholder { padding: 1.5rem; text-align: center; font-size: .9rem; }
+    .media-placeholder strong { display: block; color: #555; margin-bottom: .35rem; }
+    .todo { color: #777; font-style: italic; }
+    .caption { margin-top: .65rem; font-size: .9rem; color: #555; }
+    .example-title { margin-top: .75rem !important; margin-bottom: .25rem !important; }
+    .result-figure { margin-bottom: 2rem; }
+    .comparison-label { margin-bottom: .6rem; font-weight: 600; }
+    pre { text-align: left; white-space: pre-wrap; }
+    .bibtex { position: relative; }
+    .copy-button { position: absolute; z-index: 2; top: .65rem; right: .65rem; }
+    .footer { padding: 2.5rem 1.5rem; }
+    @media screen and (max-width: 768px) {
+      .publication-title { font-size: 2.25rem !important; }
+      .section { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Multi-Robot Multi-Goal Motion Planning with Stochastic Skills</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">William Schnyder,</span>
+              <span class="author-block"><a href="https://vhartmann.com/">Valentin N. Hartmann</a>,</span>
+              <span class="author-block"><a href="https://crl.ethz.ch/people/coros/index.html">Stelian Coros</a></span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Computational Robotics Lab, Department of Computer Science, ETH Zürich</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block"><a href="#" class="button is-normal is-rounded is-dark"><span class="icon"><i class="ai ai-arxiv"></i></span><span>Paper</span></a></span>
+                <span class="link-block"><a href="https://github.com/vhartman/multirobot-pathplanning-benchmark/tree/dev/william" class="button is-normal is-rounded is-dark"><span class="icon">&lt;/&gt;</span><span>Code</span></a></span>
+                <!-- <span class="link-block"><a href="#" class="button is-normal is-rounded is-dark"><span class="icon">▶</span><span>Video</span></a></span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="section teaser" id="video">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="media-wrap wide">
+            <video autoplay muted loop playsinline preload="metadata"><source src="assets/mrmg-skills/teaser.mp4" type="video/mp4"></video>
+            <div class="media-placeholder"><strong>Teaser video</strong>[Fig. 1]</div>
+          </div>
+          <h2 class="subtitle has-text-centered todo">[Teaser caption.]</h2>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>As robots are increasingly deployed in groups and share workspaces to execute real-world tasks, planning their concurrent motions around complex manipulation skills becomes essential. These skills involve continuous physical execution and may exhibit stochastic behavior, resulting in variable execution times and uncertain continuous trajectories. Existing planners either limit execution to single-robot scenarios, rely on open-loop paths, or use post-hoc scheduling that prevents dynamic coordination.</p>
+            <p>In this paper, we address this gap by integrating stochastic skills into sampling-based multi-robot planning by formulating the problem as a Markov Decision Process (MDP) over a multi-modal composite roadmap. For stochastic skills, solving the MDP yields a reactive policy that allows controllable robots to dynamically adapt their motions in response to other robots’ execution of manipulation skills.</p>
+            <p>By resolving skill uncertainty directly at planning time, this approach avoids the pessimism of conservative baselines and unlocks robust, dynamic multi-robot coordination.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-5">Informal abstract</h2>
+          <div class="content has-text-justified">
+            <p >A common approach in manipulation planning is combining (possibly learned) controllers with free space motion planning.
+              This allows for easy generalization, since we only need to learn a skill for a single robot, but can then rely on the planner to coordinate skill invocation.
+              Often, these skills are stochastic, possibly due to noisy observations, or simply because a skill might fail and retry.
+              In this work, we present three different planners, dealing with increasingly complex settings.
+            </p>
+            
+            <ul>
+              <li >We first introduce deterministic skills in multi-robot, multi-goal planning, showing how to include the skills in prioritized planning, RRTs and PRMs.</li>
+              <li >We then show how to plan with stochastic skills via conservative planning, i.e., just avoiding the skill-executing robot for all its possible realizations.</li>
+              <li >Finally, we introduce a reactive planner which computes a policy over the possible mode and skill invocations.</li>
+            </ul>
+            <p >In our formulation, the deterministic setting can be seen as a special case of the reactive planner. </p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Skill-Aware Formulation</h2>
+          <div class="content has-text-justified">
+            <p>In multi-robot, multi-goal, multi-modal motion planning, we plan through a sequence of modes that describe the different scenes, and the different tasks.</p>
+            <p>In this work, we extend this description by introducing skill modes, where some of the robots are not controllable, but execute a skill.</p>
+            <div style="margin: 1rem 0;">
+              \begin{equation*}
+              \label{eq:factorization}
+              q = (q^{\mathrm{skill}}, q^{\mathrm{ctrl}}) \in \mathcal{Q}_{\mathcal{R}^{\mathrm{skill}}} \times \mathcal{Q}_{\mathcal{R}^{\mathrm{ctrl}}}.
+              \end{equation*}
+            </div>
+            <p>This means that our problem becomes a problem of (1) reaching the goals of the robots, and (2) avoiding the skill-executing robots.
+            We assume a skill is given as </p>
+            <div style="margin: 1rem 0;">
+              \begin{equation*}
+              \label{eq:skill}
+              q^\text{skill}_{k+1} = f(q^\text{skill}_{k}, \text{env}, \omega_k),
+              \end{equation*}
+            </div>
+            <p>where $\text{env}$ is the static scene, and $\omega$ is the noise. We assume these skills are given to us, and could be e.g. a learned 'picking' skill, or 'peg-in-hole-insertion', but there are effectively no limits
+              as long as the equation above is fulfilled.
+              In thi ssetting here, we also assume that the skills avoid collisions with the environments on their own.
+            </p>
+          </div>
+
+          <div class="content has-text-justified">
+            <p class="">When we are considering skills in our planner, we do not longer only want a path that is to be followed open-loop -- we want to compute a policy that is able to react to the possible scenarios that a skill can invoke.
+              This also means that we are no longer optimizign just the makespan, or the path length, but we want to minimize the expected cost:</p>
+            <div style="margin: 1rem 0;">
+              \begin{equation*}
+              \label{eq:objective}
+              \pi^\star = \arg\min_\pi \mathbb{E}\left[\sum_{k=0}^{T-1} c_{\mathrm{time}}(q_k, q_{k+1})\right],
+              \end{equation*}
+            </div>
+            <p>where</p>
+            <div style="margin: 1rem 0;">
+              \begin{equation*}
+              \label{eq:stage-cost}
+              c_{\mathrm{time}}(q_k, q_{k+1}) =
+              \begin{cases}
+              \Delta t & \text{in skill modes,}\\
+              c(q_k, q_{k+1})/v_{\max} & \text{in non-skill modes.}
+              \end{cases}
+              \end{equation*}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Planning with Skills</h2>
+          <h3 class="title is-4">Deterministic Skill Planning</h3>
+          <div class="content has-text-justified">
+            <p class="">With the factorization in the configuration space introduced above, we can easily extend most (sampling based) motion planning approaches by modifying the steering, or the extend functions. We show this on three examples:</p>
+            
+            <ul>
+              <li >In a prioritized motion planning, we plan robot tasks one-by-one. This then means that if we are in a skill mode for the robot we are planning for, we simply roll out the skill.</li>
+              <li >For planning with an RRT, we largely proceed the same way as for a normal composite space RRT. For steering towards the randomly sampled configuration we then exchange the normal linear interpolation with the factorized version: We do the linear interpolation for the steerable robots, and we roll out the skill for the skill-executing robots.</li>
+              <li >We proceed similarly in a PRM: We again factorize the space, and build a normal roadmap for the steerable robots, and roll out the the skills. Here, we do have to be carful with where we introduce edges between the skill vertices. </li>
+            </ul>
+          </div>
+
+          <h3 class="title is-4">Stochastic Skill Planning</h3>
+          <h3 class="title is-5">Conservative Baseline</h3>
+          <div class="content has-text-justified">
+            <p>Compared to the deterministic version above, stochastic planning can then be done by taking the full distribution into account: 
+              In principle, we can then also just use the determinsitic approach, but with a very inflated collision region (i.e., all rollouts). 
+              The slightly less pessimistic version of the conservative planner is only avoiding collisions with the parts of the rollouts at a specific timeslice.</p>
+          </div>
+
+          <h3 class="title is-5">Reactive Policy</h3>
+          <div class="content has-text-justified">
+            <p class="">Finally, we compute the reactive policy by building a roadmap taking the probability of transitioning of the skill into account, and then compute the value function via backward value iteration.</p>
+            <p class="">With that value function, at runtime, we can then just lookup the best actions of the controllable robots by maximizing the value, which automatically reacts to possible versions of the skill-execution.</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Examples</h2>
+          <div class="content has-text-justified">
+            <p>Below, we show how the conservative and the reactive planner deal with the square island, where the skill can decide if the skill-robot goes up or down.
+              The policy then has to decide how to react to what the skill is doing.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Conservative planner (skill: up)</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/envs/bin_picking.jpg"><source src="assets/mrmg-skills/envs/bin_picking.mp4" type="video/mp4"></video><div class="media-placeholder"></div></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Reactive planner (skill: up)</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/envs/bin_packing.jpg"><source src="assets/mrmg-skills/envs/bin_packing.mp4" type="video/mp4"></video><div class="media-placeholder"></div></div>
+        </div>
+        <!-- <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Dual-arm transport</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/envs/dual_arm_transport.jpg"><source src="assets/mrmg-skills/envs/dual_arm_transport.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Dual-arm transport</strong>[Fig. 2c]</div></div>
+        </div> -->
+      </div>
+      <div class="columns is-centered">
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Conservative planner (skill: down)</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/envs/handover.jpg"><source src="assets/mrmg-skills/envs/handover.mp4" type="video/mp4"></video><div class="media-placeholder"></div></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Reactive planner (skill: down)</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/planar/square.jpg"><source src="assets/mrmg-skills/planar/square.mp4" type="video/mp4"></video><div class="media-placeholder"></div></div>
+        </div>
+        <!-- <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Rectangle environment</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/planar/rectangle.jpg"><source src="assets/mrmg-skills/planar/rectangle.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Rectangle</strong>[Fig. 3e–3h]</div></div>
+        </div> -->
+      </div>
+      <!-- <div class="columns is-centered">
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Shared point</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/planar/shared_point.jpg"><source src="assets/mrmg-skills/planar/shared_point.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Shared point</strong>[Fig. 4]</div></div>
+        </div>
+        <div class="column">
+          <h3 class="title is-6 has-text-centered example-title">Stacking, 2&#8211;4 robots</h3>
+          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/stacking/stacking.jpg"><source src="assets/mrmg-skills/stacking/stacking.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Eight-object stacking</strong>[Fig. 5]</div></div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- <section class="section" id="results">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Results</h2>
+          <div class="content has-text-justified">
+            <p class="todo">[Conservative vs. reactive: the reactive policy adapts to the realized skill and lowers the realized makespan; task dependencies expose the scalability bottleneck.]</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column result-figure"><div class="standard"><img src="assets/skill/multirobot-stacking.png" alt="Planar cost convergence and realized makespan"></div><p class="caption has-text-centered todo">[Cost convergence and realized-cost ePDFs.]</p></div>
+        <div class="column result-figure"><div class="media-wrap standard"><img src="assets/mrmg-skills/results/stacking.svg" alt="Stacking planning cost convergence and realized makespan"><div class="media-placeholder"><strong>Stacking</strong>[Fig. 5]</div></div><p class="caption has-text-centered todo">[Planning cost and realized makespan, 2–4 robots.]</p></div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">BibTeX</h2>
+          <div class="bibtex">
+            <button class="button is-small copy-button" type="button" onclick="copyBibtex()">Copy</button>
+            {% raw %}<pre id="bibtex"><code>@inproceedings{schnyder2027stochasticskills,
+  title     = {{Multi-Robot Multi-Goal Motion Planning with Stochastic Skills}},
+  author    = {Schnyder, William and Hartmann, Valentin N. and Coros, Stelian},
+  year      = {2027},
+}</code></pre>{% endraw %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        The website design was
+        adapted from <a href="https://nerfies.github.io" class="external-link"><span class="dnerf">Nerfies</span></a>.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.media-wrap video').forEach((video) => {
+      const placeholder = video.parentElement.querySelector('.media-placeholder');
+      video.addEventListener('loadeddata', () => { if (placeholder) placeholder.style.display = 'none'; }, { once: true });
+      video.addEventListener('error', () => { video.style.display = 'none'; });
+      const source = video.querySelector('source');
+      if (source) source.addEventListener('error', () => { video.style.display = 'none'; });
+    });
+    document.querySelectorAll('.media-wrap img').forEach((image) => {
+      const placeholder = image.parentElement.querySelector('.media-placeholder');
+      image.addEventListener('load', () => { if (placeholder) placeholder.style.display = 'none'; }, { once: true });
+      image.addEventListener('error', () => { image.style.display = 'none'; });
+    });
+    async function copyBibtex() {
+      const text = document.querySelector('#bibtex code').innerText;
+      const button = document.querySelector('.copy-button');
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = 'Copied';
+        window.setTimeout(() => { button.textContent = 'Copy'; }, 1400);
+      } catch (_) { button.textContent = 'Select text'; }
+    }
+  </script>
