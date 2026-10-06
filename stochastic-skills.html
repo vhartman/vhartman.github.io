@@ -46,7 +46,7 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
       width: 100%;
       min-height: 180px;
       overflow: hidden;
-      background: #f4f4f4;
+      background: transparent;
       color: #777;
     }
     .media-wrap.wide { aspect-ratio: 16 / 9; }
@@ -66,6 +66,15 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
     .example-title { margin-top: .75rem !important; margin-bottom: .25rem !important; }
     .result-figure { margin-bottom: 2rem; }
     .comparison-label { margin-bottom: .6rem; font-weight: 600; }
+    .comparison-controls { max-width: 780px; margin: 0 auto 1.5rem; text-align: center; }
+    .comparison-buttons { display: flex; justify-content: center; gap: .5rem; margin-top: .75rem; }
+    .comparison-timeline { display: flex; align-items: center; gap: .75rem; }
+    .comparison-timeline input { flex: 1; min-width: 0; cursor: pointer; }
+    .comparison-timeline output { min-width: 7rem; font-variant-numeric: tabular-nums; }
+    .comparison-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; max-width: 780px; margin: 0 auto 1rem; }
+    .comparison-grid .media-wrap { aspect-ratio: 6 / 5; min-height: 0; }
+    .comparison-subtitle { margin: .5rem 0 0 !important; }
     pre { text-align: left; white-space: pre-wrap; }
     .bibtex { position: relative; }
     .copy-button { position: absolute; z-index: 2; top: .65rem; right: .65rem; }
@@ -73,6 +82,9 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
     @media screen and (max-width: 768px) {
       .publication-title { font-size: 2.25rem !important; }
       .section { padding: 2rem 1.25rem; }
+    }
+    @media screen and (max-width: 480px) {
+      .comparison-grid { grid-template-columns: 1fr; max-width: 380px; }
     }
   </style>
 </head>
@@ -101,6 +113,32 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section teaser" id="stacking-comparison" data-skill-comparison aria-label="Conservative and reactive stacking comparison">
+    <div class="container is-max-desktop">
+      <div class="comparison-grid">
+        <div class="comparison-item">
+          <div class="media-wrap"><video muted playsinline controls preload="auto" poster="assets/skill/3d-stacking/conservative_stacking_4r8b.jpg" aria-label="Conservative four-robot stacking planner"><source src="assets/skill/3d-stacking/conservative_stacking_4r8b_2x.mp4" type="video/mp4"></video></div>
+          <h2 class="subtitle is-6 has-text-centered comparison-subtitle">Conservative plan</h2>
+        </div>
+        <div class="comparison-item">
+          <div class="media-wrap"><video muted playsinline controls preload="auto" poster="assets/skill/3d-stacking/reactive_stacking_4r8b.jpg" aria-label="Reactive four-robot stacking planner"><source src="assets/skill/3d-stacking/reactive_stacking_4r8b_2x.mp4" type="video/mp4"></video></div>
+          <h2 class="subtitle is-6 has-text-centered comparison-subtitle">Reactive policy</h2>
+        </div>
+      </div>
+      <div class="comparison-controls" hidden>
+        <div class="comparison-timeline">
+          <input id="stacking-seek" data-comparison-seek type="range" min="0" max="0" step="0.01" value="0" aria-label="Stacking comparison time in seconds" disabled>
+          <output id="stacking-time" data-comparison-time for="stacking-seek">0.0 / 0.0 s</output>
+        </div>
+        <div class="comparison-buttons">
+          <button class="button is-dark is-small" type="button" id="stacking-play" data-comparison-play disabled>Play all</button>
+          <button class="button is-small" type="button" id="stacking-replay" data-comparison-restart disabled>Replay</button>
+        </div>
+        <p class="comparison-status" id="stacking-status" data-comparison-status role="status">Loading videos…</p>
       </div>
     </div>
   </section>
@@ -249,45 +287,59 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="skill-comparison" data-skill-comparison>
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Examples</h2>
           <div class="content has-text-justified">
-            <p>Below, we show how the conservative and the reactive planner deal with the square island, where the skill can decide if the skill-robot goes up or down.
+            <p>Below, we show how the conservative and the reactive planner deal with the square island, where the skill can decide if the skill-robot (orange) goes up or down.
               The policy then has to decide how to react to what the skill is doing.
+              The task here is to swap places two times, i.e. to visit the other robots' starting point, and then return home.
+            </p>
+            <p>We can see below how the reactive planer is able to finish first in both versions of the skill, wheas the conservative planer has to wait for the worst case execution of the skill, and is thus slower overall.
             </p>
           </div>
         </div>
       </div>
-      <div class="columns is-centered">
-        <div class="column">
+      <div class="comparison-grid">
+        <div class="comparison-item">
           <h3 class="title is-6 has-text-centered example-title">Conservative planner (skill: up)</h3>
-          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/envs/bin_picking.jpg"><source src="assets/mrmg-skills/envs/bin_picking.mp4" type="video/mp4"></video><div class="media-placeholder"></div></div>
+          <div class="media-wrap"><video muted playsinline controls preload="auto" poster="assets/skill/2d-square/conservative_square_up.jpg" aria-label="Conservative planner, skill up"><source src="assets/skill/2d-square/conservative_square_up.mp4" type="video/mp4"></video></div>
         </div>
-        <div class="column">
+        <div class="comparison-item">
           <h3 class="title is-6 has-text-centered example-title">Reactive planner (skill: up)</h3>
-          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/envs/bin_packing.jpg"><source src="assets/mrmg-skills/envs/bin_packing.mp4" type="video/mp4"></video><div class="media-placeholder"></div></div>
+          <div class="media-wrap"><video muted playsinline controls preload="auto" poster="assets/skill/2d-square/reactive_square_up.jpg" aria-label="Reactive planner, skill up"><source src="assets/skill/2d-square/reactive_square_up.mp4" type="video/mp4"></video></div>
         </div>
         <!-- <div class="column">
           <h3 class="title is-6 has-text-centered example-title">Dual-arm transport</h3>
           <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/envs/dual_arm_transport.jpg"><source src="assets/mrmg-skills/envs/dual_arm_transport.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Dual-arm transport</strong>[Fig. 2c]</div></div>
         </div> -->
       </div>
-      <div class="columns is-centered">
-        <div class="column">
+      <div class="comparison-grid">
+        <div class="comparison-item">
           <h3 class="title is-6 has-text-centered example-title">Conservative planner (skill: down)</h3>
-          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/envs/handover.jpg"><source src="assets/mrmg-skills/envs/handover.mp4" type="video/mp4"></video><div class="media-placeholder"></div></div>
+          <div class="media-wrap"><video muted playsinline controls preload="auto" poster="assets/skill/2d-square/conservative_square_down.jpg" aria-label="Conservative planner, skill down"><source src="assets/skill/2d-square/conservative_square_down.mp4" type="video/mp4"></video></div>
         </div>
-        <div class="column">
+        <div class="comparison-item">
           <h3 class="title is-6 has-text-centered example-title">Reactive planner (skill: down)</h3>
-          <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/planar/square.jpg"><source src="assets/mrmg-skills/planar/square.mp4" type="video/mp4"></video><div class="media-placeholder"></div></div>
+          <div class="media-wrap"><video muted playsinline controls preload="auto" poster="assets/skill/2d-square/reactive_square_down.jpg" aria-label="Reactive planner, skill down"><source src="assets/skill/2d-square/reactive_square_down.mp4" type="video/mp4"></video></div>
         </div>
         <!-- <div class="column">
           <h3 class="title is-6 has-text-centered example-title">Rectangle environment</h3>
           <div class="media-wrap standard"><video muted loop playsinline controls preload="none" poster="assets/mrmg-skills/planar/rectangle.jpg"><source src="assets/mrmg-skills/planar/rectangle.mp4" type="video/mp4"></video><div class="media-placeholder"><strong>Rectangle</strong>[Fig. 3e–3h]</div></div>
         </div> -->
+      </div>
+      <div class="comparison-controls" hidden>
+        <div class="comparison-timeline">
+          <input id="comparison-seek" data-comparison-seek type="range" min="0" max="0" step="0.01" value="0" aria-label="Comparison time in seconds" disabled>
+          <output id="comparison-time" data-comparison-time for="comparison-seek">0.0 / 0.0 s</output>
+        </div>
+        <div class="comparison-buttons">
+          <button class="button is-dark is-small" type="button" id="comparison-play" data-comparison-play disabled>Play all</button>
+          <button class="button is-small" type="button" id="comparison-restart" data-comparison-restart disabled>Restart</button>
+        </div>
+        <p class="comparison-status" id="comparison-status" data-comparison-status role="status">Loading videos…</p>
       </div>
       <!-- <div class="columns is-centered">
         <div class="column">
@@ -347,6 +399,131 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
   </footer>
 
   <script>
+    document.querySelectorAll('[data-skill-comparison]').forEach((comparison) => {
+      const videos = Array.from(comparison.querySelectorAll('.comparison-item video'));
+      const playButton = comparison.querySelector('[data-comparison-play]');
+      const restartButton = comparison.querySelector('[data-comparison-restart]');
+      const seek = comparison.querySelector('[data-comparison-seek]');
+      const time = comparison.querySelector('[data-comparison-time]');
+      const status = comparison.querySelector('[data-comparison-status]');
+      let duration = 0;
+      let position = 0;
+      let master = null;
+      let playing = false;
+      let starting = false;
+      let failed = false;
+      let frame = 0;
+
+      comparison.querySelector('.comparison-controls').hidden = false;
+
+      function updateDisplay() {
+        seek.value = position;
+        time.textContent = `${position.toFixed(1)} / ${duration.toFixed(1)} s`;
+        playButton.textContent = playing ? 'Pause all' : 'Play all';
+      }
+
+      function updateReadiness() {
+        const ready = !failed && videos.every((video) => Number.isFinite(video.duration) && (video.readyState >= 3 || video.ended));
+        playButton.disabled = !ready || starting;
+        restartButton.disabled = !duration || starting || failed;
+        seek.disabled = !duration || starting || failed;
+        if (ready) {
+          videos.forEach((video) => { video.controls = false; });
+          if (status.textContent === 'Loading videos…') status.textContent = 'Play together to compare completion times.';
+        }
+      }
+
+      function pauseAll() {
+        playing = false;
+        cancelAnimationFrame(frame);
+        videos.forEach((video) => video.pause());
+        updateDisplay();
+      }
+
+      function setPosition(value) {
+        pauseAll();
+        position = Math.max(0, Math.min(value, duration));
+        videos.forEach((video) => { video.currentTime = Math.min(position, video.duration); });
+        updateDisplay();
+      }
+
+      function tick() {
+        if (!playing) return;
+        position = Math.min(master.currentTime, duration);
+        videos.forEach((video) => {
+          const target = Math.min(position, video.duration);
+          if (video !== master && !video.seeking && Math.abs(video.currentTime - target) > 0.15) video.currentTime = target;
+        });
+        updateDisplay();
+        if (master.ended) {
+          position = duration;
+          pauseAll();
+          status.textContent = 'All videos finished. Play again to compare.';
+        } else {
+          frame = requestAnimationFrame(tick);
+        }
+      }
+
+      async function playAll() {
+        if (starting || failed) return;
+        if (position >= duration - 0.02) setPosition(0);
+        starting = true;
+        playing = true;
+        updateReadiness();
+        updateDisplay();
+        status.textContent = '';
+        try {
+          await Promise.all(videos.filter((video) => position < video.duration - 0.02).map((video) => video.play()));
+          if (playing) tick();
+        } catch (_) {
+          pauseAll();
+          status.textContent = 'Playback could not start. Press Play all to try again.';
+        } finally {
+          starting = false;
+          updateReadiness();
+        }
+      }
+
+      playButton.addEventListener('click', () => {
+        if (playing) pauseAll();
+        else playAll();
+      });
+      restartButton.addEventListener('click', () => { setPosition(0); playAll(); });
+      seek.addEventListener('input', () => {
+        setPosition(Number(seek.value));
+        status.textContent = 'Paused. Press Play all to continue.';
+      });
+      videos.forEach((video) => {
+        video.addEventListener('loadedmetadata', () => {
+          if (videos.every((item) => Number.isFinite(item.duration))) {
+            master = videos.reduce((longest, item) => item.duration > longest.duration ? item : longest);
+            duration = master.duration;
+            seek.max = duration;
+            updateDisplay();
+          }
+          updateReadiness();
+        });
+        video.addEventListener('canplay', updateReadiness);
+        video.addEventListener('seeked', updateReadiness);
+        video.addEventListener('waiting', () => {
+          if (!playing || starting) return;
+          position = master.currentTime;
+          pauseAll();
+          videos.forEach((item) => { item.currentTime = Math.min(position, item.duration); });
+          status.textContent = 'Playback paused while videos load. Press Play all to continue.';
+          updateReadiness();
+        });
+        const handleError = () => {
+          failed = true;
+          pauseAll();
+          status.textContent = 'A comparison video could not load. Please reload the page to try again.';
+          updateReadiness();
+        };
+        video.addEventListener('error', handleError);
+        video.querySelector('source').addEventListener('error', handleError);
+      });
+    });
+
     document.querySelectorAll('.media-wrap video').forEach((video) => {
       const placeholder = video.parentElement.querySelector('.media-placeholder');
       video.addEventListener('loadeddata', () => { if (placeholder) placeholder.style.display = 'none'; }, { once: true });
