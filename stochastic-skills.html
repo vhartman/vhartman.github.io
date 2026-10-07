@@ -71,10 +71,10 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
     .comparison-timeline { display: flex; align-items: center; gap: .75rem; }
     .comparison-timeline input { flex: 1; min-width: 0; cursor: pointer; }
     .comparison-timeline output { min-width: 7rem; font-variant-numeric: tabular-nums; }
-    .comparison-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
     .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; max-width: 780px; margin: 0 auto 1rem; }
     .comparison-grid .media-wrap { aspect-ratio: 6 / 5; min-height: 0; }
     .comparison-subtitle { margin: .5rem 0 0 !important; }
+    .comparison-caption { max-width: 780px; margin-left: auto; margin-right: auto; }
     pre { text-align: left; white-space: pre-wrap; }
     .bibtex { position: relative; }
     .copy-button { position: absolute; z-index: 2; top: .65rem; right: .65rem; }
@@ -106,7 +106,7 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
 
             <div class="column has-text-centered">
               <div class="publication-links">
-                <span class="link-block"><a href="#" class="button is-normal is-rounded is-dark"><span class="icon"><i class="ai ai-arxiv"></i></span><span>Paper</span></a></span>
+                <span class="link-block"><a href="http://arxiv.org/abs/2610.07784" class="button is-normal is-rounded is-dark"><span class="icon"><i class="ai ai-arxiv"></i></span><span>Paper</span></a></span>
                 <span class="link-block"><a href="https://github.com/vhartman/multirobot-pathplanning-benchmark/tree/dev/william" class="button is-normal is-rounded is-dark"><span class="icon">&lt;/&gt;</span><span>Code</span></a></span>
                 <!-- <span class="link-block"><a href="#" class="button is-normal is-rounded is-dark"><span class="icon">▶</span><span>Video</span></a></span> -->
               </div>
@@ -138,8 +138,8 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
           <button class="button is-dark is-small" type="button" id="stacking-play" data-comparison-play disabled>Play all</button>
           <button class="button is-small" type="button" id="stacking-replay" data-comparison-restart disabled>Replay</button>
         </div>
-        <p class="comparison-status" id="stacking-status" data-comparison-status role="status">Loading videos…</p>
       </div>
+      <p class="caption has-text-centered comparison-caption">Four robots stack eight blocks. The manipulation skills (pick/place) have a stochastic duration. The reactive policy (right) adapts to the observed skill execution and completes the task sooner than the conservative plan (left).</p>
     </div>
   </section>
 
@@ -337,9 +337,8 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
         </div>
         <div class="comparison-buttons">
           <button class="button is-dark is-small" type="button" id="comparison-play" data-comparison-play disabled>Play all</button>
-          <button class="button is-small" type="button" id="comparison-restart" data-comparison-restart disabled>Restart</button>
+          <button class="button is-small" type="button" id="comparison-restart" data-comparison-restart disabled>Replay</button>
         </div>
-        <p class="comparison-status" id="comparison-status" data-comparison-status role="status">Loading videos…</p>
       </div>
       <!-- <div class="columns is-centered">
         <div class="column">
@@ -405,7 +404,6 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
       const restartButton = comparison.querySelector('[data-comparison-restart]');
       const seek = comparison.querySelector('[data-comparison-seek]');
       const time = comparison.querySelector('[data-comparison-time]');
-      const status = comparison.querySelector('[data-comparison-status]');
       let duration = 0;
       let position = 0;
       let master = null;
@@ -429,7 +427,6 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
         seek.disabled = !duration || starting || failed;
         if (ready) {
           videos.forEach((video) => { video.controls = false; });
-          if (status.textContent === 'Loading videos…') status.textContent = 'Play together to compare completion times.';
         }
       }
 
@@ -458,7 +455,6 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
         if (master.ended) {
           position = duration;
           pauseAll();
-          status.textContent = 'All videos finished. Play again to compare.';
         } else {
           frame = requestAnimationFrame(tick);
         }
@@ -471,13 +467,11 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
         playing = true;
         updateReadiness();
         updateDisplay();
-        status.textContent = '';
         try {
           await Promise.all(videos.filter((video) => position < video.duration - 0.02).map((video) => video.play()));
           if (playing) tick();
         } catch (_) {
           pauseAll();
-          status.textContent = 'Playback could not start. Press Play all to try again.';
         } finally {
           starting = false;
           updateReadiness();
@@ -491,7 +485,6 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
       restartButton.addEventListener('click', () => { setPosition(0); playAll(); });
       seek.addEventListener('input', () => {
         setPosition(Number(seek.value));
-        status.textContent = 'Paused. Press Play all to continue.';
       });
       videos.forEach((video) => {
         video.addEventListener('loadedmetadata', () => {
@@ -510,13 +503,11 @@ title: 'Multi-Robot Multi-Goal Motion Planning with Stochastic Skills'
           position = master.currentTime;
           pauseAll();
           videos.forEach((item) => { item.currentTime = Math.min(position, item.duration); });
-          status.textContent = 'Playback paused while videos load. Press Play all to continue.';
           updateReadiness();
         });
         const handleError = () => {
           failed = true;
           pauseAll();
-          status.textContent = 'A comparison video could not load. Please reload the page to try again.';
           updateReadiness();
         };
         video.addEventListener('error', handleError);
