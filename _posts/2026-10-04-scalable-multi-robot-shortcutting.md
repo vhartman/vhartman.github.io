@@ -115,7 +115,7 @@ So from the discussion above (and some experiments that I am not showing here) I
 We did however like this in part 1 -- it worked very well in many cases -- so it is kind of sad that this is the issue apparently, and we need to get rid of it.
 
 But the obvious first thing to try from this takeaway is then that one way to tackle the scaling issue is just replacing the gain part, which does not scale, with something that scales better.
-One of the things that scales better (as can be observed above) is compatible subset: sampling a random robot subset and a run that is compatible with the robot subset (i.e., where there is no mode change from any of the robots), and shortcutting by randomly sampling an index pair from this run.
+One of the things that scales better (as can be observed above) is compatible subset (called 'random robot subset + compatible run' in the previous post): sampling a random robot subset and a run that is compatible with the robot subset (i.e., where there is no mode change from any of the robots), and shortcutting by randomly sampling an index pair from this run.
 
 Because we want to run these shortcutters in the loop of the planner, the other thing that I do not like is this fixed order of 'first doing one approach, then doing another one'.
 This is somewhat problematic in the online version of the current planners, since the shortcutters throw away their state when a new plan arrives{% include sidenote.html text='It is not trivial to carry over the computed statistics or figure out what we have already done if the path changes.'%}, and thus the first part of the shortcutting is repeated very often, while the second part receives too little time.
@@ -130,7 +130,7 @@ We run scaling experiments on 4 scenarios, two of which we have seen before in t
 - **Disk**: We have multiple 2D robots that need to reach a prescribed sequence of poses, and at the end return to their home positions.
 - **Isolated box stacking**: We have a box stacking scenario with 4 boxes per table and with one robot per table, $$N$$ times -- the robots are not interacting with each other at all in this setting.
 - **Coupled box stacking**: We have the box stacking scenario again, but with $$N$$ robots on one table. This means that the robots are clearly interacting with each other, and could collide.
-- **Mobile wall**: The $$N$$ mobile robots build a fixed 5×5 wall of 25 bricks; we vary only the number of robots. The robots are in the same environment, thus also interacting, and requiring a high level of collision avoidance.
+- **Mobile wall**: Between 1 and 7 mobile robots build a fixed 5×5 wall of 25 bricks; we vary only the number of robots, not the wall size or number of bricks. The robots are in the same environment, thus also interacting, and requiring a high level of collision avoidance.
 
 The scenarios are shown below as videos:
 
@@ -251,7 +251,7 @@ As a last experiment, we look at the performance of the shortcutters when using 
 
 And we can see that the performance and the ordering of the methods are close to unchanged, even though the curves look slightly different.
 The new methods decrease the cost more quickly than before in the sum-cost setting.
-However, the full-configuration shortcutting is also significantly faster than before, and as such, the gold standard for initial speedup is still the full configuration shortcutting.
+However, the full configuration shortcutting is also significantly faster than before, and as such, the gold standard for initial speedup is still the full configuration shortcutting.
 
 <details>
 <summary>Plots with a logarithmic time axis</summary>
