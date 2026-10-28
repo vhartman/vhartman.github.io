@@ -1,0 +1,486 @@
+[
+  {
+    "name": "puzzle",
+    "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/result.json",
+    "source_sha256": "be8af51a8910ea58dd03d030512bad4db2f6b7f5a6722c1c5acfeceb79dee56a",
+    "render": {
+      "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/result.json",
+      "env": "rai.constrained_2d_puzzle",
+      "source_sha256": "be8af51a8910ea58dd03d030512bad4db2f6b7f5a6722c1c5acfeceb79dee56a",
+      "seed": 0,
+      "paths": [
+        "online"
+      ],
+      "final_only": true,
+      "validation_resolution": 0.005,
+      "collision_tolerance": 0.0,
+      "vmax": 0.19671830278378635,
+      "fps": 24,
+      "seconds": 18.0,
+      "width": 960,
+      "height": 540,
+      "max_faces": 6000,
+      "graphics_backend": "vulkan",
+      "shadows": true,
+      "visual_policy": "explicit-visual-or-not-named-collision-proxy-v1",
+      "geometry": "Original piecewise-linear paths; common scalar segment retiming; no projection",
+      "frames": 433,
+      "start_frame": 0,
+      "stop_frame": 433,
+      "chunks": [
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00000-00036-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00036-00072-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00072-00108-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00108-00144-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00144-00180-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00180-00216-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00216-00252-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00252-00288-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00288-00324-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00324-00360-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00360-00396-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.chunks/frames-00396-00433-attempt0.mp4"
+      ]
+    },
+    "render_metadata_sha256": "5e3beffd1e8a6b2a3ec1c07b06489bf8536fa54f56f96d148fe3d4f013735896",
+    "crop": {
+      "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/puzzle/puzzle.mp4",
+      "source_sha256": "d65dd4aced9023bac3a2de4c0b55578454efe66e73a0a3e033b20f87c1fa2a23",
+      "foreground_bounds": [
+        289,
+        188,
+        659,
+        433
+      ],
+      "padding": 28,
+      "crop": [
+        128,
+        160,
+        690,
+        300
+      ],
+      "frames": 433,
+      "output": {
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "duration": "18.041667",
+        "nb_read_frames": "433"
+      },
+      "filter": "[0:v]split=3[a][b][c];[a]crop=690:44:134:0[top];[b]crop=690:300:128:160[body];[c]crop=690:44:134:496[bottom];[top][body][bottom]vstack=inputs=3,scale=960:540:flags=lanczos[out]"
+    },
+    "crop_metadata_sha256": "f61db74e603e235b2d1ddc5b72fa36a5bb9021de17a698313e9e93f99626ad96",
+    "heading_removal": {
+      "source": "out/constraint-media-expanded-2026-10-27/puzzle.mp4",
+      "source_sha256": "dfa78463365c8dd944af78d58ea284dc2f9c9db30301ac2a76bad8dddb1c03ea",
+      "removed_header_pixels": 60,
+      "before": {
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "duration": "18.041667",
+        "nb_read_frames": "433"
+      },
+      "after": {
+        "width": 960,
+        "height": 480,
+        "r_frame_rate": "24/1",
+        "duration": "18.041667",
+        "nb_read_frames": "433"
+      },
+      "script_sha256": "51126449488cb88d5a3b60b01970a543d4ec3fd721f6926adb5aa5edb0bc8d92"
+    },
+    "video": {
+      "width": 960,
+      "height": 480,
+      "r_frame_rate": "24/1",
+      "duration": "18.041667",
+      "nb_read_frames": "433"
+    },
+    "gif_generation": {
+      "fps": 12,
+      "width": 720
+    },
+    "assets": {
+      "puzzle.mp4": "36e819bc7847632a4ba31cb91e6fab316825e84e4a26c9de7024b54d25b6a0ba",
+      "puzzle-poster.jpg": "5ddca9d163334663d2c61c05fae02ba813a6f253c3af197b5df20bee84e9cdf3",
+      "puzzle.gif": "42614bc19dc9cdc4c88788cfebb7fd32d8db44e5f93e6a36b0b60854f5439143"
+    }
+  },
+  {
+    "name": "rfl-stacking",
+    "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/result.json",
+    "source_sha256": "4aea13148de37c6b10b695ea6b1071d51b734679dd417329c6433efb49711b35",
+    "render": {
+      "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/result.json",
+      "env": "rai.rfl",
+      "source_sha256": "4aea13148de37c6b10b695ea6b1071d51b734679dd417329c6433efb49711b35",
+      "seed": 0,
+      "paths": [
+        "online"
+      ],
+      "final_only": true,
+      "validation_resolution": 0.005,
+      "collision_tolerance": 0.01,
+      "vmax": 0.558717844109517,
+      "fps": 24,
+      "seconds": 30.0,
+      "width": 960,
+      "height": 540,
+      "max_faces": 6000,
+      "graphics_backend": "vulkan",
+      "shadows": true,
+      "visual_policy": "explicit-visual-or-not-named-collision-proxy-v1",
+      "geometry": "Original piecewise-linear paths; common scalar segment retiming; no projection",
+      "frames": 721,
+      "start_frame": 0,
+      "stop_frame": 721,
+      "chunks": [
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00000-00036-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00036-00072-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00072-00108-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00108-00144-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00144-00180-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00180-00216-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00216-00252-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00252-00288-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00288-00324-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00324-00360-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00360-00396-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00396-00432-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00432-00468-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00468-00504-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00504-00540-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00540-00576-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00576-00612-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00612-00648-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00648-00684-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.chunks/frames-00684-00721-attempt0.mp4"
+      ]
+    },
+    "render_metadata_sha256": "e946ffe6d1d55aa65633794170cb589b6733681b26bdd859ff454580c3b91f2d",
+    "crop": {
+      "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/rfl-stacking/rfl-stacking.mp4",
+      "source_sha256": "97842097b31f9d160a932b2abf96f963c43a5ffa800e0359db1e93f056f48788",
+      "foreground_bounds": [
+        319,
+        92,
+        624,
+        416
+      ],
+      "padding": 28,
+      "crop": [
+        54,
+        64,
+        832,
+        380
+      ],
+      "frames": 721,
+      "output": {
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "duration": "30.041667",
+        "nb_read_frames": "721"
+      },
+      "filter": "[0:v]split=3[a][b][c];[a]crop=832:44:64:0[top];[b]crop=832:380:54:64[body];[c]crop=832:44:64:496[bottom];[top][body][bottom]vstack=inputs=3,scale=960:540:flags=lanczos[out]"
+    },
+    "crop_metadata_sha256": "316daf6b69504e2d6de4c8d7991cfad580c4b26a9a695795c68de2b956a09103",
+    "heading_removal": {
+      "source": "out/constraint-media-expanded-2026-10-27/rfl-stacking.mp4",
+      "source_sha256": "8be78b016343387410ae29e19c441ff5b97ae8c741c6fbcc7683ee8c82e8c8a9",
+      "removed_header_pixels": 50,
+      "before": {
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "duration": "30.041667",
+        "nb_read_frames": "721"
+      },
+      "after": {
+        "width": 960,
+        "height": 490,
+        "r_frame_rate": "24/1",
+        "duration": "30.041667",
+        "nb_read_frames": "721"
+      },
+      "script_sha256": "51126449488cb88d5a3b60b01970a543d4ec3fd721f6926adb5aa5edb0bc8d92"
+    },
+    "video": {
+      "width": 960,
+      "height": 490,
+      "r_frame_rate": "24/1",
+      "duration": "30.041667",
+      "nb_read_frames": "721"
+    },
+    "gif_generation": {
+      "fps": 12,
+      "width": 720
+    },
+    "assets": {
+      "rfl-stacking.mp4": "cde46b421931594fcc8f0d9f01fc4b29428c610eba8737228bf149957cb2bcc9",
+      "rfl-stacking-poster.jpg": "d6f87814d0afc27b9ca94992c4b0c4be939c6465f8aa91d88caa3b5e629a3b79",
+      "rfl-stacking.gif": "be0416a4092001ad9b4db162ad2f2f8956c3cb1771a40ecf788846108a24e8c5"
+    }
+  },
+  {
+    "name": "husky-stacking",
+    "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/result.json",
+    "source_sha256": "80a93dbb48a9010da1408bdaf44b0860264421d6cd62c677f79ccc7409beec41",
+    "render": {
+      "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/result.json",
+      "env": "rai.husky_single_arm_stacking",
+      "source_sha256": "80a93dbb48a9010da1408bdaf44b0860264421d6cd62c677f79ccc7409beec41",
+      "seed": 0,
+      "paths": [
+        "online"
+      ],
+      "final_only": true,
+      "validation_resolution": 0.005,
+      "collision_tolerance": 0.01,
+      "vmax": 0.6268634133460208,
+      "fps": 24,
+      "seconds": 30.0,
+      "width": 960,
+      "height": 540,
+      "max_faces": 6000,
+      "graphics_backend": "vulkan",
+      "shadows": true,
+      "visual_policy": "explicit-visual-or-not-named-collision-proxy-v1",
+      "geometry": "Original piecewise-linear paths; common scalar segment retiming; no projection",
+      "frames": 721,
+      "start_frame": 0,
+      "stop_frame": 721,
+      "chunks": [
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00000-00036-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00036-00072-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00072-00108-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00108-00144-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00144-00180-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00180-00216-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00216-00252-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00252-00288-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00288-00324-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00324-00360-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00360-00396-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00396-00432-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00432-00468-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00468-00504-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00504-00540-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00540-00576-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00576-00612-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00612-00648-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00648-00684-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.chunks/frames-00684-00721-attempt0.mp4"
+      ]
+    },
+    "render_metadata_sha256": "5678e297a63593214232f13a44281d5dd3aa8c1313cd2a7fb076aeb2df417227",
+    "crop": {
+      "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/husky-stacking/husky-stacking.mp4",
+      "source_sha256": "e8341c7bd159033798d0f4cb4cdd06a3aee72507f73f0d9e5001a617a0dd3db8",
+      "foreground_bounds": [
+        245,
+        151,
+        606,
+        441
+      ],
+      "padding": 28,
+      "crop": [
+        38,
+        122,
+        772,
+        346
+      ],
+      "frames": 721,
+      "output": {
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "duration": "30.041667",
+        "nb_read_frames": "721"
+      },
+      "filter": "[0:v]split=3[a][b][c];[a]crop=772:44:94:0[top];[b]crop=772:346:38:122[body];[c]crop=772:44:94:496[bottom];[top][body][bottom]vstack=inputs=3,scale=960:540:flags=lanczos[out]"
+    },
+    "crop_metadata_sha256": "5d424ce492520e5d7fd441835ef8b83707a1efae760d7317bd0493e1bb79ab64",
+    "heading_removal": {
+      "source": "out/constraint-media-expanded-2026-10-27/husky-stacking.mp4",
+      "source_sha256": "defcad1534aee8d8bc71bffd8bfa03738e703ac080be600f7c6a8ebe529045d1",
+      "removed_header_pixels": 54,
+      "before": {
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "duration": "30.041667",
+        "nb_read_frames": "721"
+      },
+      "after": {
+        "width": 960,
+        "height": 486,
+        "r_frame_rate": "24/1",
+        "duration": "30.041667",
+        "nb_read_frames": "721"
+      },
+      "script_sha256": "51126449488cb88d5a3b60b01970a543d4ec3fd721f6926adb5aa5edb0bc8d92"
+    },
+    "video": {
+      "width": 960,
+      "height": 486,
+      "r_frame_rate": "24/1",
+      "duration": "30.041667",
+      "nb_read_frames": "721"
+    },
+    "gif_generation": {
+      "fps": 12,
+      "width": 720
+    },
+    "assets": {
+      "husky-stacking.mp4": "fe39352b4fed1cb4fa21b14bb77b26dc34471858df88c8f37b5c5ac487ffa06c",
+      "husky-stacking-poster.jpg": "831e0935444773ab7a504bcbe1351659b9a03628f2052cbc10bb884405da4dd1",
+      "husky-stacking.gif": "2921e520e8e2d5b9028347b38829b540f04dde4fe0a5a16d21ad055a4b3ed25b"
+    }
+  },
+  {
+    "name": "two-carrier-sorting",
+    "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/result.json",
+    "source_sha256": "56a31b78d443fdb8f36e23ffd10dab904d6003b4698a0f6673521c4d2952e90b",
+    "render": {
+      "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/result.json",
+      "env": "rai.two_carriers_openarm_sorting",
+      "source_sha256": "56a31b78d443fdb8f36e23ffd10dab904d6003b4698a0f6673521c4d2952e90b",
+      "seed": 0,
+      "paths": [
+        "online"
+      ],
+      "final_only": true,
+      "validation_resolution": 0.0025,
+      "collision_tolerance": 0.001,
+      "vmax": 0.5960040644284502,
+      "fps": 24,
+      "seconds": 36.0,
+      "width": 960,
+      "height": 540,
+      "max_faces": 6000,
+      "graphics_backend": "vulkan",
+      "shadows": true,
+      "visual_policy": "explicit-visual-or-not-named-collision-proxy-v1",
+      "geometry": "Original piecewise-linear paths; common scalar segment retiming; no projection",
+      "frames": 865,
+      "start_frame": 0,
+      "stop_frame": 865,
+      "chunks": [
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00000-00018-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00018-00036-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00036-00054-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00054-00072-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00072-00090-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00090-00108-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00108-00126-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00126-00144-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00144-00162-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00162-00180-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00180-00198-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00198-00216-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00216-00234-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00234-00252-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00252-00270-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00270-00288-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00288-00306-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00306-00324-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00324-00342-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00342-00360-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00360-00378-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00378-00396-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00396-00414-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00414-00432-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00432-00450-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00450-00468-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00468-00486-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00486-00504-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00504-00522-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00522-00540-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00540-00558-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00558-00576-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00576-00594-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00594-00612-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00612-00630-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00630-00648-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00648-00666-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00666-00684-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00684-00702-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00702-00720-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00720-00738-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00738-00756-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00756-00774-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00774-00792-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00792-00810-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00810-00828-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00828-00846-attempt0.mp4",
+        "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.chunks/frames-00846-00865-attempt0.mp4"
+      ]
+    },
+    "render_metadata_sha256": "daa3ce659a7ba3d7e262f1f30fc2d793265fdd17105ef8c32f5c8fd7ea13ed60",
+    "crop": {
+      "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-media-polish-2026-10-27/two-carrier-sorting/two-carrier-sorting.mp4",
+      "source_sha256": "72e35db5a739f6be20c46e3dbf21ec2b9d246ce4d9909cbcf44c272fb9def6d4",
+      "foreground_bounds": [
+        222,
+        186,
+        617,
+        495
+      ],
+      "padding": 28,
+      "crop": [
+        42,
+        158,
+        754,
+        336
+      ],
+      "frames": 865,
+      "output": {
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "duration": "36.041667",
+        "nb_read_frames": "865"
+      },
+      "filter": "[0:v]split=3[a][b][c];[a]crop=754:44:102:0[top];[b]crop=754:336:42:158[body];[c]crop=754:44:102:496[bottom];[top][body][bottom]vstack=inputs=3,scale=960:540:flags=lanczos[out]"
+    },
+    "crop_metadata_sha256": "931b59a840dde17ca689ef2179f2b1e9d118687168d306b25614a2d9598fa82e",
+    "heading_removal": {
+      "source": "out/constraint-media-expanded-2026-10-27/two-carrier-sorting.mp4",
+      "source_sha256": "91bff66bc0718f19721066eb6c36619722dea3c7f288650a0986031e39981167",
+      "removed_header_pixels": 56,
+      "before": {
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "24/1",
+        "duration": "36.041667",
+        "nb_read_frames": "865"
+      },
+      "after": {
+        "width": 960,
+        "height": 484,
+        "r_frame_rate": "24/1",
+        "duration": "36.041667",
+        "nb_read_frames": "865"
+      },
+      "script_sha256": "51126449488cb88d5a3b60b01970a543d4ec3fd721f6926adb5aa5edb0bc8d92"
+    },
+    "video": {
+      "width": 960,
+      "height": 484,
+      "r_frame_rate": "24/1",
+      "duration": "36.041667",
+      "nb_read_frames": "865"
+    },
+    "gif_generation": {
+      "fps": 12,
+      "width": 720
+    },
+    "assets": {
+      "two-carrier-sorting.mp4": "498e9d91a8f0fa11b71663357b71e3ec49985354520ed22b57415d8d2dd67e20",
+      "two-carrier-sorting-poster.jpg": "ff8ac80cdbe6e5235038817e4e3f6393aec40dcd5abf1bfa268a73b90e5a54a2",
+      "two-carrier-sorting.gif": "71342aa64ec1e5f5b9267548b2be2fa02d22584b45a7b01e37acfc7a4a9f9f2a"
+    }
+  }
+]

@@ -1,0 +1,419 @@
+{
+  "sources": {
+    "out/rai-initial-blog-2026-10-28/cells/rai.carrier_openarm_sorting_front-policy_informed-s0/result.json": "bd85692a0af74a8ec96dfbd64e16bca2240004ed54106bd6e09b8c006dbaf65c",
+    "out/rai-initial-blog-2026-10-28/cells/rai.carrier_openarm_sorting_front-policy_informed-s1/result.json": "c81132a9dd92720d5eda016c28f5dec7b86d59575833c52b07a14cacaeb697c6",
+    "out/rai-initial-blog-2026-10-28/cells/rai.carrier_openarm_sorting_front-policy_informed_shortcut-s0/result.json": "9fd995c5f9778dd23c6f5f6013ad2f0827f62bea70baeda26dacb9e8d812eea4",
+    "out/rai-initial-blog-2026-10-28/cells/rai.carrier_openarm_sorting_front-policy_informed_shortcut-s1/result.json": "6e9821bc73860174c08fb92b118d1687d4318016efb2024e005eae2da858345a",
+    "out/rai-initial-blog-2026-10-28/cells/rai.carrier_openarm_sorting_front-policy_uniform-s0/result.json": "1ad14f2275b271eb412cd28e0dbaa306d08595c42fef4c78557f9ced8c4c88a8",
+    "out/rai-initial-blog-2026-10-28/cells/rai.carrier_openarm_sorting_front-policy_uniform-s1/result.json": "8aab366de636350cd7166e5944a32fac59ed20a691e4a8281c618f5b25bdf985",
+    "out/rai-initial-blog-2026-10-28/cells/rai.carrier_openarm_sorting_front-policy_uniform_shortcut-s0/result.json": "40f3402b4e05192850ad2d37b0842c55edb17c6b011e559c88cb0cf9b61d73cb",
+    "out/rai-initial-blog-2026-10-28/cells/rai.carrier_openarm_sorting_front-policy_uniform_shortcut-s1/result.json": "6e7602d92a3252c957440508e180e2bfef11b90c3ebab498afff090b804b1100",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_informed-s0/result.json": "db8ee122893e915b2224163fe3acb2e650ac3596fe0812fabaa3b4d7d653aea1",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_informed-s1/result.json": "d016a58ce5ed54ab8b229eae147efa098645632e6f0a5eb48b23174e19caf1e3",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_informed_shortcut-s0/result.json": "4d1fb4e65ce9246963b61436a319c2878852c276418167d9ad3fd4478b52d0ac",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_informed_shortcut-s1/result.json": "23b75704e3fe09650d6d3f9bc149cc08985b66aa6f8fc0a981361be362095eba",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_uniform-s0/result.json": "6b5520d134cd0d5451ba953a56ad02acc6ecbb64e14ac44d3d92bd2add326f03",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_uniform-s1/result.json": "9ca49dd64a8782d814448dc705f78ffb2d500ad74ab602bc945cae7a53b6fda8",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_uniform_shortcut-s0/result.json": "d285ad401c471113a4fbcee4a0e1c42f4d156bacb64fe81a69bd49e3815ba601",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_uniform_shortcut-s1/result.json": "71f3541bf4e80ba27c48d10c23a4a822cc3e32ea0058f4c89cc494ac1e0c03be",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-projection_prepared-s0/result.json": "dbbd376d4c089153fb00f15d3465b545d6ee881afac8bf6ee3dc557871b0f03a",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-projection_prepared-s1/result.json": "649a3fbe41572448b565ab36cbbf7fbe3659f95d82552a396cebedb5e4733a0e",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-projection_slsqp-s0/result.json": "2f286971de2acf40d2efe82d53a0280d4afcaaded68beab6ad5b37733781ec6c",
+    "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-projection_slsqp-s1/result.json": "c21c6ab654ab10e5fa641400356fef939df420d4fb1d3d8e34a77351d7230829",
+    "out/rai-initial-blog-2026-10-28/cells/rai.half_rfl-policy_informed-s0/result.json": "de10c968f60c1da67b2b00a9ec7eab13ab75870810fa8f14351493eb1b70468d",
+    "out/rai-initial-blog-2026-10-28/cells/rai.half_rfl-policy_informed-s1/result.json": "c071be08b1b6144a314158ff6779c58689806d85ade8ca85456012b68d28986d",
+    "out/rai-initial-blog-2026-10-28/cells/rai.half_rfl-policy_informed_shortcut-s0/result.json": "338ece8829372af18b9d13eab18a88f5368a4d177f69a8fc4002795882732b6b",
+    "out/rai-initial-blog-2026-10-28/cells/rai.half_rfl-policy_informed_shortcut-s1/result.json": "efc7be18b328754f243cdc309abd5a6f33e1375da1f5496d003b4fc390ec769e",
+    "out/rai-initial-blog-2026-10-28/cells/rai.half_rfl-policy_uniform-s0/result.json": "5243ff1200053403e1cfc49fb761d88919dba3be4c6210ca547f4fd4cfb3840b",
+    "out/rai-initial-blog-2026-10-28/cells/rai.half_rfl-policy_uniform-s1/result.json": "662dd4a3f852d96a924a6cf282e3d401bee79bbe41ebf2e302873147392d5c74",
+    "out/rai-initial-blog-2026-10-28/cells/rai.half_rfl-policy_uniform_shortcut-s0/result.json": "50ff3f7b745fa50cb25a25045d56351eef99b8a0631b45469c2c7fd300858230",
+    "out/rai-initial-blog-2026-10-28/cells/rai.half_rfl-policy_uniform_shortcut-s1/result.json": "e8132f4c3028886e47ce2d7dad81eefe7f2fcd9edf266c3cb0d9b9d66c75d13d",
+    "out/rai-initial-blog-2026-10-28/cells/rai.husky_single_arm_stacking-policy_informed-s0/result.json": "b8c125dcd670d92075d2344b6ca5bff9f6f7f23927082b9537c8d71ee16a0fd3",
+    "out/rai-initial-blog-2026-10-28/cells/rai.husky_single_arm_stacking-policy_informed-s1/result.json": "5710f27286ea1fd399949e332e9f7640576939ea8f28041ab3fe2bc938f63389",
+    "out/rai-initial-blog-2026-10-28/cells/rai.husky_single_arm_stacking-policy_informed_shortcut-s0/result.json": "a2ed223c7ea6608a0a70e697e1d7d1e7bfb70dde5e0851e52d2cffddf39a2f52",
+    "out/rai-initial-blog-2026-10-28/cells/rai.husky_single_arm_stacking-policy_informed_shortcut-s1/result.json": "741e170c31a8a8feda2f5f6a21892a7e7ddd067e03512df3d75ad11af44c30bf",
+    "out/rai-initial-blog-2026-10-28/cells/rai.husky_single_arm_stacking-policy_uniform-s0/result.json": "fae7bed088cf358b02d231124749f480f8314300c6c003a5f3dc73fcca319c37",
+    "out/rai-initial-blog-2026-10-28/cells/rai.husky_single_arm_stacking-policy_uniform-s1/result.json": "73babc0bdd48045917125087fb5d7e3e82357ebe693d19805f51a6f7637d8fb9",
+    "out/rai-initial-blog-2026-10-28/cells/rai.husky_single_arm_stacking-policy_uniform_shortcut-s0/result.json": "6d8f4451855e781cdf7da3c09e1e640d2ddb0b27e1989aec8a11346d9e1407dd",
+    "out/rai-initial-blog-2026-10-28/cells/rai.husky_single_arm_stacking-policy_uniform_shortcut-s1/result.json": "38b3895eb5cb6fa89029ed59998c3e692f6d7855b76897b2f9d56c771f65f040",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-policy_informed-s0/result.json": "9ad297eea4a02d6b17917a1bb603a4399d22b1c07430127eb0e7d0d19c5a91d4",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-policy_informed-s1/result.json": "9c18c2e41b9163ad8ea87fe20c2d4ac27819a2f0f0a9273c62c4a4ecf4886151",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-policy_informed_shortcut-s0/result.json": "c1355a5281964b590f62d32271c6e7ad6f5396d804b7f4549a493bcecfb64f68",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-policy_informed_shortcut-s1/result.json": "1f70aac775b24507227a65e0a29e78864b09ddfae803d901b73918d6f7b599b9",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-policy_uniform-s0/result.json": "5a0e8a6c0f3cd406795edcc952c9ef0d41fcbdce40a139c72e369f418e96d183",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-policy_uniform-s1/result.json": "80fdcc0d61ae7e14939591c71184ee0f433d842181c490a708c922d08997c149",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-policy_uniform_shortcut-s0/result.json": "dca081974db5e7333e98350a4feb144010a5aea1a5432a87bf85e72f3350385e",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-policy_uniform_shortcut-s1/result.json": "bca9591da9796ab8c7dfa0707a63fd0f65d2b1a13e30b163f504397c6139191e",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-projection_prepared-s0/result.json": "1bab03d32d1c9899df4bacca1d949a21a1b9db454076d164f03d5d5c5f74a6d7",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-projection_prepared-s1/result.json": "8185aa8d97b3a6c8602976f1b0c4658cbcb83768a0cbff532d227386e1e96695",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-projection_slsqp-s0/result.json": "877f37a5dfef58c362be01829cc72318c4575a57dbae68628e13b3d100e2be37",
+    "out/rai-initial-blog-2026-10-28/cells/rai.rfl-projection_slsqp-s1/result.json": "5115a9c0f41d65341b6c627a40508452d69ed6ace1f0deb923cd73d1cc75e766",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-policy_informed-s0/result.json": "8d841fa347a19563928d4b51a84bbc5b18ea47f9ed31166c0fcd4bfba0607bf4",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-policy_informed-s1/result.json": "7d2c3a10133b1fd97e11aa6720227feb5c4cb6304b5f1005b8b16a9accd12083",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-policy_informed_shortcut-s0/result.json": "8ced3fb73dd7fa63283f2c4587e162464eacd283bbc521369ea21ff2cbd1289e",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-policy_informed_shortcut-s1/result.json": "c5fe006132a6520a5cd8ea36aa676a61c3d635eb18445e01a5868ce5b6d8d54b",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-policy_uniform-s0/result.json": "1d5daf9e07b9921ca229c9f38a49acc7bfe87009ba4a897fdf453ab9cf92e941",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-policy_uniform-s1/result.json": "6489975637b026270e8e6631e06c5b86f6ac1ea85c8914dbc5ca188aceffedd3",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-policy_uniform_shortcut-s0/result.json": "1f5f8887d55ff4d197b5891e7d473c64542fa1b2f6a06eebaac046975abeabc8",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-policy_uniform_shortcut-s1/result.json": "bc3c04bc36716a4a4426b4c644c11009409d870b9510e5475c524125c21a2790",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_prepared-s0/result.json": "3d71d6723491bac65c7e3dcee07fd936716c12db93cfabc7186ab7265f0dacaf",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_prepared-s1/result.json": "cc44d6c8b50a2e3610d4ce334c2d9db5d7913d584f1f8b3600278152de47bcd5",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_slsqp-s0/result.json": "b008a62193ca9e64c66ab4e6315e0bb303761134f95da9a566cff66557ed86e7",
+    "out/rai-initial-blog-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_slsqp-s1/result.json": "7a0a662268b9d23bc854d13da257ca034527f2044cb57a8893ccb69df02700d8",
+    "out/rai-initial-blog-2026-10-28/cells/smoke-puzzle/result.json": "4d2fe23db037bab840a399dc58b95be3d1a7abb5b97567b8dffaaa044467cf3a",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_dual-profile-s0/result.json": "1c9e0e7f0fde88223493c8b1c31ffffd41202d4c0a20097607df35fcd774afe7",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_generic-profile-s0/result.json": "603756b03fcfdd80aef8eed6f21dc19d90034bbb6edf669f51140652e1e8da44",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_generic-s0/result.json": "d42b7ffd65efa1c82210c091d20ef9ddae04309eaec6ebecb50edc6b0a11eeed",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_generic-s1/result.json": "c768d7632a846777ecc9f83d8af5a6ffad0aea25dc090d2270054832ec799cf4",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_prepared-profile-s0/result.json": "e678e4d66f2ca69b68c6655c12c7187c29e5854783180885cb417310c35ee3ef",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_slsqp-profile-s0/result.json": "8ddf5b544877a49df532ad58dd78c59ca21f3a7b477edcb346bb20c6f081e22c",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_dual-profile-s0/result.json": "80872c3c059622218dc83bb7e93cfb9080e8111ee9414a43eb543f1385735355",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_generic-profile-s0/result.json": "314341f648434aae74e3c9fcccefc98a8977ae3187237ee5c1714e1a5e76ac91",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_generic-s0/result.json": "33b8d332a869b1936260dad1dfe1be5db1e688679a45d810210c1619e43b854f",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_generic-s1/result.json": "a6c87cbeb73023f0b11c80479af94c32cdd1a8ae830a2116e1739304f523465a",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_prepared-profile-s0/result.json": "255b9d5cb309ff80c17964edc87bf48e520a95904286f1e73a884455e474c7f9",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_slsqp-profile-s0/result.json": "3b302cbe62b8a8907a8bb8d5a3d7b0e119a3800efb4fb6a6a76908cc23a5e964",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_dual-profile-s0/result.json": "d60dc2786258064bfb5d49ae2c1d6dfdccee8b0dd20dfd0ce1f3969a4fcae968",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_generic-profile-s0/result.json": "6941aba19beed774153601bc085b04f41afab40f22871ebb4bc79045d88fd8a2",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_generic-s0/result.json": "5168f9e634568da55e1e0d1e6020b29fb093fc0d8d5850b011043f47fce894be",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_generic-s1/result.json": "68d08a2f63331d81838748b23a1d4ac3681c57c9aa46813caff4ffd5321b51d5",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_prepared-profile-s0/result.json": "197106a54bac7b303d0988cdceec305563839e4f2cace3203fce68d78bbb456f",
+    "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_slsqp-profile-s0/result.json": "d37aa86b2522cef0edaaccec5fb39c4c01ad67eba89af4c6b102966a6a803f8c",
+    "out/rai-offline-refresh-2026-10-28/cells/front-full-s0/result.json": "35c408db6ee0b9ad948226a0530740880a13e11910066f50dc93e3686f7c0ea1",
+    "out/rai-offline-refresh-2026-10-28/cells/front-full-s1/result.json": "520d59340c6f3124359eb77b959130e762c1ad32a7623935e9db7b1a122e8a07",
+    "out/rai-offline-refresh-2026-10-28/cells/front-full_compatible-s0/result.json": "0b051e77c58257f22f0bd82faf009fe7d21915bcfc401257672ad68d2e7ff38c",
+    "out/rai-offline-refresh-2026-10-28/cells/front-full_compatible-s1/result.json": "27ef31a1c5fa9b55e7756c47b51cf7aa43a2b712d0a55b4e5dcd2f96971e0aee",
+    "out/rai-offline-refresh-2026-10-28/cells/front-full_group-s0/result.json": "fccf3865bdcafa103a92909a0acdcbc567a08d7adc637206a827e0175bda5d15",
+    "out/rai-offline-refresh-2026-10-28/cells/front-full_group-s1/result.json": "f77b32c31afefe2539abb873bd7a7ba73c372d1bc6b2249df4236577b921b9c2",
+    "out/rai-offline-refresh-2026-10-28/cells/front-full_mechanism-s0/result.json": "8a1ac8abc632c3269da13982559499c8b40f3a584d7ba459edea42c3e9d9a324",
+    "out/rai-offline-refresh-2026-10-28/cells/front-full_mechanism-s1/result.json": "2c849998d9a9a7dafa9e651965de99f125265c895241ad96aec9848523a0ccc4",
+    "out/rai-offline-refresh-2026-10-28/cells/front-index_compatible-s0/result.json": "30aef2b1201d9ca6e22641e135dd43c3f08f8e240e2c25147132dac102dd223c",
+    "out/rai-offline-refresh-2026-10-28/cells/front-index_compatible-s1/result.json": "adb3388a22eaefcf7119d3d964da5187049e56640d7570ece16407026f7d5f7b",
+    "out/rai-offline-refresh-2026-10-28/cells/front-index_endpoints-s0/result.json": "b96bed306d8690d8065b7365020c3de7e361f97a235ef120617046c5521966a8",
+    "out/rai-offline-refresh-2026-10-28/cells/front-index_endpoints-s1/result.json": "021772aa03edcced42c8ed234e27e1e76daab1a946e8a41755605438a349cbcb",
+    "out/rai-offline-refresh-2026-10-28/cells/front-mechanism_group-s0/result.json": "bdc0e78e152ade75ef33f5fdbd3270f034a51963aa9ec4e59f00a37b440388fc",
+    "out/rai-offline-refresh-2026-10-28/cells/front-mechanism_group-s1/result.json": "78ee2a7a19d76d328be16a02a1943913a0ac5d1f72405012d270018a77ff6458",
+    "out/rai-offline-refresh-2026-10-28/cells/front-tree_group-s0/result.json": "b6092e3982dbf371611f246fbd3e5d5c4f157075048c99cbc839b4eded8c308f",
+    "out/rai-offline-refresh-2026-10-28/cells/front-tree_group-s1/result.json": "b329b3967e22272265548b74f5c9226984df3ee6aa83eaeb7e034fbb9df0e488",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-full-s0/result.json": "39379df03a98d9d3f7666139b19cdce9462bcdcbbdbb1030ae9c6b73d03a1187",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-full-s1/result.json": "129a390b4eecfe03a21b79782cee3e31883b99d29f4a03c33dfdd926639ff5d5",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-full_compatible-s0/result.json": "e247aff2a17044ac11acb03012baaf5e3c1ca963a79d389a2df20c729782c983",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-full_compatible-s1/result.json": "f9c1201b908281f3a85b18d0630e68428390d13760bf1fd766e32c9a19b530ae",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-full_group-s0/result.json": "304cfa3e2465acc661dadccfa5ec7c31bc27d26bda45e7bc9b27d332612bfd98",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-full_group-s1/result.json": "2f411bfd5957e42528fb828d9ba03b196ec6aa056105d68eac67336f01338f8d",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-full_mechanism-s0/result.json": "bf6cab08b591b21cd6eb36a9850c37b8014ea8327168d713a804e9621593c377",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-full_mechanism-s1/result.json": "c4fdcfae1a432766f42e843402181684ba11e9bdc19aee0553db274f705078fa",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-index_compatible-s0/result.json": "1d725f8360d03175a72518b6c672828ffb932f4fc205cca27e202c2da1a07a84",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-index_compatible-s1/result.json": "ef9d093a7a8f22418ace1e5bf4b38eb3e1694d2c76141816a2656ee7b8cf9fa7",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-index_endpoints-s0/result.json": "8ae06595d8dcac0172726a9dc0a8280ef157a00dfdf5d9939298d7003860eee3",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-index_endpoints-s1/result.json": "ff22b0befac00beef12022172b133cde3ed59fee0ff54adf33767c2ccb8fe7c0",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-mechanism_group-s0/result.json": "0d20dac1b48e76a4b65e88730c03f426945a88f3fd9bcbd19b53533a71b3b21e",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-mechanism_group-s1/result.json": "051c18d2d1c08d43fea44d90db78ea991fc62a4cae7393a22779086c1bbaa9f2",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-tree_group-s0/result.json": "d450945b3e62e46054cff34949d3ff87ee49aae3dc0fd3ad50e064a8bb3c4fda",
+    "out/rai-offline-refresh-2026-10-28/cells/scattered-tree_group-s1/result.json": "a635daf5e8ae9dbb7b8834ce88da9db027b9289ded1cf0b36da766ef8ecd04d4",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-full-s0/result.json": "f53077b02bcc0550857c87fa7c44c93415c7c7af63429a2efb8519c18f0c4924",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-full-s1/result.json": "f098f1854ed202fa6768228e7c07fbae87a916cf21a329f11953cc990fe55e09",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-full_compatible-s0/result.json": "7aa969032c1a1c8cef557120ab2680bb5f62ec982867fe9ac468acbe45e6b5d4",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-full_compatible-s1/result.json": "814201326f09ba1c224633e2b0ebdf48a28f37e23dea558d81b4929db9a1a980",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-full_group-s0/result.json": "cfffc0bcf765ae3b8db76dac2dbd9a80cf9d2beadd9317514c5b059f324e6c2f",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-full_group-s1/result.json": "f712556cb7e253e352109605106dac326e8d8e7cab1a4b4d153b856b0f5b9c1b",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-full_mechanism-s0/result.json": "eb765ba4e4e424bdd31d5507e68d6f64a839714ee43935d14ee4cfb260687eff",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-full_mechanism-s1/result.json": "a686eff407d96a137c495b44318f1a630a17fad94d9761ad1a70ec021e767dc4",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-index_compatible-s0/result.json": "cdfc1d38e0142169b784a20b1054011e60916fdc00cf6efafc0dff6d825d4151",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-index_compatible-s1/result.json": "8caa3e3dfcadc5ed5e742950c942ce24c62d8bcfa08139f48632888dcb59729d",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-index_endpoints-s0/result.json": "fa1c2410bae2f9d5cc0a18e117bc39bd5b0a1ba6a57d81bda22e0841b5782563",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-index_endpoints-s1/result.json": "c62524c93d329f0577fecb8c77514a2bb6548f7d9725269ee0ff1fd80376056f",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-mechanism_group-s0/result.json": "701808cb68d95bf9faa4aefd1bd95d512e8d2cac0ac528e3ea9eba28a143a51d",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-mechanism_group-s1/result.json": "39c77c4a7d144dc5853b289d17c801b6874e4fbf120fa23aa8e0156595831a51",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-tree_group-s0/result.json": "b23cba85dd6410961ac8b0ebe28978e380dac7e56d3715c07baec40d8bd37ba8",
+    "out/rai-offline-refresh-2026-10-28/cells/stacks-tree_group-s1/result.json": "f4fc64d88a6a3e84e74149a7e29cbc26e16f2702c984180f9950c3818285bf44",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full-s0/result.json": "4e21557f7382f67f725e455059a9312e51a4fec3040227c30a861140fb0e6527",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full-s1/result.json": "d1db2cb3046ec0a4f585f924aaee0edce3308c9f147e3165444789d5f5f01345",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full_compatible-s0/result.json": "74cc9b6197e7c0cb3839a8b9a1b3a3fbcea133625508ecc72edcf9a5133d0276",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full_compatible-s1/result.json": "287683bbbd77e6b86805348f740c06c4318b90e90f52ad5578e3f9d046b52470",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full_group-s0/result.json": "41e76961109339c4e6224c32321a5d4f97cf36b09d40d1a3e1c9080fdf969b11",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full_group-s1/result.json": "a5885362d815f2431ed3f117141093a81c8fa0df75a111dbb1f06057beb99fef",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full_mechanism-s0/result.json": "f8a27fd57077c542ea6b543eb1cecd70b76dd0d465b11047d3e715f9c4ea13d4",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full_mechanism-s1/result.json": "6f5fad3fe3d3e2f18c421064d87edb241629ee1470e5005ea27dd9a60edbe5ff",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-index_compatible-s0/result.json": "3f38f901d5669b75cdf16f6c8036540363f9b46299cca188629d957ec751cea8",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-index_compatible-s1/result.json": "84dc1615088dc79dcded74e2e1f37705097afaded7eeb6be4c6d0b106c9b942e",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-index_endpoints-s0/result.json": "eff800813052c555c4d3595b6340d317e7bb499171ba88b138f900b86c694a4e",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-index_endpoints-s1/result.json": "c080a79fe6b1a600087a650f3fb570de38645d9db5dbbc6e23792cd5e87fb3ce",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-mechanism_group-s0/result.json": "e5224abd76db71fce4dce58ab5b59d5af7677ba94544c8f866f10aa611f07635",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-mechanism_group-s1/result.json": "36737bb58d876d5e52967aedb8578d0872fb3238b14bab5b9fbceba72c00f772",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-tree_group-s0/result.json": "c83dd57de0998edc92da9b4e575d276d8e30443effdb378981ab8d5881e1407c",
+    "out/rai-offline-refresh-2026-10-28/cells/two_carriers-tree_group-s1/result.json": "ef89e36404ee3379f9baa37147c928f1441a8d4615d454c163a6e4aa7f4984a9"
+  },
+  "projection_timing": [
+    {
+      "case": "rai.rfl",
+      "method": "projection_generic",
+      "seconds": 40.65048307925463,
+      "percent": 67.75013547276973,
+      "elapsed": 60.000593055039644,
+      "budget": 60.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_generic-profile-s0/result.json"
+    },
+    {
+      "case": "rai.rfl",
+      "method": "projection_dual",
+      "seconds": 32.31357112899423,
+      "percent": 53.855637989298444,
+      "elapsed": 60.00034970417619,
+      "budget": 60.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_dual-profile-s0/result.json"
+    },
+    {
+      "case": "rai.rfl",
+      "method": "projection_prepared",
+      "seconds": 16.880278676748276,
+      "percent": 28.13246914416713,
+      "elapsed": 60.00283370167017,
+      "budget": 60.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_prepared-profile-s0/result.json"
+    },
+    {
+      "case": "rai.rfl",
+      "method": "projection_slsqp",
+      "seconds": 38.822281152009964,
+      "percent": 64.70322893579554,
+      "elapsed": 60.00053133442998,
+      "budget": 60.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.rfl-projection_slsqp-profile-s0/result.json"
+    },
+    {
+      "case": "rai.constrained_2d_puzzle",
+      "method": "projection_generic",
+      "seconds": 3.226929433643818,
+      "percent": 16.134477174523962,
+      "elapsed": 20.000210721045732,
+      "budget": 20.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_generic-profile-s0/result.json"
+    },
+    {
+      "case": "rai.constrained_2d_puzzle",
+      "method": "projection_dual",
+      "seconds": 3.219682741910219,
+      "percent": 16.0982046404443,
+      "elapsed": 20.00025974214077,
+      "budget": 20.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_dual-profile-s0/result.json"
+    },
+    {
+      "case": "rai.constrained_2d_puzzle",
+      "method": "projection_prepared",
+      "seconds": 1.5611504130065441,
+      "percent": 7.805647986510561,
+      "elapsed": 20.000266674906015,
+      "budget": 20.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_prepared-profile-s0/result.json"
+    },
+    {
+      "case": "rai.constrained_2d_puzzle",
+      "method": "projection_slsqp",
+      "seconds": 1.4513603821396828,
+      "percent": 7.256609876529947,
+      "elapsed": 20.000529266893864,
+      "budget": 20.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_slsqp-profile-s0/result.json"
+    },
+    {
+      "case": "rai.two_carriers_openarm_four_stacks",
+      "method": "projection_generic",
+      "seconds": 2.494739603251219,
+      "percent": 4.157268535155265,
+      "elapsed": 60.00910410657525,
+      "budget": 60.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_generic-profile-s0/result.json"
+    },
+    {
+      "case": "rai.two_carriers_openarm_four_stacks",
+      "method": "projection_dual",
+      "seconds": 1.2944162376224995,
+      "percent": 1.9669035919362474,
+      "elapsed": 65.80984665080905,
+      "budget": 60.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_dual-profile-s0/result.json"
+    },
+    {
+      "case": "rai.two_carriers_openarm_four_stacks",
+      "method": "projection_prepared",
+      "seconds": 0.6645339950919151,
+      "percent": 1.0192372876974678,
+      "elapsed": 65.19914480298758,
+      "budget": 60.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_prepared-profile-s0/result.json"
+    },
+    {
+      "case": "rai.two_carriers_openarm_four_stacks",
+      "method": "projection_slsqp",
+      "seconds": 0.3633648008108139,
+      "percent": 0.6055964831522432,
+      "elapsed": 60.00114117562771,
+      "budget": 60.0,
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.two_carriers_openarm_four_stacks-projection_slsqp-profile-s0/result.json"
+    }
+  ],
+  "counts": {
+    "online": 60,
+    "projection_extra": 18,
+    "offline": 64
+  },
+  "dual_alias": "policy_informed_shortcut has the same configuration as projection_dual; reused for unprofiled convergence only",
+  "planning_policy_projection": "All four policies hold affine_projection=dual fixed; the projection panel separately compares the current copy/box fast path.",
+  "aggregation": "Median of runs with finer-grid-valid final paths after all included runs solve. All individual curves retained; final-path finer-grid failures dotted. Intermediate incumbents are not independently finer-grid audited.",
+  "failures": [
+    {
+      "source": "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_informed-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-initial-blog-2026-10-28/cells/rai.constrained_2d_puzzle-policy_informed_shortcut-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-initial-blog-2026-10-28/cells/rai.half_rfl-policy_informed-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-initial-blog-2026-10-28/cells/rai.rfl-policy_informed_shortcut-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-initial-blog-2026-10-28/cells/rai.rfl-projection_prepared-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-initial-blog-2026-10-28/cells/rai.rfl-projection_slsqp-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_generic-profile-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-projection-refresh-2026-10-28/cells/rai.constrained_2d_puzzle-projection_generic-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-full_compatible-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-full_group-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-full_mechanism-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-full_mechanism-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-index_compatible-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-index_compatible-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-index_endpoints-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-mechanism_group-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-mechanism_group-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-tree_group-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/front-tree_group-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/stacks-tree_group-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full_compatible-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/two_carriers-full_mechanism-s0/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    },
+    {
+      "source": "out/rai-offline-refresh-2026-10-28/cells/two_carriers-index_compatible-s1/result.json",
+      "valid": true,
+      "fine_valid": false,
+      "input_failure": false
+    }
+  ],
+  "unchanged_projection_microbenchmark": {
+    "sources": {
+      "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/affine-review-2026-10-21/projection/result.json": "7c9859530f55cbfd6538cefa181803d2e56ac29a9c040747eebecbe789814437"
+    },
+    "protocol": "128 queries, five timing repeats; batch reports amortized time, excluding compilation.",
+    "assets": {
+      "projection-microbenchmark.png": "31cfb72fd2e2584668fbf92a482808b1517a0df21b4776c503a157ae530a829e",
+      "projection-microbenchmark.svg": "d25ddd66013cc796baa2445014e51b99b7dc997e8e3e8f0a5d2f7df91d13081d"
+    }
+  },
+  "generator": {
+    "path": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/constraint-blog-refresh-2026-10-28/plot_constraint_refresh.py",
+    "sha256": "2a6b5446c546b3451bfbd66f522cdbc89c2dd6286b5e20e2c5d9aa85003f0944"
+  }
+}

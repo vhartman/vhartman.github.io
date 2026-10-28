@@ -1,0 +1,11 @@
+{
+  "source": "/home/valentin/git/postdoc/robotic-venv/mr_bench/out/affine-inequality-final-2026-10-31/micro-plots/summary.json",
+  "source_sha256": "914e88d74ab99a50ab82326488e518533e12034aaf927dad375f84699ceb530f",
+  "time": "1e6 * total_seconds / n; includes setup, excludes diagnostic collision checks; median of per-seed times",
+  "runs": 180,
+  "contexts": {
+    "free": "Free-space samples",
+    "first_transition": "Pinned transition samples"
+  },
+  "script_sha256": "4c705ba639a1d7f6871bbd001266dc84e7c808e1e34df4f72575a2b686e809b7"
+}
