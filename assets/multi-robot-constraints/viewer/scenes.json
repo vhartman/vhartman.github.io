@@ -1,0 +1,7 @@
+[
+  {"folder":"two-carrier-stacking","label":"Two-carrier stacking (16 blocks)"},
+  {"folder":"shared-rail","label":"Shared rail: 3 UR5s"},
+  {"folder":"shared-rail-five","label":"Shared rail: 5 UR5s"},
+  {"folder":"rfl-stacking","label":"RFL stacking"},
+  {"folder":"mobile-corridor","label":"Constrained corridor: mobile UR5"}
+]
