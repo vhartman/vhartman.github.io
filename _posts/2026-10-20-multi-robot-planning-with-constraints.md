@@ -15,7 +15,7 @@ During my postdoc, I was mostly working on multi-robot multi-goal motion plannin
 I think (1) is (at least to me) pretty clearly solved by now.
 (2) is also at least theoretically done, but not in a practicaly way, since the planners tend to be too slow still.
 
-Also during my postdoc, I (together with [Yijiang](https://yijiangh.github.io/)) supervised a student for a semester thesis working on a constrained version of the planners, to enable, e.g., bimanual transport, or 'hold something upright during transport'.
+Also during my postdoc, I (together with [Yijiang](https://yijiangh.github.io/)) supervised a student (Giovanni Ielmini) for a semester thesis working on a constrained version of the planners, to enable, e.g., bimanual transport, or 'hold something upright during transport'.
 This supervision resulted in [this poster](https://www.research-collection.ethz.ch/entities/publication/27c0540e-6bde-4314-b068-c48e70002b93).
 
 This post here is a short writeup of the work he did, both to motivate me to finally finish a merge that I started a while ago, and to add the examples we came up with to the repo.{% include sidenote.html text='And to be honest, to understand the implementation details that sometimes get lost during a thesis.'%}
@@ -24,7 +24,7 @@ Here, as a first part, I will focus on the integration of the linear (equality a
 
 Nonlinear constraints do work in very similar ways as the linear constraints but require a bit more integration work for the actual implementation, so I'll leave the writeup and the finalization of the merge for the future (and the next post).
 
-# Related work: Motion planning with constraints
+# Motion planning with constraints
 
 We are only going ot tackle the planning with constraints for sampling based planners, so this is the related work I am goign to talk about here.{% include sidenote.html text='For optimization based planning you do not need to do too much, except for adding the constraint to your optimization problem.'%}
 
@@ -51,7 +51,7 @@ This is what [this work here](https://www.annualreviews.org/content/journals/10.
 
 The projection step can be done in various ways, the simplest one is formulating a small optimization problem, and running gradient descent in order to obtain the samples.
 This opens a bit of a can of worms:
-The approach of simply running gradient descent brings samples only to the boundary of the space, which we do not like in many cases.
+The approach of simply running gradient descent brings samples only to the boundary of the space, which we do not like in many cases.{% include sidenote.html text='This concerns only inequality constraints.'%}
 Further, we will not always do very well in discovering different parts of the solution manifold.
 For some more discussion [see this paper](https://arxiv.org/pdf/2407.03035).
 
@@ -63,7 +63,7 @@ This is what [ReVAMP](https://arxiv.org/pdf/2609.30213v1) is doing, again in a p
 
 #### Affine constraints
 
-If we constrain ourself to only affine constraints, $$f(q)$$ will always have the form $$Aq - b = 0$$, or for inequalities $$Aq - b \leq 0$$, and the problem will become much simpler.
+If we constrain ourself to only affine constraints, $$f(q)$$ will always have the form $$Aq - b = 0$$, or for inequalities $$Hq - h \leq 0$$, and the problem will become much simpler.
 Particularly, the projection operations that we mentioned above become a lot simpler.
 In some cases we do not even need to project samples, but we can directly sample from the constraint manifold.
 
@@ -82,13 +82,19 @@ The only thing that we require here are that we can sample valid solutions satis
 If we are given these goal-constraints, the motion planning problem is then usually 'reach these goals in a certain order', in order to enable for example a 'pick and place' sequence of multiple robots, or to enable multiple robots stacking objects on top of each other.
 For now (without loss of too much generality) we are going to assume that we are only tackling settings where the order of goals we have to reach is fully given.
 
-[add some slightly more formal notation]
+Adapting the description from a paper ([WRAP](https://arxiv.org/pdf/2609.29407)) a student (William Schnyder) I supervised wrote, whose description I like better than mine:
+We use $$\mathcal C=\prod_{r\in\mathcal R}\mathcal C_r$$ as the joint configuration space (as implicitly done above), and $$m_k$$ as the mode before goal $$k$$.
+We want to find a continuous path $$q:[0,T]\to\mathcal C$$ and times $$0=t_0<\cdots<t_K=T$$ satisfying
 
-Importantly, these goal constraints are only active for a subset of all robots at a time: different robots can have different goals at the same time.
+$$q(0)=q_{\mathrm{start}},\qquad q_{S_k}(t_k)\in G_k,\qquad q(t)\in\mathcal Q_{\mathrm{free},m_k}\ \text{for }t\in[t_{k-1},t_k].$$
+
+The modes specify how and where objects are attached (and are therefore enough to reconstruct the collision geometry).
+
+Importantly, these goal constraints/the goal set $$G_k$$ is a subset of all robots $$S_k\subseteq\mathcal R$$ at a time: different robots can have different goals at the same time.
 A simple example would be that robot 1 needs to pick object A before robot 2 picks object B.
 Here, the constraint (or the goal-configuration) of robot 1 picking object A does not have any impact on robot 2, which can move freely.
 
-# Introducing task-constraints to the problem
+# Introducing path constraints to the problem
 
 In the formulation we have here, introducing constraints is relatively straightforward for the problem formulation.
 In addition to the setting before (i.e., having goal constraints), a task now simply contains any additional constraints that need to be respected _during that task_.
@@ -98,9 +104,15 @@ Linear inequality constraints could also be used to model more complex joint lim
 So the only thing we have to do is adding constraints to the tasks and any global constraints that might have to be respected at all times.
 At planning time, we can then just look up in each mode what constraints have to be satisfied (all global constraints plus all constraints of all currently active tasks), and take those into account in our planner.
 
-[again more formal version]
+We extend the motion planning problem from above with globally active constraints and task constraints.
+We use $$F_m$$ to describe the manifold of constraint satisfying configurations:
 
-This alteration of the original problem is true both for nonlinear and linear consttraints, and also for equality and inequality constraints.
+$$F_m=\{q\mid A_mq=b_m,\ H_mq\leq h_m,\ \ell\leq q\leq u\}.$$
+
+Instead of only constraining the configurations to fulfill the goal-constraints from above, we now require $$q(t)\in F_{m_k}\cap\mathcal C_{\mathrm{free},m_k}$$ throughout each mode.
+At a mode switch, the configuration must satisfy the goal and both modes' applicable constraints.
+
+This alteration of the original problem can also be adapted to the nonlinear constraints by replacing the manifold definition.
 
 #### Multi robot planning problems with constraints
 
@@ -111,7 +123,7 @@ Below, you can see the videos for
 - The [robotic fabrication lab](https://ita.arch.ethz.ch/archteclab/rfl.html) at ETH Zürich is a large scale fabricator for digital fabrication. It has four ceiling mounted robots, of which 2 share the same $$y$$-axis. Since they are mounted on the same moving axis, they can also not swap positions both in $$x$$ and in $$y$$ direction, leading to both equality and inequality constraints.
 - 'Husky' is a setting with two ur10s on a husky base.
 - 'Carrier' is a setting where two openarm-arms are mounted on a ur10, similar to what [Ultra robotics](https://ultra.tech/) is using.
-- 'Shared rail' has $$N$$ ur5s on a shared rail. This is similar to the RFL setting above, but with more robots to test scaling of the inequality constraint-handling
+- 'Shared rail' has $$N$$ ur5s on a shared rail. This is similar to the RFL setting above, but with more robots to test scaling of the inequality constraint-handling. We also add a variant where the robots also need to obey a max-distance constraint between each other.
 - 'Constrained corridor' is a setting with a mobile manipulator with an artificially constrained corridor where it can move. In this setting, this is a bit of a made up example, but in practice, this just establishes handling non-box-boundaries. 
 
 <div class="constraint-video-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;">
@@ -215,6 +227,8 @@ We compare version where we compute multiple samples at a time, i.e., batch the 
 
 Again, as before, there's the same problems as usual with rejection sampling: Namely that we get a smaller and smaller probability of actually finding samples that improve the solution.
 
+There's some smarter stuff that we can do that I'll talk about in more detail in a later post, but we can also do hit-and-run sampling for informed sampling to avoid the rejection sampling problems.
+
 #### Shortcutting with constraints
 As a recap: shortcutting basically replaces high-cost (i.e. long) parts of an existing path with a linear interpolation.
 We do this by choosing two points on the path, and checking if the two points could be connected with a cheaper path (i.e. the linear interpolation).
@@ -228,7 +242,7 @@ We discussed multi-robot shortcutting before [here](/multi-robot-shortcutting) a
 - Shortcut those robots
 - Repeat
 
-The issue that we can now have is that some robots re linked through constraints (specificaly robots that share a degree of freedom that is duplicated).
+The issue that we can now have is that some robots are linked through constraints (specificaly robots that share a degree of freedom that is duplicated).
 That means that if we shotcut one of those robots, but not the other, we break the constraint, meaning that we need to account for that in our very simple loop above.
 
 We can do that by identifying the groups that need to be shortcut together, i.e., all the degrees of freedom that are linked through constraints, and then respect those groups in the first step.
@@ -242,7 +256,7 @@ We can then try to figure out the best way to choose the points between which we
 We are first starting with a microbenchmark of the projection methods: As mentioned before, we compare the three projection methods from above.
 We do this on a couple of the environments that we introduced above, both for a free sample we need in planning, and also using a 'pinned transition', i.e., a sample satisfying a transition constraint.{% include sidenote.html text='In the unconstrained setting, sampling a transition can be done by (1) sampling a goal, and then (2) sampling the rest of the robots/the free dimensions. With constraints, a given goal configuration can be part of a constraint, meaning that we can not sample the rest of the dimensions freely, but need to make sure that the constraints are all satisfied.'%}
 
-<img src="{{ site.url }}/assets/multi-robot-constraints/equality-microbenchmark.png" alt="Equality-only projection kernels across seven scenarios, with ordinary and pinned-transition queries; serial mains-powered timings" style="width:100%;">
+<img src="{{ site.url }}/assets/multi-robot-constraints/equality-batching.png" alt="Matched scalar and batch-of-256 equality projections across seven scenarios, measured serially on mains power with setup excluded" style="width:100%;">
 
 Generally, the batched projection is a magnitude faster for all the approaches.
 Between the methods, the difference is definitely observable, but only roughly a factor of two:
@@ -251,9 +265,10 @@ For the transition configurations, there is no clear winner between the methods.
 
 **Inequality sampling:** We continue with a similar microbenchmark on the inequality satisfying constraints. Similar to before, we do again look at both the 'free' and the transition samples.
 
-<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-sampling.png" alt="Inequality sampling time in microseconds per feasible sample, with free-space samples on the left and pinned-transition samples on the right" style="width:100%;">
+<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-batching.png" alt="Matched scalar and batch-of-256 inequality samplers, measured serially on mains power with setup excluded" style="width:100%;">
 
-In this case, direct feasible sampling tends to be the fastest, but there is no clear winner on all the environments.
+Compared to before, for the inequality sampling there is not as much to gain by batching, except in the rejection approach.
+Direct feasible sampling tends to be the fastest method, but there is no clear winner on all the environments.
 We can however see that rejection sampling can be much slower than the other approaches if we have many constraints, or the free space is much larger than the constraint-satisfying manifold.
 
 Below we also look at the distribution of the samples.
@@ -270,21 +285,50 @@ Values near 1 mean that successive samples are similar; values near 0 mean littl
 **Shortcutting:** Before proceeding with the full planners, we are going to have a look at shortcutting alone:
 We take a valid initial path, and run different shortcutting versions on the plans to see how convergence differs between the methods.
 
+The methods are effectively a copy from the previous posts [here](/multi-robot-shortcutting) and [here](scalable-multi-robot-shortcutting):
+
+- *Full* shortcuts all coordinates at the same time
+- *index groups* samples coordinate-groups and adds equality-coupled indices to the set
+- *Mechanism groups* combine equality-connected blocks belonging to the same robot set.
+
+Then, how we sample endpoints:
+
+- *Compatible runs* directly sample uniformly in the interval that keeps the robots' tasks unchanged
+- *endpoints* samples uniformly over the whole path and checks admissibility afterwards.
+
+Finally, we adapt the methods from before:
+- *Robot tree + gain* operates on logical robots
+- *equality-atom tree + gain* uses mechanism groups instead.
+
 <img src="{{ site.url }}/assets/multi-robot-constraints/offline-shortcutting.png" alt="Offline shortcutting cost over time for clearing eight blocks, building two stacks, two-carrier stacking, and single-carrier sorting" style="width:100%;">
+
+Sampling by robot as we did very successfully before does barely help here, since most single-robot attempts violate some constraint.
+Thus, robot tree method barely improves.
+On the other hand, using equality-aware groups improve three scenes quickly.
 
 <details>
 <summary>Logarithmic time axis</summary>
 <img src="{{ site.url }}/assets/multi-robot-constraints/offline-shortcutting-log.png" alt="Offline shortcutting cost with a logarithmic time axis" style="width:100%;">
 </details>
 
-**Planning:** Finally, we run the full planner with different inequality-sampling methods.
-
-<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-planning.png" alt="Planning convergence for five inequality-sampling policies on six scenarios, with five planner seeds per policy" style="width:100%;">
-
+<details>
+<summary>All shortcutting methods</summary>
+<img src="{{ site.url }}/assets/multi-robot-constraints/offline-shortcutting-all.png" alt="All ten shortcutting methods on the same four paths" style="width:100%;">
 <details>
 <summary>Logarithmic time axis</summary>
-<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-planning-log.png" alt="Five-policy inequality planning comparison with a logarithmic time axis" style="width:100%;">
+<img src="{{ site.url }}/assets/multi-robot-constraints/offline-shortcutting-all-log.png" alt="All ten shortcutting methods with a logarithmic time axis" style="width:100%;">
 </details>
+</details>
+
+**Planning:** Finally, we run the full planner with different inequality-sampling methods.
+
+<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-planning.png" alt="Planning convergence for QP projection, direct feasible sampling, and direct sampling with an informed walk on six scenarios, with five planner seeds per policy" style="width:100%;">
+
+The sampling policies find the initial solutions in similar times, as also seen below.
+Convergence is also relatively similar.
+The biggest thing to notice in the plots below is that rejection sampling does not find a feasible solution in some of the problems that have a smaller feasible set.
+
+The informed walk lowers median final cost a bit compared to the other methods.
 
 <details>
 <summary>Time to first solution, including unsuccessful runs</summary>
@@ -292,24 +336,38 @@ We take a valid initial path, and run different shortcutting versions on the pla
 </details>
 
 <details>
-<summary>Effect of the informed walk, with shortcutting unchanged</summary>
-<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-informed.png" alt="Direct feasible sampling versus direct feasible sampling plus the affine informed walk, with the same shortcutting policy" style="width:100%;">
+<summary>Logarithmic time axis</summary>
+<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-planning-log.png" alt="Three-policy inequality planning comparison with a logarithmic time axis" style="width:100%;">
+</details>
+
+<details>
+<summary>All inequality-sampling policies</summary>
+<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-planning-all.png" alt="All five inequality-sampling policies, including rejection and rounded hit-and-run" style="width:100%;">
 <details>
 <summary>Logarithmic time axis</summary>
-<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-informed-log.png" alt="Informed-walk comparison with a logarithmic time axis" style="width:100%;">
+<img src="{{ site.url }}/assets/multi-robot-constraints/inequality-planning-all-log.png" alt="All five inequality-sampling policies with a logarithmic time axis" style="width:100%;">
 </details>
 </details>
 
+#### Videos
+...
 
 # Take away
 
-This problem formulation is nicely simple, and adding constraints is relatively easy.
-What it boils down to is in the end a series o fdispatches to samples satisfying the various constraints, and orchestrating them.
+This problem formulation is nice and simple: adding constraints is relatively easy.
+What it boils down to is in the end a series of dispatchers to samplers that satisfy the various constraints, and orchestrating them.
+The same approach can with a few minor additions be used to sample nonlinear constraints, and plan using the same way.
 
 For linear constraints these samplers are relatively simple, but we can already see that some implementation details can play a big role in how quick we get so a solution and how well we converge.
-For non-linear constraints this will become a bit more annoying because ti changes how much time is spent in various parts of the algorithms.
+For non-linear constraints this will become a bit more annoying because it changes how much time is spent in various parts of the algorithms.
+
+Caching and batching make equality projection practically free.
+Inequality sampling is the harder problem, and very scene dependent.
+Shortcutting must respect coupled coordinates in order to have any chance to be useful.
+
+Finally, I noticed during this work again how important diligent shortcutting is, and that we need to ensure that we really shortcut everythign at some point, otherwise we end up with a lot of superfluous movement by robots that are not the 'active' robots.
 
 #### Open questions
 
-- clearly suboptimal
-- problems tackled here make it clear that the goal-choice is very important
+The clear next objective is extending this to nonlinear constraints, which enables much more realistic constraints, such as bimanual tasks, or orientation constraints when grasping and transporting something, or possibly also distance constraints between robots.
+- The problems tackled here (particularly the dual-carrier scenarios) make it clear to me that the chhoice of keyframes is very important for how the path looks overall.
