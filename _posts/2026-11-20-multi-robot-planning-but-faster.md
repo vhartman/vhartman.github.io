@@ -17,7 +17,7 @@ This post is a writeup of the improvements made since the original benchmark-pub
 There's also a couple new problems that people presented in other places that I am also comparing against here, and adding to the benchmark.
 </p>
 
-This post is mainly motivated by [cuArms](https://cuarms.github.io/), which cited some of the numbers published in the [paper introducing the multi-robot multi-goal path planning problem](/mrmg-planning) (instead of just running the planners to get timings).
+This post is mainly motivated by [cuArms](https://cuarms.github.io/), which cited some of the numbers published in the [paper introducing the multi-robot multi-goal path planning problem](/mrmg-planning).
 I was a bit surprised by how much faster their planner is, but mainly I was a bit surprised by the numbers they cited since my planners felt faster in my day-to-day usage of them.
 
 The benchmark is mostly written in Python{% include sidenote.html text='Except for the backends doing forward kinematics, and collision checking, which leverage whatever library you are willing to integrate.'%} because it was much easier to get started and experiment in Python.
@@ -53,7 +53,7 @@ Before we start, we'll look at the timings we get on this laptop, compared to th
 {% include sidenote.html text='
 For the paper, we ran 10 environments in parallel to cut down on the time needed.
 I thought I had made sure that this does not noticeably slow the experiments down.
-However, it seems like I was wron, and there was indeed some slowdown compared to sequential runs.
+However, it seems like I was wrong, and there was indeed some slowdown compared to sequential runs.
 So here, we run everything sequentially.'%}
 
 <figure style="margin:1.5rem 0;">
@@ -95,7 +95,7 @@ In the convergence plots, we can see that we do find the initial solution earlie
 
 Thanks to the reviewers of the WAFR paper, we added a scaling study (and a bunch of other analyses) in the appendix of the paper:
 This scaling study convinced me that the biggest reason for slow initial solution times were _very_ suboptimal plans.
-More specifically, I thought (and it is very visible in some cases when looking at the animation of the inital path!) that the robots were taking long detours from the optimal plan.
+More specifically, I thought (and it is very visible{% include sidenote.html text='Always visualize your plans!'%} in some cases when looking at the animation of the inital path!) that the robots were taking long detours from the optimal plan.
 These detours imply longer paths which need to be collision checked, and thus longer path planning times to even get to the initial path.
 The dumb solution to the problem of taking long to find an initial path is 'find a better initial path' or 'avoid the detours'.
 
@@ -143,7 +143,7 @@ Where we can see that as a side-effect to the faster solution, we also tend to g
 
 #### General performance optimizations
 
-After getting these first low hanging fruits, we need to figure out where time is spent at all.
+After getting these first low hanging fruits, we need to figure out where time is spent at all to sensibly continue optimizing.
 While we should do this for a couple of environments, since the environments behave differently for different numbers of robots, and different numbers of goals, we are going to do it for four: the 2D hallway, four-robot box stacking, six-robot isolated stacking, and spiral tower.
 
 In our case more importantly, we want to see where time is spent at a certain time:
@@ -164,7 +164,7 @@ We also look at the average of the time spent on specific parts of the code befo
 <img src="{{ site.url }}/assets/multi-robot-planning-but-faster/profile-before-optimizations-phases.svg" alt="Historical code with L1 steering: exclusive wall-time breakdown before and after the first solution for the same four RAI scenes, one instrumented run each." style="display:block;width:100%;">
 </figure>
 
-The biggest difference in all environments between pre-first solution and post first solution is that sampling takes much more time after the first solution was found.
+The biggest difference in all environments between pre first solution and post first solution is that sampling takes much more time after the first solution was found.
 
 **Optimizing informed sampling:**
 There's two things that can be improved in informed sampling from how it was implemented at the time:
@@ -182,7 +182,7 @@ We thus look only at the convergence curves:
 The improvement does not show super well in the plot here, but the converged cost is practically always better, and there is less time spent on informed sampling overall.
 
 **Various optimizations**:
-Similar to before the steering-change, there were also some things that I did, but are not huge changes overall:
+Similar to before the steering-change, there were also various optimizations that added up over time, but are not huge changes overall:
 
 - When doing shortcutting, we feed the shortcut path back into the tree of the RRT. There's two things that can be avoided: (1) We do not need to collision check this path a second time when adding it to the tree, and (2) we can avoid adding nodes that already exist (i.e. in parts of the path that was already the direct connection, and therefore did not change).
 - We added cached edge checks, which helped a bit.
@@ -234,7 +234,7 @@ Videos of the scenarios, and of the strut-assembly scenarios from above are in t
 
 {% include scenario-gallery.html clips=site.data.performance_scenarios.additional id="additional-scenario-video" label="Additional experiments" %}
 
-We compare the scenarios with MuJoCo, and with RAI as backends.
+We compare the scenarios with MuJoCo, and with [RAI](https://marctoussaint.github.io/robotics-course/rai.html) as backends.
 I am not putting the numbers from cuArms in here, since the scenarios are unlikely to be fair comparisons due to different assignments, and different IK solutions.
 
 <figure style="margin:1.5rem 0;">
@@ -273,9 +273,9 @@ First we look at the scenes that we used before as well to see how the SIMD back
 <img src="{{ site.url }}/assets/multi-robot-planning-but-faster/backend-convergence-log-log.svg" alt="Five-seed median convergence and interquartile range. Current RAI and CoMotion on the four main blog scenarios with frozen archived goals and sharp boxes; Cube uses historical 5 mm cylindrical struts. The cuArms Cube convergence curve is extracted from appendix Figure 9; no extrapolation. Dotted horizontal lines show the original paper’s median final costs after 500–1000 seconds. Logarithmic time and cost axes." style="display:block;width:100%;">
 </figure>
 
-The speedup clearly carries over, and the faster collision checking backend is always under the curves of the RAI backend, meaning that the cost at any time during the solution is always better than the cost we get with using the RAI backend.
+The speedup clearly carries over, and the curves from the faster collision checking backend are always under the curves of the RAI backend, meaning that the cost at any time during the solution is always better than the cost we get with using the RAI backend.
 
-Finally, we compare the CoMotion backend to the scenes that cuArms used in their benchmark.
+Finally, we compare BiRRT* with the CoMotion backend to the cuArms-planner on the scenes that cuArms used in their comparison.
 However as said before, we have to be careful with interpreting these results for the reasons stated above.
 
 <figure style="margin:1.5rem 0;">
@@ -284,7 +284,7 @@ However as said before, we have to be careful with interpreting these results fo
 
 We see that the BiRRT* planner with the CoMotion backend is faster than their planner in all cases, but as before, this advantage shrinks the more robots there are.
 
-Finally, we also look at the RoboBallet welding scenarios, adn the packing/unpacking scenarios that I made up that are somewhat similar ot the ones in the cuArms paper:
+Finally, we also look at the RoboBallet welding scenarios, and the packing/unpacking scenarios that I made up that are somewhat similar ot the ones in the cuArms paper:
 
 <figure style="margin:1.5rem 0;">
 <img src="{{ site.url }}/assets/multi-robot-planning-but-faster/backend-welding-packing-convergence-log-log.svg" alt="Five-seed median convergence and interquartile range. Current RAI, CoMotion and MuJoCo 4 where supported. CoMotion does not support these packing collision policies. RAI solves one of five eight-arm welding runs within 180 seconds. Logarithmic time and cost axes." style="display:block;width:100%;">
@@ -321,6 +321,7 @@ The CoMotion fork is [here](https://github.com/vhartman/comotion), but I would n
 - It would be nice to add a GPU backend for collision checking and forward kinematics to see how SIMD approaches compare here.
 - The vibed SIMD backend is worse than the results the CoMotion-authors achieved. This means there is still some headroom even there to work with properly compiled kernels here. 
 - I should likely also give the same treatment that I gave to BiRRT* to the other planners at some point.
+- Some of the visualizations shown here make it quite obvious that the main cost-driver is suboptimal IK solutions. I would need to look at this.
 
 # Appendix
 I reran the subset of the experiments that has sequential goal assignments.
