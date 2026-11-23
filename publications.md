@@ -19,6 +19,7 @@ Also see my [Google Scholar Profile here](https://scholar.google.com/citations?u
   <span class="pub-links">[website](/stochastic-skills) · [arxiv](http://arxiv.org/abs/2610.07784)</span>
 - _PoliMop: Policy-in-the-Loop Motion Planning in 3D Spaces for Mobile Robots_ <br>
   <span class="pub-authors">Yael Fassbind, **Valentin N. Hartmann**, Huang Su, Yijiang Huang, Stelian Coros</span><br>
+  <span class="pub-links">[website](https://ariael21.github.io/polimop.html) · [arxiv](https://arxiv.org/abs/2611.18110)</span>
 
 ### Journals
 
