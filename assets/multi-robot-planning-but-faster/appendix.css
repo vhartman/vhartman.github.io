@@ -1,0 +1,64 @@
+.performance-appendix-curves {
+  width: min(920px, 94vw);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  margin: 1.5rem 0;
+}
+.performance-appendix-curves img { display: block; width: 100%; }
+
+.performance-appendix {
+  width: min(1080px, 94vw);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 1.5rem 0;
+}
+.performance-appendix .table-scroll { overflow-x: auto; max-width: 920px; margin-inline: auto; }
+.performance-appendix table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1em;
+  font-variant-numeric: tabular-nums lining-nums;
+  line-height: 1.4;
+}
+.performance-appendix th, .performance-appendix td {
+  padding: 0.45em 0.5em;
+  text-align: right;
+  border: 0;
+  white-space: nowrap;
+}
+.performance-appendix thead { border-top: 1px solid #999; border-bottom: 1px solid #999; }
+.performance-appendix thead th { background: transparent; font-weight: 500; }
+.performance-appendix thead th[colspan] { text-align: center; padding-top: 0.65em; }
+.performance-appendix thead small { display: block; font-size: 0.85em; font-weight: normal; color: #777; }
+.performance-appendix tbody th { text-align: left; font-weight: normal; }
+.performance-appendix .scene-heading { text-align: left; }
+.performance-appendix .group-start { border-left: 1px solid #ddd; }
+.performance-appendix tbody tr + tr { border-top: 1px solid #eee; }
+.performance-appendix tbody tr.section-start { border-top: 1px solid #aaa; }
+.performance-appendix tbody { border-bottom: 1px solid #999; }
+.performance-appendix .rai-heading { color: #0072b2; }
+.performance-appendix .comotion-heading { color: #b95700; }
+.performance-appendix .muted { color: #777; }
+.performance-appendix .decimal-number {
+  display: inline-grid;
+  grid-template-columns: auto 0.35em 2.6em;
+  align-items: baseline;
+}
+.performance-appendix .decimal-number > :nth-child(2) { text-align: center; }
+.performance-appendix .decimal-number > :last-child { text-align: left; }
+.performance-appendix .decimal-aligned td:nth-child(odd) .decimal-number {
+  grid-template-columns: auto 0.35em 1.3em;
+}
+.performance-appendix .table-note { max-width: 920px; margin: 0.6em auto 1em; font-size: 0.85em; color: #555; }
+.performance-appendix details { margin: 1.2em 0; }
+.performance-appendix img { display: block; width: 100%; margin: 1em 0; }
+.performance-appendix .protocol { font-size: 0.9em; }
+@media (max-width: 650px) {
+  .performance-appendix table { font-size: 0.82em; }
+  .performance-appendix th, .performance-appendix td { padding: 0.4em 0.5em; }
+}
+
+.performance-appendix tbody tr, .performance-appendix tbody th, .performance-appendix tbody td { background: transparent; }

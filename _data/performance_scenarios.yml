@@ -1,0 +1,47 @@
+rai:
+  - file: hallway
+    title: 2D hallway
+    robots: 2
+    targets: 2
+  - file: random-2d
+    title: 2D random
+    robots: 3
+    targets: 12
+  - file: box-stacking
+    title: Box stacking
+    robots: 4
+    targets: 16
+  - file: rai.cube_four
+    title: Cube
+    robots: 4
+    targets: 48
+
+additional:
+  - file: rai.spiral_tower
+    title: Spiral tower
+    robots: 4
+    targets: 30
+  - file: rai.spiral_tower_two
+    title: Spiral tower
+    robots: 2
+    targets: 14
+  - file: rai.three_robot_truss
+    title: Truss
+    robots: 3
+    targets: 28
+  - file: rai.panda_welding_4
+    title: Welding
+    robots: 4
+    targets: 10
+  - file: rai.panda_welding_8
+    title: Welding
+    robots: 8
+    targets: 40
+  - file: cuarms.pack
+    title: Packing
+    robots: 2
+    targets: 8
+  - file: cuarms.unpack
+    title: Unpacking
+    robots: 2
+    targets: 8

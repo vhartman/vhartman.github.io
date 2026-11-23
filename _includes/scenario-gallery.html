@@ -1,0 +1,24 @@
+{% assign first_clip = include.clips | first %}
+{% assign media_root = '/assets/multi-robot-planning-but-faster/scenarios/' | relative_url %}
+<figure class="scenario-gallery" data-scenario-gallery aria-label="{{ include.label | escape }}">
+  <video id="{{ include.id }}" class="scenario-gallery__video" controls loop muted playsinline preload="none"
+    aria-label="{{ first_clip.title | escape }}, {{ first_clip.robots }} robots, {{ first_clip.targets }} targets"
+    poster="{{ media_root }}{{ first_clip.file }}.png"
+    src="{{ media_root }}{{ first_clip.file }}.mp4"></video>
+  <figcaption class="scenario-gallery__caption" aria-live="polite">
+    <span class="scenario-gallery__title">{{ first_clip.title }}</span>
+    <small class="scenario-gallery__meta" title="Pick and place count separately; the terminal return-home goal is excluded.">{{ first_clip.robots }} robots · {{ first_clip.targets }} targets</small>
+  </figcaption>
+  <nav class="scenario-gallery__choices" aria-label="Choose a scenario">
+    {% for clip in include.clips %}
+    <a href="{{ media_root }}{{ clip.file }}.mp4" data-gallery-clip
+      data-title="{{ clip.title | escape }}" data-poster="{{ media_root }}{{ clip.file }}.png"
+      data-robots="{{ clip.robots }}" data-targets="{{ clip.targets }}"
+      aria-controls="{{ include.id }}"{% if forloop.first %} aria-current="true"{% endif %}>
+      <img src="{{ media_root }}{{ clip.file }}.png" alt="" loading="lazy" width="160" height="120">
+      <span class="scenario-gallery__title">{{ clip.title }}</span>
+      <small class="scenario-gallery__meta" title="Pick and place count separately; the terminal return-home goal is excluded.">{{ clip.robots }} robots · {{ clip.targets }} targets</small>
+    </a>
+    {% endfor %}
+  </nav>
+</figure>
