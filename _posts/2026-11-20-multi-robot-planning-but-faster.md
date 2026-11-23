@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Speeding up sampling based multi-robot multi-goal planning"
-date: 2026-11-14 12:00:00 +0200
-# permalink: /scalable-multi-robot-shortcutting/
+date: 2026-11-23 12:00:00 +0200
+permalink: /faster-multi-robot-planning/
 categories: path-planning
-# published: false
+published: false
 ---
 
 <p class="preface">
