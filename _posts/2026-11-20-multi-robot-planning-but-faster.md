@@ -311,7 +311,7 @@ By improving a few things, we almost get a **5x** speedup over the numbers we ha
 The **12x** speedup (over RAI, or a **26.7x** speedup over the published numbers) is then given by the switch of the collision backend, which leads to faster initial results compared to a purely GPU based planner that is highly parallelized on the comparisons that we can control.{% include sidenote.html text='There is still the caveat that there is some uncertainty on the specific setups.'%}
 That being said, cuArms has the clear advantage that it is better suited to higher numbers of robots due to the decentralized/factorized approach.
 
-The experiments were run with [this commit](https://github.com/vhartman/multirobot-pathplanning-benchmark/commit/7aacfd0317f15871e2cc5c5f1185c7562f11f5eb) in the benchmarking repo.
+The experiments were run with [this commit](https://github.com/vhartman/multirobot-pathplanning-benchmark/commit/01dd3efa9fb651c263de5e8708ee7f3660b57c3d) in the benchmarking repo.
 The CoMotion fork is [here](https://github.com/vhartman/comotion), but I would not vouch for any implementation here, except that it matches what RAI is doing.
 
 #### Next steps
